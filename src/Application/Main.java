@@ -10,12 +10,13 @@ import Metier.CMProduit;
 import dao.DAOFactory;
 import dao.DAOFactory.Persistance;
 //import SQL.MySQLCategorieDAO;
+ 
 
 public class Main {
 	public static void main(String[] args) {
 
 		Scanner scanner=new Scanner(System.in);
-		System.out.println("Passer de MySQL à ListeMemoire?  1:yes 2:no");
+		System.out.println("Passer de MySQL ï¿½ ListeMemoire?  1:yes 2:no");
 		int option=scanner.nextInt();
 		if(option==1) {
 			DAOFactory daos =DAOFactory.getDAOFactory(Persistance.ListMemoire);
@@ -23,13 +24,13 @@ public class Main {
 		else if(option==2) {
 			DAOFactory daos =DAOFactory.getDAOFactory(Persistance.MYSQL);
 		System.out.println("choisir une partie");
-		System.out.println("1:Catégorie 2: Produit 3: Client 4: Commande 5: Ligne de commande");
+		System.out.println("1:Catï¿½gorie 2: Produit 3: Client 4: Commande 5: Ligne de commande");
 		int partie = scanner.nextInt();
 		
 // categorie
 		if (partie==1) {
-			System.out.println("Catégorie");
-			System.out.println("Choisir une méthode");
+			System.out.println("Catï¿½gorie");
+			System.out.println("Choisir une mï¿½thode");
 			System.out.println("1.Ajouter 2:Modifier 3:Supprimer 4: Chercher");
 			int p=scanner.nextInt();
 			if(p==1) {
@@ -76,7 +77,7 @@ public class Main {
 				try {
 					daos.getCategorieDAO().getById(id);	;
 				} catch (Exception e) {
-					System.out.println("cette catégorie n'existe pas!");
+					System.out.println("cette catï¿½gorie n'existe pas!");
 					e.printStackTrace();
 				}
 				
@@ -92,7 +93,7 @@ public class Main {
 // Produit
 		else if(partie==2) {
 			System.out.println("Produit");
-			System.out.println("Choisir une méthode");
+			System.out.println("Choisir une mï¿½thode");
 			System.out.println("1.Ajouter 2:Modifier 3:Supprimer 4: Chercher");
 			int p=scanner.nextInt();
 			if(p==1) {
@@ -105,7 +106,7 @@ public class Main {
 				float tarif=scanner.nextFloat();
 				System.out.println ("visuel=");
 				String visuel=scanner.next();
-				System.out.println ("id catégorie=");
+				System.out.println ("id catï¿½gorie=");
 				int idc=scanner.nextInt();
 				try {
 					daos.getProduitDAO().create(new CMProduit(nom,description,tarif,visuel,idc));
@@ -126,7 +127,7 @@ public class Main {
 				float tarif=scanner.nextFloat();
 				System.out.println ("visuel=");
 				String visuel=scanner.next();
-				System.out.println ("id catégorie=");
+				System.out.println ("id catï¿½gorie=");
 				int idc=scanner.nextInt();			
 				try {
 					daos.getProduitDAO().update(new CMProduit(id,nom,description,tarif,visuel,idc));
@@ -166,7 +167,7 @@ public class Main {
 // Client
 		else if( partie==3) {
 			System.out.println("Client");
-			System.out.println("Choisir une méthode");
+			System.out.println("Choisir une mï¿½thode");
 			System.out.println("1.Ajouter 2:Modifier 3:Supprimer 4: Chercher");
 			int p=scanner.nextInt();
 			if(p==1) {
@@ -250,7 +251,7 @@ public class Main {
 //commande	
 		else if(partie==4) {
 			System.out.println("Commande");
-			System.out.println("Choisir une méthode");
+			System.out.println("Choisir une mï¿½thode");
 			System.out.println("1.Ajouter 2:Modifier 3:Supprimer 4: Chercher");
 			int p=scanner.nextInt();
 			if(p==1) {
@@ -317,7 +318,7 @@ public class Main {
 //ligne de commande
 		else if (partie==5) {
 			System.out.println("Ligne de Commande");
-			System.out.println("Choisir une méthode");
+			System.out.println("Choisir une mï¿½thode");
 			System.out.println("1.Ajouter 2:Modifier 3:Supprimer 4: Chercher");
 			int p=scanner.nextInt();
 			if(p==1) {
