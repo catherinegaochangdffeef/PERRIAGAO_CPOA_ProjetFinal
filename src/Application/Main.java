@@ -11,7 +11,6 @@ import dao.DAOFactory;
 import dao.DAOFactory.Persistance;
 //import SQL.MySQLCategorieDAO;
  
-
 public class Main {
 	public static void main(String[] args) {
 
