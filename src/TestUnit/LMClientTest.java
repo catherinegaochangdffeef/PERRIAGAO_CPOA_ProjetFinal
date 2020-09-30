@@ -28,7 +28,7 @@ public class LMClientTest {
 	ListeMemoireClientDAO.getInstance().create(c);
     }
     
-    
+//--------------------------------------------------------------------------------------------------------------------------------------------------   
 	@Test
 	public void testSelectExiste() throws Exception {
 	int id=c.getId_client();
@@ -36,6 +36,7 @@ public class LMClientTest {
 	CMClient cLm=ListeMemoireClientDAO.getInstance().getById(id);
 	assertNotNull(cLm);
  }
+//--------------------------------------------------------------------------------------------------------------------------------------------------   	
 	@Test
 	public void testGetbyid() throws Exception {
 		
@@ -45,6 +46,7 @@ public class LMClientTest {
 		}
 		
 	}
+//--------------------------------------------------------------------------------------------------------------------------------------------------   	
 	@Test
 	public void testCreate() throws Exception {
 		
@@ -60,6 +62,7 @@ public class LMClientTest {
 		assertEquals(c.getAdr_pays(),"France");
 		
 	}
+//--------------------------------------------------------------------------------------------------------------------------------------------------   	
 	@Test
 	public void testDelete() throws Exception {
 		
@@ -82,14 +85,8 @@ public class LMClientTest {
 		catch (Exception e){
 		    ;
 		}
-		
-	
-		
-		
 	}
-	
-
-
+//--------------------------------------------------------------------------------------------------------------------------------------------------   	
 	@Test
 	public void testUpdate() throws Exception {
 
@@ -108,7 +105,7 @@ public class LMClientTest {
 		assertEquals("zteM", c3.getAdr_ville());
 		assertEquals("ecnarF", c3.getAdr_pays());
 	}
-	
+//--------------------------------------------------------------------------------------------------------------------------------------------------   	
 	@Test
 	public void testfindAll() throws Exception{
 		    	

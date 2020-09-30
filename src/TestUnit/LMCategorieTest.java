@@ -24,7 +24,7 @@ public class LMCategorieTest {
 	ListeMemoireCategorieDAO.getInstance().create(c);
     }
     
-    
+//--------------------------------------------------------------------------------------------------------------------------------------------------       
 	@Test
 	public void testSelectExiste() throws Exception {
 	int id=c.getId();
@@ -32,15 +32,17 @@ public class LMCategorieTest {
 	CMCategorie cLm=ListeMemoireCategorieDAO.getInstance().getById(id);
 	assertNotNull(cLm);
  }
+//--------------------------------------------------------------------------------------------------------------------------------------------------   
 	@Test
-	public void testGetbyid() throws Exception {
+	public void testGetbyId() throws Exception {
 		
 	    try {
-		DAOFactory.getDAOFactory(Persistance.ListMemoire).getClientDAO().getById(c.getId());} catch(Exception e) {
-		    fail("Erreur lors de la rÃ©cupÃ©ration");
+		DAOFactory.getDAOFactory(Persistance.ListMemoire).getCategorieDAO().getById(c.getId());} catch(Exception e) {
+		    fail("Erreur lors de la récupération");
 		}
 		
 	}
+//--------------------------------------------------------------------------------------------------------------------------------------------------   
 	@Test
 	public void testCreate() throws Exception {
 		
@@ -48,38 +50,30 @@ public class LMCategorieTest {
 		assertEquals(c.getTitre(),"aa");
 		assertEquals(c.getVisuel(),"aaa.png");
 
-		
 	}
+//--------------------------------------------------------------------------------------------------------------------------------------------------   
 	@Test
 	public void testDelete() throws Exception {
 		
 		assertTrue((ListeMemoireCategorieDAO.getInstance().delete(c)), "");
 		int id = c.getId();
 		
-		
-		
 		try {
-		DAOFactory.getDAOFactory(Persistance.ListMemoire).getClientDAO().getById(id);
-		fail("Le client existe toujours");
+		DAOFactory.getDAOFactory(Persistance.ListMemoire).getCategorieDAO().getById(id);
+		fail("La catégorie existe toujours");
 		}catch(Exception e){
 		    
 		}
 		
 		try {
 		ListeMemoireCategorieDAO.getInstance().delete(c);
-		fail("Le client existe toujours");
+		fail("La catégorie existe toujours");
 		}
 		catch (Exception e){
 		    ;
 		}
-		
-	
-		
-		
 	}
-	
-
-
+//--------------------------------------------------------------------------------------------------------------------------------------------------   	
 	@Test
 	public void testUpdate() throws Exception {
 
@@ -91,7 +85,7 @@ public class LMCategorieTest {
 		assertEquals("bbb", c3.getVisuel());
 	
 	}
-	
+//--------------------------------------------------------------------------------------------------------------------------------------------------   
 	@Test
 	public void testfindAll() throws Exception{
 		    	
