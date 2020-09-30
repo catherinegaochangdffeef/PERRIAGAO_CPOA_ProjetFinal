@@ -1,6 +1,5 @@
 package dao;
 
-
 import Metier.CMCommande;
 
 public interface CommandeDAO extends DAO<CMCommande> {

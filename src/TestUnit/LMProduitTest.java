@@ -36,7 +36,7 @@ public class LMProduitTest {
  }
 //--------------------------------------------------------------------------------------------------------------------------------------------------    
 	@Test
-	public void testGetbyid() throws Exception {
+	public void testGetbyId() throws Exception {
 		
 	    try {
 		DAOFactory.getDAOFactory(Persistance.ListMemoire).getProduitDAO().getById(p.getId_produit());} catch(Exception e) {

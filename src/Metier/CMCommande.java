@@ -43,7 +43,7 @@ public CMCommande(int id_commande,String date_commande,int id_client) {
 	public CMCommande(int id) {
 		this.setId(id);
 		}
-	public void addLignedeCommade (CMLignedeCommande lignecommandes,Integer integer) {
+	public void addLignedeCommande (CMLignedeCommande lignecommandes,Integer integer) {
 		if(lignecommande==null) {
 			lignecommande=new HashMap<>();
 		}
