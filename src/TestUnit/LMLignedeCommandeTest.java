@@ -3,11 +3,13 @@ package TestUnit;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.fail;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import org.junit.Before;
 import org.junit.Test;
 
 import ListMemoire.ListeMemoireLignedeCommandeDAO;
+import ListMemoire.ListeMemoireProduitDAO;
 import Metier.CMLignedeCommande;
 import dao.DAOFactory;
 import dao.DAOFactory.Persistance;
@@ -50,7 +52,28 @@ public class LMLignedeCommandeTest {
 		assertEquals(l.getTarif_unitaire(), 1.0, 1.0); //ici trois valeurs car la variable est un double, donc un delta de comparaison est necessaire
 	
 	}
-	
+//--------------------------------------------------------------------------------------------------------------------------------------------------    
+	@Test
+	public void testDelete() throws Exception {
+		
+		assertTrue((ListeMemoireLignedeCommandeDAO.getInstance().delete(l)), "");
+		int id = l.getId_commande();
+
+		try {
+		DAOFactory.getDAOFactory(Persistance.ListMemoire).getLignedeCommandeDAO().getById(id);
+		fail("Le produit existe toujours");
+		}catch(Exception e){
+		    ;
+		}
+		
+		try {
+		ListeMemoireLignedeCommandeDAO.getInstance().delete(l);
+		fail("Le produit existe toujours");
+		}
+		catch (Exception e){
+		    ;
+		}	
+	}
 	
 	
 	

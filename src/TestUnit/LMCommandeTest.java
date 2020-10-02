@@ -50,7 +50,7 @@ private CMCommande c;
 		//assertEquals(c.getId(),1);
 		assertEquals(c.getId(),1);
 		assertEquals(c.getId_client(),1);
-		assertEquals(c.getDate_commande(), 01-01-2020); //pas sûre que la date doive être appelé comme ca 
+		assertEquals(c.getDate_commande(), 01-01-2020); //pas sûre que la date doit être appelé comme ca 
 
 		}	
 	
