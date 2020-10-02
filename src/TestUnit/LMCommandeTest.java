@@ -3,6 +3,7 @@ package TestUnit;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.fail;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import java.sql.Date;
 
@@ -10,6 +11,7 @@ import org.junit.Before;
 import org.junit.Test;
 
 import ListMemoire.ListeMemoireCommandeDAO;
+import ListMemoire.ListeMemoireProduitDAO;
 import Metier.CMCommande;
 
 import dao.DAOFactory;
@@ -53,6 +55,27 @@ private CMCommande c;
 		assertEquals(c.getDate_commande(), 01-01-2020); //pas sûre que la date doit être appelé comme ca 
 
 		}	
-	
+	//--------------------------------------------------------------------------------------------------------------------------------------------------    
+	@Test
+	public void testDelete() throws Exception {
+		
+		assertTrue((ListeMemoireCommandeDAO.getInstance().delete(c)), "");
+		int id = c.getId();
+
+		try {
+		DAOFactory.getDAOFactory(Persistance.ListMemoire).getCommandeDAO().getById(id);
+		fail("La commande existe toujours");
+		}catch(Exception e){
+		    ;
+		}
+		
+		try {
+		ListeMemoireCommandeDAO.getInstance().delete(c);
+		fail("La commande existe toujours");
+		}
+		catch (Exception e){
+		    ;
+		}	
+	}
 	
 }

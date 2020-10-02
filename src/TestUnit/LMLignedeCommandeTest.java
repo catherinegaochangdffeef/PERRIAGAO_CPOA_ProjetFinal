@@ -61,14 +61,14 @@ public class LMLignedeCommandeTest {
 
 		try {
 		DAOFactory.getDAOFactory(Persistance.ListMemoire).getLignedeCommandeDAO().getById(id);
-		fail("Le produit existe toujours");
+		fail("La ligne de commande existe toujours");
 		}catch(Exception e){
 		    ;
 		}
 		
 		try {
 		ListeMemoireLignedeCommandeDAO.getInstance().delete(l);
-		fail("Le produit existe toujours");
+		fail("La ligne de commande existe toujours");
 		}
 		catch (Exception e){
 		    ;
