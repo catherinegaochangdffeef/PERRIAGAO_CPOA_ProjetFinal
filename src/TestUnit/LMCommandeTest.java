@@ -1,5 +1,6 @@
 package TestUnit;
 
+import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.fail;
 
@@ -42,7 +43,16 @@ private CMCommande c;
 		}
 		
 	}
-	
+//--------------------------------------------------------------------------------------------------------------------------------------------------    
+	@Test
+	public void testCreate() throws Exception {
+			
+		//assertEquals(c.getId(),1);
+		assertEquals(c.getId(),1);
+		assertEquals(c.getId_client(),1);
+		assertEquals(c.getDate_commande(), 01-01-2020); //pas sûre que la date doive être appelé comme ca 
+
+		}	
 	
 	
 }

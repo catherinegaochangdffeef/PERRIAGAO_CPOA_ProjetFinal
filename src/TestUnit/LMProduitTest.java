@@ -51,7 +51,7 @@ public class LMProduitTest {
 		//assertEquals(c.getId(),1);
 		assertEquals(p.getNom(),"aaa");
 		assertEquals(p.getDescription(),"222xx");
-		assertEquals(p.getTarif(),(float)1,0);
+		assertEquals(p.getTarif(),1.0,1.0); //utilisation d'un delta car float
 		assertEquals(p.getVisuel(),"xxx.png");
 		assertEquals(p.getId_categorie(),10);
 
