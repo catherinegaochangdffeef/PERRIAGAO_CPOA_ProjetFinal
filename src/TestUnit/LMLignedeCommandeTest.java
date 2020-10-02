@@ -1,5 +1,6 @@
 package TestUnit;
 
+import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.fail;
 
@@ -38,4 +39,43 @@ public class LMLignedeCommandeTest {
 		}
 		
 	}
+
+//--------------------------------------------------------------------------------------------------------------------------------------------------    
+	@Test
+	public void testCreate() throws Exception {
+		
+		//assertEquals(c.getId(),1);
+		assertEquals(l.getId_produit(),1);
+		assertEquals(l.getQuantite(),3);
+		assertEquals(l.getTarif_unitaire(), 1.0, 1.0); //ici trois valeurs car la variable est un double, donc un delta de comparaison est necessaire
+	
+	}
+	
+	
+	
+	
+
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 }
