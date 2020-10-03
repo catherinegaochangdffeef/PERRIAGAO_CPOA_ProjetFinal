@@ -1,42 +1,42 @@
-package Metier;
+package metier;
 //import java.util.Scanner;
 //import dao.DAOFactory;
 
 public class CMClient {
-private int id_client,adr_numero,adr_code_postal;
-private String nom, prenom, identifiant,mot_de_passe,adr_voie, adr_ville,adr_pays;
+private int idClient,adrNumero,adrCodePostal;
+private String nom, prenom, identifiant,motDePasse,adrVoie, adrVille,adrPays;
 
-	public CMClient(String nom, String prenom, String identifiant,String mot_de_passe,int adr_numero,String adr_voie,int adr_code_postal,String adr_ville,String adr_pays)
+	public CMClient(String nom, String prenom, String identifiant,String motDePasse,int adrNumero,String adrVoie,int adrCodePostal,String adrVille,String adrPays)
 	{
-		this(-1,nom, prenom, identifiant,mot_de_passe,adr_numero,adr_voie,adr_code_postal, adr_ville,adr_pays);
+		this(-1,nom, prenom, identifiant,motDePasse,adrNumero,adrVoie,adrCodePostal, adrVille,adrPays);
 	}
 
 	
-	public CMClient(int id_client,String nom, String prenom, String identifiant,String mot_de_passe,int adr_numero,String adr_voie,int adr_code_postal,String adr_ville,String adr_pays) {
-		this.setId_client(id_client);
+	public CMClient(int id_client,String nom, String prenom, String identifiant,String motDePasse,int adrNumero,String adrVoie,int adrCodePostal,String adrVille,String adrPays) {
+		this.setIdClient(id_client);
 		this.setNom(nom);
 		this.setPrenom(prenom);
 		this.setIdentifiant(identifiant);
-		this.setMot_de_passe(mot_de_passe);
-		this.setAdr_numero(adr_numero);
-		this.setAdr_voie(adr_voie);
-		this.setAdr_code_postal(adr_code_postal);
-		this.setAdr_ville(adr_ville);
-		this.setAdr_pays(adr_pays);
+		this.setMotDePasse(motDePasse);
+		this.setAdrNumero(adrNumero);
+		this.setAdrVoie(adrVoie);
+		this.setAdrCodePostal(adrCodePostal);
+		this.setAdrVille(adrVille);
+		this.setAdrPays(adrPays);
 	}
 
-	public CMClient(int id_client) {
-		this.setId_client(id_client);
+	public CMClient(int idClient) {
+		this.setIdClient(idClient);
 		}
 
 
-	public int getId_client() {
-		return id_client;
+	public int getIdClient() {
+		return idClient;
 	}
 
 
-	public void setId_client(int id_client) {
-		this.id_client = id_client;
+	public void setIdClient(int idClient) {
+		this.idClient = idClient;
 	}
 
 
@@ -70,63 +70,63 @@ private String nom, prenom, identifiant,mot_de_passe,adr_voie, adr_ville,adr_pay
 	}
 
 
-	public String getMot_de_passe() {
-		return mot_de_passe;
+	public String getMotDePasse() {
+		return motDePasse;
 	}
 
 
-	public void setMot_de_passe(String mot_de_passe) {
-		this.mot_de_passe = mot_de_passe;
+	public void setMotDePasse(String motDePasse) {
+		this.motDePasse = motDePasse;
 	}
 
 
-	public int getAdr_numero() {
-		return adr_numero;
+	public int getAdrNumero() {
+		return adrNumero;
 	}
 
 
-	public void setAdr_numero(int adr_numero) {
-		this.adr_numero = adr_numero;
+	public void setAdrNumero(int adrNumero) {
+		this.adrNumero = adrNumero;
 	}
 
 
-	public String getAdr_voie() {
-		return adr_voie;
+	public String getAdrVoie() {
+		return adrVoie;
 	}
 
 
-	public void setAdr_voie(String adr_voie) {
-		this.adr_voie = adr_voie;
+	public void setAdrVoie(String adrVoie) {
+		this.adrVoie = adrVoie;
 	}
 
 
-	public int getAdr_code_postal() {
-		return adr_code_postal;
+	public int getAdrCodePostal() {
+		return adrCodePostal;
 	}
 
 
-	public void setAdr_code_postal(int adr_code_postal) {
-		this.adr_code_postal = adr_code_postal;
+	public void setAdrCodePostal(int adrCodePostal) {
+		this.adrCodePostal = adrCodePostal;
 	}
 
 
-	public String getAdr_ville() {
-		return adr_ville;
+	public String getAdrVille() {
+		return adrVille;
 	}
 
 
-	public void setAdr_ville(String adr_ville) {
-		this.adr_ville = adr_ville;
+	public void setAdrVille(String adrVille) {
+		this.adrVille = adrVille;
 	}
 
 
-	public String getAdr_pays() {
-		return adr_pays;
+	public String getAdrPays() {
+		return adrPays;
 	}
 
 
-	public void setAdr_pays(String adr_pays) {
-		this.adr_pays = adr_pays;
+	public void setAdrPays(String adrPays) {
+		this.adrPays = adrPays;
 	}
 
 	@Override
@@ -138,36 +138,36 @@ private String nom, prenom, identifiant,mot_de_passe,adr_voie, adr_ville,adr_pay
 		if (getClass() != obj.getClass())
 			return false;
 		CMClient other = (CMClient) obj;
-		if (adr_code_postal != other.adr_code_postal)
+		if (adrCodePostal != other.adrCodePostal)
 			return false;
-		if (adr_numero != other.adr_numero)
+		if (adrNumero != other.adrNumero)
 			return false;
-		if (adr_pays == null) {
-			if (other.adr_pays != null)
+		if (adrPays == null) {
+			if (other.adrPays != null)
 				return false;
-		} else if (!adr_pays.equals(other.adr_pays))
+		} else if (!adrPays.equals(other.adrPays))
 			return false;
-		if (adr_ville == null) {
-			if (other.adr_ville != null)
+		if (adrVille == null) {
+			if (other.adrVille != null)
 				return false;
-		} else if (!adr_ville.equals(other.adr_ville))
+		} else if (!adrVille.equals(other.adrVille))
 			return false;
-		if (adr_voie == null) {
-			if (other.adr_voie != null)
+		if (adrVoie == null) {
+			if (other.adrVoie != null)
 				return false;
-		} else if (!adr_voie.equals(other.adr_voie))
+		} else if (!adrVoie.equals(other.adrVoie))
 			return false;
-		if (id_client != other.id_client)
+		if (idClient != other.idClient)
 			return false;
 		if (identifiant == null) {
 			if (other.identifiant != null)
 				return false;
 		} else if (!identifiant.equals(other.identifiant))
 			return false;
-		if (mot_de_passe == null) {
-			if (other.mot_de_passe != null)
+		if (motDePasse == null) {
+			if (other.motDePasse != null)
 				return false;
-		} else if (!mot_de_passe.equals(other.mot_de_passe))
+		} else if (!motDePasse.equals(other.motDePasse))
 			return false;
 		if (nom == null) {
 			if (other.nom != null)

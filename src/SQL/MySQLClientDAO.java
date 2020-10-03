@@ -1,12 +1,13 @@
-package SQL;
+package sql;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
-import Metier.CMClient;
+
 import dao.ClientDAO;
+import metier.CMClient;
 
 public class MySQLClientDAO implements ClientDAO {
 

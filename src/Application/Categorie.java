@@ -1,49 +1,50 @@
-package Application;
-import SQL.Connexion;
+package application;
 import java.sql.*;
 import java.util.ArrayList;
+
+import sql.Connexion;
 
 public class Categorie {
 	
  
-	public static void AjouterC(int id_categorie,String titre, String visuel) {
+	public static void ajouter(int idCategorie,String titre, String visuel) {
 		try {
 			Connection laConnexion = Connexion.creeConnexion();
 			Statement requete = laConnexion.createStatement();
-			String query="INSERT INTO Categorie VALUES("+id_categorie+",'"+titre+"','"+visuel+"')"; 
+			String query="INSERT INTO Categorie VALUES("+idCategorie+",'"+titre+"','"+visuel+"')"; 
 			requete.executeUpdate(query);
-			System.out.println("Ligne de catÃ©gorie ajoutÃ©e");
+			System.out.println("Ligne de catéorie ajoutée");
 		}catch (SQLException sqle) {
 			System.out.println("Pb select :" + sqle.getMessage());
 		}
 	}
 
-	public static void ModifierC(int id_categorie,String titre, String visuel) {
+	public static void modifierC(int idCategorie,String titre, String visuel) {
 		try {
 			Connection laConnexion = Connexion.creeConnexion();
 			Statement requete = laConnexion.createStatement();
-			String query="UPDATE Categorie SET titre='"+titre+"',visuel='"+visuel+"' WHERE id_categorie="+id_categorie;
+			String query="UPDATE Categorie SET titre='"+titre+"',visuel='"+visuel+"' WHERE id_categorie="+idCategorie;
 			requete.executeUpdate(query);
-			System.out.println("Ligne de catÃ©gorie modifiÃ©e");
+			System.out.println("Ligne de catégorie modifiée");
 		}catch(SQLException sqle) {
 			System.out.println("Pb select :" + sqle.getMessage());
 		}
 	}
 
-	public static void SupprimerC(int id_categorie) {
+	public static void supprimer(int idCategorie) {
 		try {
 			Connection laConnexion = Connexion.creeConnexion();
 			Statement requete = laConnexion.createStatement();
-			String query="DELETE FROM Categorie WHERE id_categorie="+id_categorie;
+			String query="DELETE FROM Categorie WHERE id_categorie="+idCategorie;
 			requete.executeUpdate(query);
-			System.out.println("Ligne de catÃ©gorie supprimÃ©e");
+			System.out.println("Ligne de catégorie supprimée");
 			
 		}catch(SQLException sqle) {
 			System.out.println("Pb select :" + sqle.getMessage());
 		}
 	}
 
-	public static void ListeC() {		
+	public static void lister() {		
 		try {
 			Connection laConnexion = Connexion.creeConnexion();
 			Statement requete = laConnexion.createStatement();
@@ -52,14 +53,14 @@ public class Categorie {
 			ResultSet rs = requete.executeQuery(query);
 			while(rs.next())
 			{
-				int id_categorie = rs.getInt(1);
+				int idCategorie = rs.getInt(1);
 				String titre = rs.getString(2);
 				String visuel = rs.getString(3);
-				listeC.add(id_categorie+"");
+				listeC.add(idCategorie+"");
 				listeC.add(titre);
 				listeC.add(visuel);
 				
-				System.out.println("id_categorie : " + id_categorie  + "  titre:"+titre +" visuel:"+visuel);
+				System.out.println("id_categorie : " + idCategorie  + "  titre:"+titre +" visuel:"+visuel);
 			}
 			
 		}catch(SQLException sqle) {

@@ -1,41 +1,41 @@
-package Metier;
+package metier;
 //import java.util.Scanner;
 //import dao.DAOFactory;
 
 public class CMLignedeCommande {
-	private int id_commande,id_produit, quantite;
-	private double tarif_unitaire;
+	private int idCommande,idProduit, quantite;
+	private double tarifUnitaire;
 	
 	public CMLignedeCommande(int id) {
-		this.setId_commande(id);
+		this.setIdCommande(id);
 		}
  
 	public CMLignedeCommande(int id,int idp) {
-		this.setId_commande(id);
-		this.setId_produit(idp);
+		this.setIdCommande(id);
+		this.setIdProduit(idp);
 		}
  
 	
-	public CMLignedeCommande(int id_produit, int quantite, double tarif_unitaire) {
-		this(-1,id_produit,quantite,tarif_unitaire);
+	public CMLignedeCommande(int idProduit, int quantite, double tarifUnitaire) {
+		this(-1,idProduit,quantite,tarifUnitaire);
 	}
-	public CMLignedeCommande(int id_commande,int id_produit, int quantite, double tarif_unitaire) {
-		this.setId_commande(id_commande);
-		this.setId_produit(id_produit);
+	public CMLignedeCommande(int idCommande,int idProduit, int quantite, double tarifUnitaire) {
+		this.setIdCommande(idCommande);
+		this.setIdProduit(idProduit);
 		this.setQuantite(quantite);
-		this.setTarif_unitaire(tarif_unitaire);
+		this.setTarifUnitaire(tarifUnitaire);
 	}
-	public int getId_commande() {
-		return id_commande;
+	public int getIdCommande() {
+		return idCommande;
 	}
-	public void setId_commande(int id_commande) {
-		this.id_commande = id_commande;
+	public void setIdCommande(int idCommande) {
+		this.idCommande = idCommande;
 	}
-	public int getId_produit() {
-		return id_produit;
+	public int getIdProduit() {
+		return idProduit;
 	}
-	public void setId_produit(int id_produit) {
-		this.id_produit = id_produit;
+	public void setIdProduit(int idProduit) {
+		this.idProduit = idProduit;
 	}
 	public int getQuantite() {
 		return quantite;
@@ -43,11 +43,11 @@ public class CMLignedeCommande {
 	public void setQuantite(int quantite) {
 		this.quantite = quantite;
 	}
-	public double getTarif_unitaire() {
-		return tarif_unitaire;
+	public double getTarifUnitaire() {
+		return tarifUnitaire;
 	}
-	public void setTarif_unitaire(double tarif_unitaire) {
-		this.tarif_unitaire = tarif_unitaire;
+	public void setTarifUnitaire(double tarifUnitaire) {
+		this.tarifUnitaire = tarifUnitaire;
 	}
 	
 	@Override
@@ -59,9 +59,9 @@ public class CMLignedeCommande {
 		if (getClass() != obj.getClass())
 			return false;
 		CMLignedeCommande other = (CMLignedeCommande) obj;
-		if (id_commande != other.id_commande)
+		if (idCommande != other.idCommande)
 			return false;
-		if (id_produit != other.id_produit)
+		if (idProduit != other.idProduit)
 			return false;
 		if (quantite != other.quantite)
 			return false;

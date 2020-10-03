@@ -1,43 +1,43 @@
-package Metier;
+package metier;
 //import java.util.Scanner;
 //import dao.DAOFactory;
 
 public class CMProduit {
-	private int id_produit,id_categorie;
+	private int idProduit,idCategorie;
 	private String nom, description, visuel;
 	private float tarif;
 	
-	public CMProduit(String nom, String description, float tarif, String visuel, int id_categorie ){
-		this(-1,nom,description,tarif,visuel,id_categorie);
+	public CMProduit(String nom, String description, float tarif, String visuel, int idCategorie ){
+		this(-1,nom,description,tarif,visuel,idCategorie);
 	}
 	
-	public CMProduit(int id_produit,String nom, String description, float tarif, String visuel, int id_categorie) {
-		this.setId_produit(id_produit);
+	public CMProduit(int idProduit,String nom, String description, float tarif, String visuel, int idCategorie) {
+		this.setId_produit(idProduit);
 		this.setNom(nom);
 		this.setDescription(description);
 		this.setTarif(tarif);
 		this.setVisuel(visuel);
-		this.setId_categorie(id_categorie);
+		this.setId_categorie(idCategorie);
 		}
 	
-	public CMProduit(int id_produit) {
-		this.setId_produit(id_produit);
+	public CMProduit(int idProduit) {
+		this.setId_produit(idProduit);
 		}
 	
-	public int getId_produit() {
-		return id_produit;
+	public int getIdProduit() {
+		return idProduit;
 	}
 
-	public void setId_produit(int id_produit) {
-		this.id_produit = id_produit;
+	public void setId_produit(int idProduit) {
+		this.idProduit = idProduit;
 	}
 
-	public int getId_categorie() {
-		return id_categorie;
+	public int getIdCategorie() {
+		return idCategorie;
 	}
 
-	public void setId_categorie(int id_categorie) {
-		this.id_categorie = id_categorie;
+	public void setId_categorie(int idCategorie) {
+		this.idCategorie = idCategorie;
 	}
 
 	public String getNom() {
@@ -85,9 +85,9 @@ public class CMProduit {
 				return false;
 		} else if (!description.equals(other.description))
 			return false;
-		if (id_categorie != other.id_categorie)
+		if (idCategorie != other.idCategorie)
 			return false;
-		if (id_produit != other.id_produit)
+		if (idProduit != other.idProduit)
 			return false;
 		if (nom == null) {
 			if (other.nom != null)

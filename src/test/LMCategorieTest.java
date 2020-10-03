@@ -1,4 +1,4 @@
-package TestUnit;
+package test;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;
@@ -10,10 +10,10 @@ import java.util.ArrayList;
 import org.junit.Before;
 import org.junit.Test;
 
-import ListMemoire.ListeMemoireCategorieDAO;
-import Metier.CMCategorie;
 import dao.DAOFactory;
 import dao.DAOFactory.Persistance;
+import listmemoire.ListeMemoireCategorieDAO;
+import metier.CMCategorie;
 
 public class LMCategorieTest {
     private CMCategorie c;

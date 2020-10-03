@@ -1,9 +1,10 @@
-package SQL;
+package sql;
 
 import java.sql.*;
 import java.util.ArrayList;
-import Metier.CMCategorie;
+
 import dao.CategorieDAO;
+import metier.CMCategorie;
 
 public class MySQLCategorieDAO implements CategorieDAO {
 	

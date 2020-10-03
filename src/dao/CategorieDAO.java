@@ -1,6 +1,6 @@
 package dao;
 
-import Metier.CMCategorie;
+import metier.CMCategorie;
 
 public interface CategorieDAO extends DAO<CMCategorie>{
 

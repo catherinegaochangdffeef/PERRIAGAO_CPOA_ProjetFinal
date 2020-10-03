@@ -1,6 +1,6 @@
 package dao;
 
-import Metier.CMLignedeCommande;
+import metier.CMLignedeCommande;
 public interface LignedeCommandeDAO extends DAO<CMLignedeCommande> {
 
 }

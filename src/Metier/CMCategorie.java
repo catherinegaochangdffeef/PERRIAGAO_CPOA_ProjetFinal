@@ -1,8 +1,8 @@
-package Metier;
+package metier;
 
 
 public class CMCategorie {
-	private int id_categorie;
+	private int idCategorie;
 	private String titre,visuel;
 	
 	public CMCategorie (String titre,String visuel)
@@ -10,9 +10,9 @@ public class CMCategorie {
 		this(-1,titre,visuel);
 	}
 
-	public CMCategorie(int id_categorie,String titre,String visuel)
+	public CMCategorie(int idCategorie,String titre,String visuel)
 	{
-		this.setId(id_categorie);
+		this.setId(idCategorie);
 		this.setTitre(titre);
 		this.setVisuel(visuel);
 	}
@@ -23,11 +23,11 @@ public CMCategorie(int id) {
 	//-------------------------------------------------	
 	public int getId() 
 	{
-		return this.id_categorie;
+		return this.idCategorie;
 	}
 	public void setId(int id_categorie)
 	{
-		this.id_categorie=id_categorie;
+		this.idCategorie=id_categorie;
 	}
 //------------------------------------------------	
 	public String getTitre()

@@ -1,4 +1,4 @@
-package TestUnit;
+package test;
 
 public class MySQLClientDAOTest {
 

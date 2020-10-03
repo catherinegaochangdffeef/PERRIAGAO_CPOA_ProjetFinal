@@ -1,4 +1,4 @@
-package TestUnit;
+package test;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;
@@ -11,10 +11,10 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 import org.junit.Before;
 import org.junit.Test;
 
-import ListMemoire.ListeMemoireClientDAO;
-import Metier.CMClient;
 import dao.DAOFactory;
 import dao.DAOFactory.Persistance;
+import listmemoire.ListeMemoireClientDAO;
+import metier.CMClient;
 
 
 

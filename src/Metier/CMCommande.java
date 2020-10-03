@@ -1,38 +1,36 @@
-package Metier;
+package metier;
 
 import java.sql.Date;
 import java.time.LocalDate;
 import java.util.HashMap;
 
-import Metier.CMLignedeCommande;
-//import java.util.Scanner;
-//import dao.DAOFactory;
+import metier.CMLignedeCommande;
   
 
 public class CMCommande {
-	private int id_commande, id_client;
-	private Date date_commande;
+	private int idCommande, idClient;
+	private Date dateCommande;
 	private HashMap<CMLignedeCommande,Integer>lignecommande;
 		
 
-public CMCommande(LocalDate date_commande,int id_client) {
-	this(-1,date_commande,id_client);
+public CMCommande(LocalDate dateCommande,int idClient) {
+	this(-1,dateCommande,idClient);
 }
-public CMCommande(int id_commande,Date date_commande,int id_client) {
-	this.setId(id_commande);
-	this.setDate_commande1(date_commande);
-	this.setId_client(id_client);
+public CMCommande(int idCommande,Date dateCommande,int idClient) {
+	this.setId(idCommande);
+	this.setDate_commande1(dateCommande);
+	this.setIdClient(idClient);
 }
-public CMCommande(int id_commande,String date_commande,int id_client) {
-	this.setId(id_commande);
-	this.setDate_commande2(date_commande);
-	this.setId_client(id_client);
+public CMCommande(int idCommande,String dateCommande,int idClient) {
+	this.setId(idCommande);
+	this.setDate_commande2(dateCommande);
+	this.setIdClient(idClient);
 }
 
-	public CMCommande(int id_commande,LocalDate date_commande,int id_client) {
-		this.setId(id_commande);
-		this.setDate_commande3(date_commande);
-		this.setId_client(id_client);
+	public CMCommande(int idCommande,LocalDate dateCommande,int idClient) {
+		this.setId(idCommande);
+		this.setDate_commande3(dateCommande);
+		this.setIdClient(idClient);
 	}
 	/*public CMCommande(int id_commande,LocalDate date_commande,int id_client, HashMap<CMLignedeCommande,Integer> lignecommande) {
 		this.setId(id_commande);
@@ -50,33 +48,33 @@ public CMCommande(int id_commande,String date_commande,int id_client) {
 		lignecommande.put(lignecommandes,integer);
 	}
 	public int getId() {
-		return id_commande;
+		return idCommande;
 	}
 
-	public void setId(int id_commande) {
-		this.id_commande = id_commande;
+	public void setId(int idCmande) {
+		this.idCommande = idCommande;
 	}
 
-	public int getId_client() {
-		return id_client;
+	public int getIdClient() {
+		return idClient;
 	}
 
-	public void setId_client(int id_client) {
-		this.id_client = id_client;
+	public void setIdClient(int idClient) {
+		this.idClient = idClient;
 	}
 
-	public Date getDate_commande() {
-		return date_commande;
+	public Date getDateCommande() {
+		return dateCommande;
 	}
 
-	public void setDate_commande1(Date date_commande) {
-		this.date_commande = date_commande;
+	public void setDate_commande1(Date dateCommande) {
+		this.dateCommande = dateCommande;
 	}
-	public void setDate_commande2(String date_commande) {
-		this.date_commande = java.sql.Date.valueOf(date_commande);
+	public void setDate_commande2(String dateCommande) {
+		this.dateCommande = java.sql.Date.valueOf(dateCommande);
 	}
-	public void setDate_commande3(LocalDate date_commande) {
-		this.date_commande = java.sql.Date.valueOf(date_commande);
+	public void setDate_commande3(LocalDate dateCommande) {
+		this.dateCommande = java.sql.Date.valueOf(dateCommande);
 	}
 
 	@Override
@@ -88,14 +86,14 @@ public CMCommande(int id_commande,String date_commande,int id_client) {
 		if (getClass() != obj.getClass())
 			return false;
 		CMCommande other = (CMCommande) obj;
-		if (date_commande == null) {
-			if (other.date_commande != null)
+		if (dateCommande == null) {
+			if (other.dateCommande != null)
 				return false;
-		} else if (!date_commande.equals(other.date_commande))
+		} else if (!dateCommande.equals(other.dateCommande))
 			return false;
-		if (id_client != other.id_client)
+		if (idClient != other.idClient)
 			return false;
-		if (id_commande != other.id_commande)
+		if (idCommande != other.idCommande)
 			return false;
 		return true;
 	}

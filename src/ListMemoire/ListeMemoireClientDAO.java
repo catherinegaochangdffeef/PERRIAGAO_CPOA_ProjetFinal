@@ -1,10 +1,10 @@
-package ListMemoire;
+package listmemoire;
 
 import java.util.ArrayList;
 import java.util.List;
 
-import Metier.CMClient;
 import dao.ClientDAO;
+import metier.CMClient;
 
 public class ListeMemoireClientDAO implements ClientDAO{
 

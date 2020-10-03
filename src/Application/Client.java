@@ -1,4 +1,4 @@
-package Application;
+package application;
 
 import java.sql.Connection;
 import java.sql.ResultSet;
@@ -6,41 +6,41 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
 
-import SQL.Connexion;
+import sql.Connexion;
 
 public class Client {
 	
-	public static void AjouterC(int id_client,String nom, String prenom, String identifiant,String mot_de_passe,String adr_numero,String adr_voie,String adr_code_postal,String adr_ville,String adr_pays) {
+	public static void ajouter(int idClient,String nom, String prenom, String identifiant,String motDePasse,String adrNumero,String adrVoie,String adrCodePostal,String adrVille,String adrPays) {
 		try {
 			Connection laConnexion = Connexion.creeConnexion();
 			Statement requete = laConnexion.createStatement();
-			String query="INSERT INTO Client VALUES("+id_client+",'"+nom+"','"+prenom+"','"+identifiant+"','"+mot_de_passe+"','"+adr_numero+"','"+adr_voie+"','"+adr_code_postal+"','"+adr_ville+"','"+adr_pays+"')"; 
+			String query="INSERT INTO Client VALUES("+idClient+",'"+nom+"','"+prenom+"','"+identifiant+"','"+motDePasse+"','"+adrNumero+"','"+adrVoie+"','"+adrCodePostal+"','"+adrVille+"','"+adrPays+"')"; 
 			requete.executeUpdate(query);
-			System.out.println("Ligne de client ajoutï¿½e");
+			System.out.println("Ligne de client ajoutée");
 		}catch (SQLException sqle) {
 			System.out.println("Pb select :" + sqle.getMessage());
 		}
 	}
 
-	public static void ModifierC(int id_client,String nom, String prenom, String identifiant,String mot_de_passe,String adr_numero,String adr_voie,String adr_code_postal,String adr_ville,String adr_pays) {
+	public static void modifier(int idClient,String nom, String prenom, String identifiant,String motDePasse,String adrNumero,String adrVoie,String adrCodePostal,String adrVille,String adrPays) {
 		try {
 			Connection laConnexion = Connexion.creeConnexion();
 			Statement requete = laConnexion.createStatement();
-			String query="UPDATE Client SET nom='"+nom+"',prenom='"+prenom+"',identifiant='"+identifiant+"',mot_de_passe='"+mot_de_passe+"',adr_numero='"+adr_numero+"',adr_voie='"+adr_voie+"',adr_code_postal='"+adr_code_postal+"',adr_ville='"+adr_ville+"',adr_pays='"+adr_pays+"' WHERE id_client="+id_client;
+			String query="UPDATE Client SET nom='"+nom+"',prenom='"+prenom+"',identifiant='"+identifiant+"',mot_de_passe='"+motDePasse+"',adr_numero='"+adrNumero+"',adr_voie='"+adrVoie+"',adr_code_postal='"+adrCodePostal+"',adr_ville='"+adrVille+"',adr_pays='"+adrPays+"' WHERE id_client="+idClient;
 			requete.executeUpdate(query);
-			System.out.println("Ligne de client modifiÃ©e");
+			System.out.println("Ligne de client modifiée");
 		}catch(SQLException sqle) {
 			System.out.println("Pb select :" + sqle.getMessage());
 		}
 	}
 
-	public static void SupprimerC(int id_client) {
+	public static void supprimer(int idClient) {
 		try {
 			Connection laConnexion = Connexion.creeConnexion();
 			Statement requete = laConnexion.createStatement();
-			String query="DELETE FROM Client WHERE id_client="+id_client;
+			String query="DELETE FROM Client WHERE id_client="+idClient;
 			requete.executeUpdate(query);
-			System.out.println("Ligne de client supprimÃ©e");
+			System.out.println("Ligne de client supprimée");
 			
 		}catch(SQLException sqle) {
 			System.out.println("Pb select :" + sqle.getMessage());
@@ -48,7 +48,7 @@ public class Client {
 	}
 	
 	
-	public static void ListeC() {		
+	public static void lister() {		
 		try {
 			Connection laConnexion = Connexion.creeConnexion();
 			Statement requete = laConnexion.createStatement();
@@ -59,30 +59,30 @@ public class Client {
 			ResultSet rs = requete.executeQuery(query);
 			while(rs.next())
 			{
-				int id_client = rs.getInt(1);
+				int idClient = rs.getInt(1);
 				String nom = rs.getString(2);
 				String prenom = rs.getString(3);
 				String identifiant = rs.getString(4);
-				String mot_de_passe = rs.getString(5);
-				String adr_numero = rs.getString(6);
-				String adr_voie = rs.getString(7);
-				String adr_code_postal = rs.getString(8);
-				String adr_ville = rs.getString(9);
-				String adr_pays = rs.getString(10);
+				String motDePasse = rs.getString(5);
+				String adrNumero = rs.getString(6);
+				String adrVoie = rs.getString(7);
+				String adrCodePostal = rs.getString(8);
+				String adrVille = rs.getString(9);
+				String adrPays = rs.getString(10);
 				
-				listeC.add(id_client+"");
+				listeC.add(idClient+"");
 				listeC.add(nom);
 				listeC.add(prenom);
 				listeC.add(identifiant);
-				listeC.add(mot_de_passe);
-				listeC.add(adr_numero);
-				listeC.add(adr_voie);
-				listeC.add(adr_code_postal);
-				listeC.add(adr_ville);
-				listeC.add(adr_pays);
+				listeC.add(motDePasse);
+				listeC.add(adrNumero);
+				listeC.add(adrVoie);
+				listeC.add(adrCodePostal);
+				listeC.add(adrVille);
+				listeC.add(adrPays);
 				
-				System.out.println("id_client : " + id_client  + "  nom:"+nom +" prenom:"+prenom+" identifiant:"+identifiant+" mot_de_passe:"+mot_de_passe
-						+" adr_numero:"+adr_numero+" adr_voie:"+adr_voie+" adr_code_postal:"+adr_code_postal+" adr_ville:"+adr_ville+" adr_pays:"+adr_pays);
+				System.out.println("id_client : " + idClient  + "  nom:"+nom +" prenom:"+prenom+" identifiant:"+identifiant+" mot_de_passe:"+motDePasse
+						+" adr_numero:"+adrNumero+" adr_voie:"+adrVoie+" adr_code_postal:"+adrCodePostal+" adr_ville:"+adrVille+" adr_pays:"+adrPays);
 			}
 			
 		}catch(SQLException sqle) {

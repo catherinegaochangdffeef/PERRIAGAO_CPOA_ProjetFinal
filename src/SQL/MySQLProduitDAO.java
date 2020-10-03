@@ -1,10 +1,11 @@
-package SQL;
+package sql;
 
 
 import java.sql.*;
 import java.util.ArrayList;
-import Metier.CMProduit;
+
 import dao.ProduitDAO;
+import metier.CMProduit;
 
 
 

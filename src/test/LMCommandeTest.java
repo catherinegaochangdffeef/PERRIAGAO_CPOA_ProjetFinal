@@ -1,4 +1,4 @@
-package TestUnit;
+package test;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;
@@ -10,12 +10,11 @@ import java.sql.Date;
 import org.junit.Before;
 import org.junit.Test;
 
-import ListMemoire.ListeMemoireCommandeDAO;
-import ListMemoire.ListeMemoireProduitDAO;
-import Metier.CMCommande;
-
 import dao.DAOFactory;
 import dao.DAOFactory.Persistance;
+import listmemoire.ListeMemoireCommandeDAO;
+import listmemoire.ListeMemoireProduitDAO;
+import metier.CMCommande;
 
 
 public class LMCommandeTest {

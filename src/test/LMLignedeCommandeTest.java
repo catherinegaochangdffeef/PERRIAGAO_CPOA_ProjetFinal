@@ -1,4 +1,4 @@
-package TestUnit;
+package test;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;
@@ -8,11 +8,11 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 import org.junit.Before;
 import org.junit.Test;
 
-import ListMemoire.ListeMemoireLignedeCommandeDAO;
-import ListMemoire.ListeMemoireProduitDAO;
-import Metier.CMLignedeCommande;
 import dao.DAOFactory;
 import dao.DAOFactory.Persistance;
+import listmemoire.ListeMemoireLignedeCommandeDAO;
+import listmemoire.ListeMemoireProduitDAO;
+import metier.CMLignedeCommande;
 
 public class LMLignedeCommandeTest {
     private CMLignedeCommande l;

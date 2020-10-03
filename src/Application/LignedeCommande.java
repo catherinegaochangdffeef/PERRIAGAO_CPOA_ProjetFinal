@@ -1,4 +1,4 @@
-package Application;
+package application;
 
 import java.sql.Connection;
 import java.sql.ResultSet;
@@ -7,18 +7,18 @@ import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.HashMap;
 
-import SQL.Connexion;
+import sql.Connexion;
 
 public class LignedeCommande {
 
 	HashMap<String,Integer> LigneC= new HashMap<String,Integer>();
 	
 
-		public static void Ajouter(int id_commande,int id_produit, int quantite, double tarif_unitaire) {
+		public static void ajouter(int idCommande,int idPproduit, int quantite, double tarifUnitaire) {
 			try {
 				Connection laConnexion = Connexion.creeConnexion();
 				Statement requete = laConnexion.createStatement();
-				String query="INSERT INTO LignedeCommande VALUES("+id_produit+","+id_produit+","+quantite+","+tarif_unitaire+")"; 
+				String query="INSERT INTO LignedeCommande VALUES("+idPproduit+","+idPproduit+","+quantite+","+tarifUnitaire+")"; 
 				requete.executeUpdate(query);
 				System.out.println("Ligne de 'ligne de commande'ajoutée");
 			}catch (SQLException sqle) {
@@ -27,14 +27,14 @@ public class LignedeCommande {
 		}	
 
 
-		public static void Modifier( int id_commande,int id_produit, int quantite, double tarif_unitaire) {
+		public static void modifier(int idCommande,int idPproduit, int quantite, double tarifUnitaire) {
 			try {
 				Connection laConnexion = Connexion.creeConnexion();
 				Statement requete = laConnexion.createStatement();
-				String query="UPDATE LignedeCommande SET id_produit='"+id_produit+"',"
+				String query="UPDATE LignedeCommande SET id_produit='"+idPproduit+"',"
 						+ "quantitie'"+quantite+"' ,"
-						+ "tarif_unitaire="+tarif_unitaire+" "
-						+ "WHERE id_commande="+id_commande;
+						+ "tarif_unitaire="+tarifUnitaire+" "
+						+ "WHERE id_commande="+idCommande;
 				requete.executeUpdate(query);
 				System.out.println("igne de 'ligne de commande'ajoutée");
 			}catch(SQLException sqle) {
@@ -42,11 +42,11 @@ public class LignedeCommande {
 			}
 		}
 
-		public static void Supprimer(int id_commande) {
+		public static void supprimer(int idCommande) {
 			try {
 				Connection laConnexion = Connexion.creeConnexion();
 				Statement requete = laConnexion.createStatement();
-				String query="DELETE FROM LignedeCommande WHERE id_commande="+id_commande;
+				String query="DELETE FROM LignedeCommande WHERE id_commande="+idCommande;
 				requete.executeUpdate(query);
 				System.out.println("Ligne 'ligne de commande' supprimée");
 
@@ -55,7 +55,7 @@ public class LignedeCommande {
 			}
 		}
 
-		public static void Liste() {		
+		public static void lister() {		
 			try {
 				Connection laConnexion = Connexion.creeConnexion();
 				Statement requete = laConnexion.createStatement();
@@ -64,18 +64,18 @@ public class LignedeCommande {
 				ResultSet rs = requete.executeQuery(query);
 				while(rs.next())
 				{
-					int id_commande = rs.getInt(1);
-					int id_produit = rs.getInt(2);
+					int idCommande = rs.getInt(1);
+					int idProduit = rs.getInt(2);
 					int quantite  = rs.getInt(3);
-					double  tarif_unitaire = rs.getDouble(4);
+					double  tarifUnitaire = rs.getDouble(4);
 
-					listeC.add(id_commande+"");
-					listeC.add(id_produit+"");
+					listeC.add(idCommande+"");
+					listeC.add(idProduit+"");
 					listeC.add(quantite+"");
-					listeC.add(tarif_unitaire+"");
+					listeC.add(tarifUnitaire+"");
 
 
-					System.out.println("id_commande: " + id_commande + " id_produit:" + id_produit+ "quantite:" +quantite+ "tarif_unitaire : " + tarif_unitaire );
+					System.out.println("id_commande: " + idCommande + " id_produit:" + idProduit+ "quantite:" +quantite+ "tarif_unitaire : " + tarifUnitaire );
 				}
 
 			}catch(SQLException sqle) {

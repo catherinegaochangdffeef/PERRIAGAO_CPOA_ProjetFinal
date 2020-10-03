@@ -1,4 +1,4 @@
-package SQL;
+package sql;
 
 import java.sql.Connection;
 import java.sql.Date;
@@ -6,8 +6,9 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
-import Metier.CMCommande;
+
 import dao.CommandeDAO;
+import metier.CMCommande;
 
 
 public class MySQLCommandeDAO implements CommandeDAO{

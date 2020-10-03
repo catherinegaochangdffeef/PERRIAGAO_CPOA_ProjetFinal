@@ -1,4 +1,4 @@
-package Application;
+package application;
 
 import java.sql.Connection;
 import java.sql.ResultSet;
@@ -6,23 +6,23 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
 
-import SQL.Connexion;
+import sql.Connexion;
 
 public class Produit {
 	
-	public static void AjouterP(int id_produit,String nom, String description, float tarif, String visuel, int id_categorie) {
+	public static void ajouter(int idProduit,String nom, String description, float tarif, String visuel, int idCategorie) {
 		try {
 			Connection laConnexion = Connexion.creeConnexion();
 			Statement requete = laConnexion.createStatement();
-			String query="INSERT INTO Produit VALUES("+id_produit+",'"+nom+"','"+description+"',"+tarif+",'"+visuel+"',"+id_categorie+")"; 
+			String query="INSERT INTO Produit VALUES("+idProduit+",'"+nom+"','"+description+"',"+tarif+",'"+visuel+"',"+idCategorie+")"; 
 			requete.executeUpdate(query);
-			System.out.println("Ligne de produit ajout√©e");
+			System.out.println("Ligne de produit ajoutÈe");
 		}catch (SQLException sqle) {
 			System.out.println("Pb select :" + sqle.getMessage());
 		}
 	}
 
-	public static void ModifierP(int id_produit,String nom, String description, float tarif, String visuel, int id_categorie) {
+	public static void modifierP(int idProduit,String nom, String description, float tarif, String visuel, int idCategorie) {
 		try {
 			Connection laConnexion = Connexion.creeConnexion();
 			Statement requete = laConnexion.createStatement();
@@ -30,20 +30,20 @@ public class Produit {
 					+ "description='"+description+"' ,"
 					+ "tarif="+tarif+" ,"
 					+ "visuel='"+visuel+"' ,"
-					+ "id_categorie="+id_categorie+" "
-					+ "WHERE id_produit="+id_produit;
+					+ "id_categorie="+idCategorie+" "
+					+ "WHERE id_produit="+idProduit;
 			requete.executeUpdate(query);
-			System.out.println("Ligne de produit modifi√©e");
+			System.out.println("Ligne de produit modifiÈe");
 		}catch(SQLException sqle) {
 			System.out.println("Pb select :" + sqle.getMessage());
 		}
 	}
 
-	public static void SupprimerP(int id_produit) {
+	public static void supprimerP(int idProduit) {
 		try {
 			Connection laConnexion = Connexion.creeConnexion();
 			Statement requete = laConnexion.createStatement();
-			String query="DELETE FROM Produit WHERE id_produit="+id_produit;
+			String query="DELETE FROM Produit WHERE id_produit="+idProduit;
 			requete.executeUpdate(query);
 			System.out.println("Ligne de produit supprim√©e");
 			
@@ -52,7 +52,7 @@ public class Produit {
 		}
 	}
 	
-	public static void ListeP() {		
+	public static void lister() {		
 		try {
 			Connection laConnexion = Connexion.creeConnexion();
 			Statement requete = laConnexion.createStatement();
@@ -61,20 +61,20 @@ public class Produit {
 			ResultSet rs = requete.executeQuery(query);
 			while(rs.next())
 			{
-				int id_produit = rs.getInt(1);
+				int idProduit = rs.getInt(1);
 				String nom = rs.getString(2);
 				String description = rs.getString(3);
 				float  tarif = rs.getFloat(4);
 				String visuel = rs.getString(5);
-				int  id_categorie = rs.getInt(6);
-				listeC.add(id_produit+"");
+				int  idCategorie = rs.getInt(6);
+				listeC.add(idProduit+"");
 				listeC.add(nom);
 				listeC.add(description);
 				listeC.add(tarif+"");
 				listeC.add(visuel);
-				listeC.add(id_categorie+"'");
+				listeC.add(idCategorie+"'");
 				
-				System.out.println("id_produit : " + id_produit  + "  nom:"+nom +" description:"+description+"tarif : " + tarif  + "  visuel:"+visuel +" id_categorie:"+id_categorie);
+				System.out.println("id_produit : " + idProduit  + "  nom:"+nom +" description:"+description+"tarif : " + tarif  + "  visuel:"+visuel +" id_categorie:"+idCategorie);
 			}
 			
 		}catch(SQLException sqle) {

@@ -1,9 +1,10 @@
-package ListMemoire;
+package listmemoire;
 
 import java.util.ArrayList;
 import java.util.List;
-import Metier.CMProduit;
+
 import dao.ProduitDAO;
+import metier.CMProduit;
 
 public class ListeMemoireProduitDAO implements ProduitDAO {
 	private static ListeMemoireProduitDAO instance;
