@@ -11,7 +11,6 @@ import org.junit.Test;
 import dao.DAOFactory;
 import dao.DAOFactory.Persistance;
 import ListMemoire.ListeMemoireLignedeCommandeDAO;
-import Metier.CMCategorie;
 import Metier.CMLignedeCommande;
 
 public class LMLignedeCommandeTest {

@@ -6,13 +6,16 @@ import static org.junit.Assert.fail;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import java.sql.Date;
+import java.util.ArrayList;
 
 import org.junit.Before;
 import org.junit.Test;
 
 import dao.DAOFactory;
 import dao.DAOFactory.Persistance;
+import ListMemoire.ListeMemoireCategorieDAO;
 import ListMemoire.ListeMemoireCommandeDAO;
+import Metier.CMCategorie;
 import Metier.CMCommande;
 
 
@@ -85,5 +88,21 @@ private CMCommande c;
 		assertEquals(1, c3.getIdClient());
 		assertEquals("01-01-2020", c3.getDateCommande() );
 	}
-	
+//--------------------------------------------------------------------------------------------------------------------------------------------------   
+	@Test
+	public void testfindAll() throws Exception{
+		    	
+			CMCommande c2=new CMCommande(2,"02-02-2020", 2);
+			
+			ListeMemoireCommandeDAO lma = (ListeMemoireCommandeDAO) DAOFactory.getDAOFactory(Persistance.ListMemoire).getCommandeDAO();			
+			ArrayList<CMCommande> ar = new ArrayList<CMCommande>(lma.findAll());
+
+			ar.add(c2);
+			lma.create(c2);
+			
+			
+			assertEquals(lma.findAll(), ar);		
+			DAOFactory.getDAOFactory(Persistance.ListMemoire).getCommandeDAO().delete(c);
+				
+			}
 }
