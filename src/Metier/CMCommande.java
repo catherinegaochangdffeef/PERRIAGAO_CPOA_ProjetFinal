@@ -1,4 +1,4 @@
-package metier;
+package Metier;
 
 import java.sql.Date;
 import java.time.LocalDate;

@@ -1,4 +1,4 @@
-package sql;
+package SQL;
 
 import java.sql.Connection;
 import java.sql.Date;
@@ -8,7 +8,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 
 import dao.CommandeDAO;
-import metier.CMCommande;
+import Metier.CMCommande;
 
 
 public class MySQLCommandeDAO implements CommandeDAO{
@@ -26,10 +26,10 @@ public CMCommande getById(int id_commande) throws SQLException {
 		
 		while (res.next()) {
 			commande= new CMCommande(id_commande, res.getDate(2), res.getInt(3));
-			Date d=commande.getDate_commande();
+			Date d=commande.getDateCommande();
 			  System.out.println("id_commande:"+commande.getId());
 				System.out.println("date_commande:"+d);
-				System.out.println("id_client"+commande.getId_client());
+				System.out.println("id_client"+commande.getIdClient());
 		}
 		
 		
@@ -46,8 +46,8 @@ public CMCommande getById(int id_commande) throws SQLException {
 		//
 		Connection cnx = Connexion.creeConnexion();
 			PreparedStatement req = cnx.prepareStatement("INSERT INTO Commande (date_commande,id_client) values (?,?)", java.sql.Statement.RETURN_GENERATED_KEYS);
-				req.setDate(1, c.getDate_commande());
-				req.setInt(2, c.getId_client());
+				req.setDate(1, c.getDateCommande());
+				req.setInt(2, c.getIdClient());
 			
 				
 				int nbLignes = req.executeUpdate();
@@ -74,8 +74,8 @@ public CMCommande getById(int id_commande) throws SQLException {
 		PreparedStatement req = cnx.prepareStatement("update Commande set date_commande=? ,"
 				+ "id_client=? where id_commande=?");
 		req.setInt(3, c.getId());
-		req.setDate(1,c.getDate_commande());
-		req.setInt(2,c.getId_client());
+		req.setDate(1,c.getDateCommande());
+		req.setInt(2,c.getIdClient());
 	
 	    nbLignes = req.executeUpdate();
 	

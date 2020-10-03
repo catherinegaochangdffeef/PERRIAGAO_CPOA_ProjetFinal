@@ -1,10 +1,10 @@
-package listmemoire;
+package ListMemoire;
 
 import java.util.ArrayList;
 import java.util.List;
 
 import dao.CategorieDAO;
-import metier.CMCategorie;
+import Metier.CMCategorie;
 
 public class ListeMemoireCategorieDAO implements CategorieDAO{
 	

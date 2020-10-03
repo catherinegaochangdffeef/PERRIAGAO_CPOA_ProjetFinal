@@ -1,4 +1,4 @@
-package sql;
+package SQL;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -7,7 +7,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 
 import dao.LignedeCommandeDAO;
-import metier.CMLignedeCommande;
+import Metier.CMLignedeCommande;
 
 public class MySQLLignedeCommandeDAO implements LignedeCommandeDAO{
 
@@ -24,10 +24,10 @@ public CMLignedeCommande getById(int id_commande) throws SQLException {
 		
 		while (res.next()) {
 			lignedecommande= new CMLignedeCommande(id_commande, res.getInt(2),res.getInt(3), res.getDouble(4));
-			System.out.println("id_commande:"+lignedecommande.getId_commande());
-			System.out.println("id_produit:"+lignedecommande.getId_produit());
+			System.out.println("id_commande:"+lignedecommande.getIdCommande());
+			System.out.println("id_produit:"+lignedecommande.getIdProduit());
 			System.out.println("quantite:"+lignedecommande.getQuantite());
-			System.out.println("tarif_unitaire"+lignedecommande.getTarif_unitaire());
+			System.out.println("tarif_unitaire"+lignedecommande.getTarifUnitaire());
 		}
 		
 	
@@ -46,10 +46,10 @@ public CMLignedeCommande getById(int id_commande) throws SQLException {
 		//
 		Connection cnx = Connexion.creeConnexion();
 			PreparedStatement req = cnx.prepareStatement("INSERT INTO Ligne_commande (id_commande,id_produit,quantite,tarif_unitaire) values (?,?,?,?)");
-			    req.setInt(1, ldc.getId_commande());
-			    req.setInt(2, ldc.getId_produit());
+			    req.setInt(1, ldc.getIdCommande());
+			    req.setInt(2, ldc.getIdProduit());
 				req.setInt(3, ldc.getQuantite());
-				req.setDouble(4, ldc.getTarif_unitaire());
+				req.setDouble(4, ldc.getTarifUnitaire());
 				
 				int nbLignes = req.executeUpdate();
 			
@@ -66,11 +66,11 @@ public CMLignedeCommande getById(int id_commande) throws SQLException {
 		Connection cnx = Connexion.creeConnexion();
 		
 		PreparedStatement req = cnx.prepareStatement("update Ligne_commande set quantite=?, tarif_unitaire = ? where id_commande=? and id_produit=?");
-		req.setInt(3, ldc.getId_commande());
-		req.setInt(4, ldc.getId_produit());
+		req.setInt(3, ldc.getIdCommande());
+		req.setInt(4, ldc.getIdProduit());
 	
 		req.setInt(1,ldc.getQuantite());
-		req.setDouble(2,ldc.getTarif_unitaire());
+		req.setDouble(2,ldc.getTarifUnitaire());
 		
 	
 		int nbLignes = req.executeUpdate();
@@ -90,8 +90,8 @@ public CMLignedeCommande getById(int id_commande) throws SQLException {
 		Connection laConnexion = Connexion.creeConnexion();
 	PreparedStatement requete = laConnexion.prepareStatement("delete from Ligne_commande where id_commande=? id_produit=?");
 	
-	requete.setInt(1,ldc.getId_commande());
-	requete.setInt(2, ldc.getId_produit());
+	requete.setInt(1,ldc.getIdCommande());
+	requete.setInt(2, ldc.getIdProduit());
 	nbLignes = requete.executeUpdate();
     	} catch(SQLException sqle) {
     		System.out.println("Pb delete ligne de commande"+sqle.getMessage());

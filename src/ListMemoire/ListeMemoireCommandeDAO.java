@@ -1,10 +1,10 @@
-package listmemoire;
+package ListMemoire;
 
 import java.util.ArrayList;
 import java.util.List;
 
 import dao.CommandeDAO;
-import metier.CMCommande;
+import Metier.CMCommande;
 
 public class ListeMemoireCommandeDAO implements CommandeDAO {
 	

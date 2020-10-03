@@ -1,4 +1,4 @@
-package sql;
+package SQL;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -7,7 +7,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 
 import dao.ClientDAO;
-import metier.CMClient;
+import Metier.CMClient;
 
 public class MySQLClientDAO implements ClientDAO {
 
@@ -28,16 +28,16 @@ public class MySQLClientDAO implements ClientDAO {
 		while (res.next()) {
 			client= new CMClient(res.getInt(1), res.getString(2), res.getString(3),res.getString(4), res.getString(5),res.getInt(6),res.getString(7),
 					res.getInt(8),res.getString(9),res.getString(10));
-			System.out.println("id:"+client.getId_client());
+			System.out.println("id:"+client.getIdClient());
 			System.out.println("nom:"+client.getNom());
 			System.out.println("Prénom"+client.getPrenom());
 			System.out.println("Identifiant:"+client.getIdentifiant());
-			System.out.println("Mot de passe:"+client.getMot_de_passe());
-			System.out.println("Adresse numéro:"+client.getAdr_numero());
-			System.out.println("Adresse voie:"+client.getAdr_voie());
-			System.out.println("Adresse postal:"+client.getAdr_code_postal());
-			System.out.println("Adreese ville:"+client.getAdr_ville());
-			System.out.println("Adresse pays:"+client.getAdr_ville());
+			System.out.println("Mot de passe:"+client.getMotDePasse());
+			System.out.println("Adresse numéro:"+client.getAdrNumero());
+			System.out.println("Adresse voie:"+client.getAdrVoie());
+			System.out.println("Adresse postal:"+client.getAdrCodePostal());
+			System.out.println("Adreese ville:"+client.getAdrVille());
+			System.out.println("Adresse pays:"+client.getAdrPays());
 		}
 		
 		MaConnection.close();
@@ -57,12 +57,12 @@ public class MySQLClientDAO implements ClientDAO {
 				req.setString(1, c.getNom());
 				req.setString(2, c.getPrenom());
 				req.setString(3, c.getIdentifiant());
-				req.setString(4, c.getMot_de_passe());
-				req.setInt(5, c.getAdr_numero());
-				req.setString(6, c.getAdr_voie());
-				req.setInt(7, c.getAdr_code_postal());
-				req.setString(8, c.getAdr_ville());
-				req.setString(9, c.getAdr_pays());
+				req.setString(4, c.getMotDePasse());
+				req.setInt(5, c.getAdrNumero());
+				req.setString(6, c.getAdrVoie());
+				req.setInt(7, c.getAdrCodePostal());
+				req.setString(8, c.getAdrVille());
+				req.setString(9, c.getAdrPays());
 				
 				int nbLignes = req.executeUpdate();
 				ResultSet res = req.getGeneratedKeys();
@@ -70,7 +70,7 @@ public class MySQLClientDAO implements ClientDAO {
 				int clef;
 				if(res.next()) {
 					clef = res.getInt(1);
-					c.setId_client(clef);
+					c.setIdClient(clef);
 						
 				}
 				
@@ -87,16 +87,16 @@ public class MySQLClientDAO implements ClientDAO {
 		Connection laConnection = Connexion.creeConnexion();
 		
 		PreparedStatement req = laConnection.prepareStatement("update Client set nom=? ,prenom=?, identifiant = ?, mot_de_passe=?,adr_numero=?,adr_voie=?, adr_code_postal=?, adr_ville=?, adr_pays=? where id_client=?");
-		req.setInt(10, c.getId_client());
+		req.setInt(10, c.getIdClient());
 		req.setString(1,c.getNom());
 		req.setString(2,c.getPrenom());
 		req.setString(3, c.getIdentifiant());
-		req.setString(4, c.getMot_de_passe());
-		req.setInt(5, c.getAdr_numero());
-		req.setString(6, c.getAdr_voie());
-		req.setInt(7, c.getAdr_code_postal());
-		req.setString(8, c.getAdr_ville());
-		req.setString(9, c.getAdr_pays());
+		req.setString(4, c.getMotDePasse());
+		req.setInt(5, c.getAdrNumero());
+		req.setString(6, c.getAdrVoie());
+		req.setInt(7, c.getAdrCodePostal());
+		req.setString(8, c.getAdrVille());
+		req.setString(9, c.getAdrPays());
 		int nbLignes = req.executeUpdate();
 	
 		
@@ -114,7 +114,7 @@ public class MySQLClientDAO implements ClientDAO {
 	    	try {
 	    	Connection laConnection = Connexion.creeConnexion();
 		PreparedStatement req = laConnection.prepareStatement("delete from Client where id_client=?");
-		req.setInt(1,c.getId_client());
+		req.setInt(1,c.getIdClient());
 		
 		
 		

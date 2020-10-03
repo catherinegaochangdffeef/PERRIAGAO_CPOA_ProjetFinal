@@ -10,9 +10,9 @@ import org.junit.Test;
 
 import dao.DAOFactory;
 import dao.DAOFactory.Persistance;
-import listmemoire.ListeMemoireLignedeCommandeDAO;
-import listmemoire.ListeMemoireProduitDAO;
-import metier.CMLignedeCommande;
+import ListMemoire.ListeMemoireLignedeCommandeDAO;
+import ListMemoire.ListeMemoireProduitDAO;
+import Metier.CMLignedeCommande;
 
 public class LMLignedeCommandeTest {
     private CMLignedeCommande l;
@@ -26,7 +26,7 @@ public class LMLignedeCommandeTest {
 	@Test
 	public void testSelectExiste() throws Exception {
 		
-	int id=l.getId_produit();
+	int id=l.getIdProduit();
 	
 	CMLignedeCommande cLm=ListeMemoireLignedeCommandeDAO.getInstance().getById(id);
 	assertNotNull(cLm);
@@ -36,7 +36,7 @@ public class LMLignedeCommandeTest {
 	public void testGetbyId() throws Exception {
 		
 	    try {
-		DAOFactory.getDAOFactory(Persistance.ListMemoire).getLignedeCommandeDAO().getById(l.getId_commande());} catch(Exception e) {
+		DAOFactory.getDAOFactory(Persistance.ListMemoire).getLignedeCommandeDAO().getById(l.getIdCommande());} catch(Exception e) {
 		    fail("Erreur lors de la récupération");
 		}
 		
@@ -47,9 +47,9 @@ public class LMLignedeCommandeTest {
 	public void testCreate() throws Exception {
 		
 		//assertEquals(c.getId(),1);
-		assertEquals(l.getId_produit(),1);
+		assertEquals(l.getIdProduit(),1);
 		assertEquals(l.getQuantite(),3);
-		assertEquals(l.getTarif_unitaire(), 1.0, 1.0); //ici trois valeurs car la variable est un double, donc un delta de comparaison est necessaire
+		assertEquals(l.getTarifUnitaire(), 1.0, 1.0); //ici trois valeurs car la variable est un double, donc un delta de comparaison est necessaire
 	
 	}
 //--------------------------------------------------------------------------------------------------------------------------------------------------    
@@ -57,7 +57,7 @@ public class LMLignedeCommandeTest {
 	public void testDelete() throws Exception {
 		
 		assertTrue((ListeMemoireLignedeCommandeDAO.getInstance().delete(l)), "");
-		int id = l.getId_commande();
+		int id = l.getIdCommande();
 
 		try {
 		DAOFactory.getDAOFactory(Persistance.ListMemoire).getLignedeCommandeDAO().getById(id);

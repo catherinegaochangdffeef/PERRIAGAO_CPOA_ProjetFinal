@@ -1,4 +1,4 @@
-package metier;
+package Metier;
 
 
 public class CMCategorie {

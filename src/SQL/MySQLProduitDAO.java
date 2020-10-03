@@ -1,11 +1,11 @@
-package sql;
+package SQL;
 
 
 import java.sql.*;
 import java.util.ArrayList;
 
 import dao.ProduitDAO;
-import metier.CMProduit;
+import Metier.CMProduit;
 
 
 
@@ -25,12 +25,12 @@ public CMProduit getById(int id_produit) throws SQLException {
 		
 		while (res.next()) {
 			produit= new CMProduit(id_produit, res.getString(2), res.getString(3), res.getFloat(4), res.getString(5), res.getInt(6));
-			System.out.println("id: "+produit.getId_produit());
+			System.out.println("id: "+produit.getIdProduit());
 			System.out.println("nom:"+produit.getNom());
 			System.out.println("description: "+produit.getDescription());
 			System.out.println("tarif: "+produit.getTarif());
 			System.out.println("visuel: "+produit.getVisuel());
-			System.out.println("id_categorie:"+produit.getId_categorie());
+			System.out.println("id_categorie:"+produit.getIdCategorie());
 		}
 		
 		
@@ -53,7 +53,7 @@ public CMProduit getById(int id_produit) throws SQLException {
 				req.setString(2, p.getDescription());
 				req.setFloat(3, p.getTarif());
 				req.setString(4,p.getVisuel());
-				req.setInt(5, p.getId_categorie());
+				req.setInt(5, p.getIdCategorie());
 				
 				int nbLignes = req.executeUpdate();
 				ResultSet res = req.getGeneratedKeys();
@@ -77,12 +77,12 @@ public CMProduit getById(int id_produit) throws SQLException {
 		Connection cnx = Connexion.creeConnexion();
 		
 		PreparedStatement req = cnx.prepareStatement("update Produit set nom=?, description=?, tarif=?, visuel = ?, id_categorie=?  where id_produit=?");
-		req.setInt(6, p.getId_produit());
+		req.setInt(6, p.getIdProduit());
 		req.setString(1,p.getNom());
 		req.setString(2, p.getDescription());
 		req.setFloat(3, p.getTarif());
 		req.setString(4,p.getVisuel());
-		req.setInt(5, p.getId_categorie());
+		req.setInt(5, p.getIdCategorie());
 	
 		int nbLignes = req.executeUpdate();
 	
@@ -99,7 +99,7 @@ public CMProduit getById(int id_produit) throws SQLException {
     	try {
     	Connection cnx = Connexion.creeConnexion();
 	PreparedStatement req = cnx.prepareStatement("delete from Produit where id_produit=?");
-	req.setInt(1,p.getId_produit());
+	req.setInt(1,p.getIdProduit());
 	
 	
 	

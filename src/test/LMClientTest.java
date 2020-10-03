@@ -13,8 +13,8 @@ import org.junit.Test;
 
 import dao.DAOFactory;
 import dao.DAOFactory.Persistance;
-import listmemoire.ListeMemoireClientDAO;
-import metier.CMClient;
+import ListMemoire.ListeMemoireClientDAO;
+import Metier.CMClient;
 
 
 

@@ -1,10 +1,10 @@
 package dao;
 
-import sql.MySQLCategorieDAO;
-import sql.MySQLClientDAO;
-import sql.MySQLCommandeDAO;
-import sql.MySQLLignedeCommandeDAO;
-import sql.MySQLProduitDAO;
+import SQL.MySQLCategorieDAO;
+import SQL.MySQLClientDAO;
+import SQL.MySQLCommandeDAO;
+import SQL.MySQLLignedeCommandeDAO;
+import SQL.MySQLProduitDAO;
 
 
 public class MySQLDAOFactory extends DAOFactory{

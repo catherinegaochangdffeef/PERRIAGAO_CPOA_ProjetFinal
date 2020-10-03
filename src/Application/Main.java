@@ -1,4 +1,4 @@
-package application;
+package Application;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.Scanner;
@@ -6,11 +6,11 @@ import java.util.Scanner;
 import dao.DAOFactory;
 import dao.DAOFactory.Persistance;
 //import sql.MySQLCategorieDAO;
-import metier.CMCategorie;
-import metier.CMClient;
-import metier.CMCommande;
-import metier.CMLignedeCommande;
-import metier.CMProduit;
+import Metier.CMCategorie;
+import Metier.CMClient;
+import Metier.CMCommande;
+import Metier.CMLignedeCommande;
+import Metier.CMProduit;
  
 public class Main {
 	public static void main(String[] args) {

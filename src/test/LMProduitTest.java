@@ -12,8 +12,8 @@ import org.junit.Test;
 
 import dao.DAOFactory;
 import dao.DAOFactory.Persistance;
-import listmemoire.ListeMemoireProduitDAO;
-import metier.CMProduit;
+import ListMemoire.ListeMemoireProduitDAO;
+import Metier.CMProduit;
 
 
 public class LMProduitTest {
@@ -29,7 +29,7 @@ public class LMProduitTest {
 	@Test
 	public void testSelectExiste() throws Exception {
 		
-	int id=p.getId_produit();
+	int id=p.getIdProduit();
 	
 	CMProduit cLm=ListeMemoireProduitDAO.getInstance().getById(id);
 	assertNotNull(cLm);
@@ -39,7 +39,7 @@ public class LMProduitTest {
 	public void testGetbyId() throws Exception {
 		
 	    try {
-		DAOFactory.getDAOFactory(Persistance.ListMemoire).getProduitDAO().getById(p.getId_produit());} catch(Exception e) {
+		DAOFactory.getDAOFactory(Persistance.ListMemoire).getProduitDAO().getById(p.getIdProduit());} catch(Exception e) {
 		    fail("Erreur lors de la récupération");
 		}
 		
@@ -53,7 +53,7 @@ public class LMProduitTest {
 		assertEquals(p.getDescription(),"222xx");
 		assertEquals(p.getTarif(),1.0,1.0); //utilisation d'un delta car float
 		assertEquals(p.getVisuel(),"xxx.png");
-		assertEquals(p.getId_categorie(),10);
+		assertEquals(p.getIdCategorie(),10);
 
 	}
 //--------------------------------------------------------------------------------------------------------------------------------------------------    
@@ -61,7 +61,7 @@ public class LMProduitTest {
 	public void testDelete() throws Exception {
 		
 		assertTrue((ListeMemoireProduitDAO.getInstance().delete(p)), "");
-		int id = p.getId_produit();
+		int id = p.getIdProduit();
 
 		try {
 		DAOFactory.getDAOFactory(Persistance.ListMemoire).getProduitDAO().getById(id);
@@ -82,7 +82,7 @@ public class LMProduitTest {
 	@Test
 	public void testUpdate() throws Exception {
 		
-		CMProduit p2= new CMProduit(p.getId_produit(),"bbb","333zz",(float)2.0,"yyy.png",12);
+		CMProduit p2= new CMProduit(p.getIdProduit(),"bbb","333zz",(float)2.0,"yyy.png",12);
 		DAOFactory.getDAOFactory(Persistance.ListMemoire).getProduitDAO().update(p2);
 		CMProduit p3 = DAOFactory.getDAOFactory(Persistance.ListMemoire).getProduitDAO().getById(p2.getId_produit());
 		
@@ -90,7 +90,7 @@ public class LMProduitTest {
 		assertEquals("333zz", p3.getDescription());
 		assertEquals((float)1,0, p3.getTarif());
 		assertEquals("yyy.png", p3.getVisuel());
-		assertEquals(2, p3.getId_categorie());
+		assertEquals(2, p3.getIdCategorie());
 	}
 //--------------------------------------------------------------------------------------------------------------------------------------------------    
 	@Test

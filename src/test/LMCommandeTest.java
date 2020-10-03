@@ -12,9 +12,9 @@ import org.junit.Test;
 
 import dao.DAOFactory;
 import dao.DAOFactory.Persistance;
-import listmemoire.ListeMemoireCommandeDAO;
-import listmemoire.ListeMemoireProduitDAO;
-import metier.CMCommande;
+import ListMemoire.ListeMemoireCommandeDAO;
+import ListMemoire.ListeMemoireProduitDAO;
+import Metier.CMCommande;
 
 
 public class LMCommandeTest {

@@ -1,4 +1,4 @@
-package application;
+package Application;
 
 import java.sql.Connection;
 import java.sql.ResultSet;
@@ -6,7 +6,7 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
 
-import sql.Connexion;
+import SQL.Connexion;
 
 public class Produit {
 	

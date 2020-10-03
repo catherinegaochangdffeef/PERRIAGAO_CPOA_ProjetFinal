@@ -12,8 +12,8 @@ import org.junit.Test;
 
 import dao.DAOFactory;
 import dao.DAOFactory.Persistance;
-import listmemoire.ListeMemoireCategorieDAO;
-import metier.CMCategorie;
+import ListMemoire.ListeMemoireCategorieDAO;
+import Metier.CMCategorie;
 
 public class LMCategorieTest {
     private CMCategorie c;
