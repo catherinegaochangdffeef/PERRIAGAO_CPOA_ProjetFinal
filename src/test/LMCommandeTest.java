@@ -13,7 +13,6 @@ import org.junit.Test;
 import dao.DAOFactory;
 import dao.DAOFactory.Persistance;
 import ListMemoire.ListeMemoireCommandeDAO;
-import ListMemoire.ListeMemoireProduitDAO;
 import Metier.CMCommande;
 
 
@@ -51,7 +50,7 @@ private CMCommande c;
 		//assertEquals(c.getId(),1);
 		assertEquals(c.getId(),1);
 		assertEquals(c.getIdClient(),1);
-		assertEquals(c.getDateCommande(), 01-01-2020); //pas sûre que la date doit être appelé comme ca 
+		assertEquals(c.getDateCommande(),"01-01-2020"); //pas sûre que la date doit être appelé comme ca 
 
 		}	
 	//--------------------------------------------------------------------------------------------------------------------------------------------------    
@@ -75,6 +74,16 @@ private CMCommande c;
 		catch (Exception e){
 		    ;
 		}	
+	}
+//--------------------------------------------------------------------------------------------------------------------------------------------------   	
+	@Test
+	public void testUpdate() throws Exception {
+			
+		CMCommande c2= new CMCommande(c.getId(),"01-01-2020",1);
+		DAOFactory.getDAOFactory(Persistance.ListMemoire).getCommandeDAO().update(c2);
+		CMCommande c3 = DAOFactory.getDAOFactory(Persistance.ListMemoire).getCommandeDAO().getById(c2.getId());
+		assertEquals(1, c3.getIdClient());
+		assertEquals("01-01-2020", c3.getDateCommande() );
 	}
 	
 }
