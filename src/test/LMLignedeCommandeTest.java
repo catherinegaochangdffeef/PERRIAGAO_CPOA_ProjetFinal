@@ -11,6 +11,7 @@ import org.junit.Test;
 import dao.DAOFactory;
 import dao.DAOFactory.Persistance;
 import ListMemoire.ListeMemoireLignedeCommandeDAO;
+import Metier.CMCategorie;
 import Metier.CMLignedeCommande;
 
 public class LMLignedeCommandeTest {
@@ -73,7 +74,19 @@ public class LMLignedeCommandeTest {
 		    ;
 		}	
 	}
+//--------------------------------------------------------------------------------------------------------------------------------------------------   	
+	@Test
+	public void testUpdate() throws Exception {
+			
+		CMLignedeCommande l2= new CMLignedeCommande(l.getIdCommande(),1,3,1.0);
+		DAOFactory.getDAOFactory(Persistance.ListMemoire).getLignedeCommandeDAO().update(l2);
+		CMLignedeCommande l3 = DAOFactory.getDAOFactory(Persistance.ListMemoire).getLignedeCommandeDAO().getById(l2.getIdCommande());
+		assertEquals(1, l3.getIdProduit());
+		assertEquals(3, l3.getQuantite());
+		assertEquals(1.0, 1.0 ,l3.getTarifUnitaire());
+		
 	
+	}
 	
 	
 
