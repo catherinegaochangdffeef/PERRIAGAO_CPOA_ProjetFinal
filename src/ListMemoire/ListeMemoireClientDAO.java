@@ -27,9 +27,9 @@ public class ListeMemoireClientDAO implements ClientDAO{
 	
 	@Override
 	public boolean create(CMClient objet) {
-		objet.setId_client(3);
+		objet.setIdClient(3);
 		while (this.donnees.contains(objet)) {
-			objet.setId_client(objet.getId_client()+1);
+			objet.setIdClient(objet.getIdClient()+1);
 		}
 		boolean ok= this.donnees.add(objet);
 		return ok;

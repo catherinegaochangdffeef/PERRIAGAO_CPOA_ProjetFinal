@@ -30,10 +30,10 @@ public class ListeMemoireLignedeCommandeDAO implements LignedeCommandeDAO{
 	
 	@Override
 	public boolean create(CMLignedeCommande objet) throws Exception {
-		objet.setId_commande(3);
+		objet.setIdCommande(3);
 		while (this.donnees.contains(objet)) {
 
-			objet.setId_commande(objet.getId_commande() + 1);
+			objet.setIdCommande(objet.getIdCommande() + 1);
 		}
 		boolean ok = this.donnees.add(objet);
 		

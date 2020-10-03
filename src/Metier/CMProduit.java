@@ -12,7 +12,7 @@ public class CMProduit {
 	}
 	
 	public CMProduit(int idProduit,String nom, String description, float tarif, String visuel, int idCategorie) {
-		this.setId_produit(idProduit);
+		this.setIdProduit(idProduit);
 		this.setNom(nom);
 		this.setDescription(description);
 		this.setTarif(tarif);
@@ -21,14 +21,14 @@ public class CMProduit {
 		}
 	
 	public CMProduit(int idProduit) {
-		this.setId_produit(idProduit);
+		this.setIdProduit(idProduit);
 		}
 	
 	public int getIdProduit() {
 		return idProduit;
 	}
 
-	public void setId_produit(int idProduit) {
+	public void setIdProduit(int idProduit) {
 		this.idProduit = idProduit;
 	}
 

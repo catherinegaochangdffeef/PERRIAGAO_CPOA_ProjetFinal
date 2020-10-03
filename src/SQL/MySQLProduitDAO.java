@@ -61,7 +61,7 @@ public CMProduit getById(int id_produit) throws SQLException {
 				int clef;
 				if(res.next()) {
 					clef = res.getInt(1);
-					p.setId_produit(clef);
+					p.setIdProduit(clef);
 						
 				}
 				

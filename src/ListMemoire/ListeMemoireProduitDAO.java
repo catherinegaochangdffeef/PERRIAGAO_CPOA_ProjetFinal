@@ -31,9 +31,9 @@ public class ListeMemoireProduitDAO implements ProduitDAO {
 
 	@Override
 	public boolean create(CMProduit objet) throws Exception {
-		objet.setId_produit(3);
+		objet.setIdProduit(3);
 		while (this.donnees.contains(objet)) {
-			objet.setId_produit(objet.getId_produit()+1);
+			objet.setIdProduit(objet.getIdProduit()+1);
 		}
 boolean ok = this.donnees.add(objet);
 		

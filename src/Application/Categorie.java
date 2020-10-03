@@ -1,8 +1,8 @@
-package application;
+package Application;
 import java.sql.*;
 import java.util.ArrayList;
 
-import sql.Connexion;
+import SQL.Connexion;
 
 public class Categorie {
 	

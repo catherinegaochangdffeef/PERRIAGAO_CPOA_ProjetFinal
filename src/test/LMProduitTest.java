@@ -84,7 +84,7 @@ public class LMProduitTest {
 		
 		CMProduit p2= new CMProduit(p.getIdProduit(),"bbb","333zz",(float)2.0,"yyy.png",12);
 		DAOFactory.getDAOFactory(Persistance.ListMemoire).getProduitDAO().update(p2);
-		CMProduit p3 = DAOFactory.getDAOFactory(Persistance.ListMemoire).getProduitDAO().getById(p2.getId_produit());
+		CMProduit p3 = DAOFactory.getDAOFactory(Persistance.ListMemoire).getProduitDAO().getById(p2.getIdProduit());
 		
 		assertEquals("bbb", p3.getNom());
 		assertEquals("333zz", p3.getDescription());

@@ -4,7 +4,7 @@ import java.sql.Date;
 import java.time.LocalDate;
 import java.util.HashMap;
 
-import metier.CMLignedeCommande;
+
   
 
 public class CMCommande {
@@ -51,7 +51,7 @@ public CMCommande(int idCommande,String dateCommande,int idClient) {
 		return idCommande;
 	}
 
-	public void setId(int idCmande) {
+	public void setId(int idCommande) {
 		this.idCommande = idCommande;
 	}
 

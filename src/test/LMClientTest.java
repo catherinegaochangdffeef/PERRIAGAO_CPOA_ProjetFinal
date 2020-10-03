@@ -31,7 +31,7 @@ public class LMClientTest {
 //--------------------------------------------------------------------------------------------------------------------------------------------------   
 	@Test
 	public void testSelectExiste() throws Exception {
-	int id=c.getId_client();
+	int id=c.getIdClient();
 	
 	CMClient cLm=ListeMemoireClientDAO.getInstance().getById(id);
 	assertNotNull(cLm);
@@ -41,7 +41,7 @@ public class LMClientTest {
 	public void testGetbyid() throws Exception {
 		
 	    try {
-		DAOFactory.getDAOFactory(Persistance.ListMemoire).getClientDAO().getById(c.getId_client());} catch(Exception e) {
+		DAOFactory.getDAOFactory(Persistance.ListMemoire).getClientDAO().getById(c.getIdClient());} catch(Exception e) {
 		    fail("Erreur lors de la récupération");
 		}
 		
@@ -54,12 +54,12 @@ public class LMClientTest {
 		assertEquals(c.getNom(),"aa");
 		assertEquals(c.getPrenom(),"aaa");
 		assertEquals(c.getIdentifiant(),"222xx");
-		assertEquals(c.getMot_de_passe(),"xxx");
-		assertEquals(c.getAdr_numero(),1);
-		assertEquals(c.getAdr_voie(),"3");
-		assertEquals(c.getAdr_code_postal(),57000);
-		assertEquals(c.getAdr_ville(),"Metz");
-		assertEquals(c.getAdr_pays(),"France");
+		assertEquals(c.getMotDePasse(),"xxx");
+		assertEquals(c.getAdrNumero(),1);
+		assertEquals(c.getAdrVoie(),"3");
+		assertEquals(c.getAdrCodePostal(),57000);
+		assertEquals(c.getAdrVille(),"Metz");
+		assertEquals(c.getAdrPays(),"France");
 		
 	}
 //--------------------------------------------------------------------------------------------------------------------------------------------------   	
@@ -67,7 +67,7 @@ public class LMClientTest {
 	public void testDelete() throws Exception {
 		
 		assertTrue((ListeMemoireClientDAO.getInstance().delete(c)), "");
-		int id = c.getId_client();
+		int id = c.getIdClient();
 		
 		
 		
@@ -91,19 +91,19 @@ public class LMClientTest {
 	public void testUpdate() throws Exception {
 
 		
-		CMClient c2= new CMClient(c.getId_client(),"bb","bbb","333zz","yyy",2, "5",58111,"zteM","ecnarF");
+		CMClient c2= new CMClient(c.getIdClient(),"bb","bbb","333zz","yyy",2, "5",58111,"zteM","ecnarF");
 		DAOFactory.getDAOFactory(Persistance.ListMemoire).getClientDAO().update(c2);
-		CMClient c3 = DAOFactory.getDAOFactory(Persistance.ListMemoire).getClientDAO().getById(c2.getId_client());
+		CMClient c3 = DAOFactory.getDAOFactory(Persistance.ListMemoire).getClientDAO().getById(c2.getIdClient());
 		
 		assertEquals("bb", c3.getNom());
 		assertEquals("bbb", c3.getPrenom());
 		assertEquals("333zz", c3.getIdentifiant());
-		assertEquals("yyy", c3.getMot_de_passe());
-		assertEquals(2, c3.getAdr_numero());
-		assertEquals("5", c3.getAdr_voie());
-		assertEquals(58111, c3.getAdr_voie());
-		assertEquals("zteM", c3.getAdr_ville());
-		assertEquals("ecnarF", c3.getAdr_pays());
+		assertEquals("yyy", c3.getMotDePasse());
+		assertEquals(2, c3.getAdrNumero());
+		assertEquals("5", c3.getAdrVoie());
+		assertEquals(58111, c3.getAdrCodePostal());
+		assertEquals("zteM", c3.getAdrVille());
+		assertEquals("ecnarF", c3.getAdrPays());
 	}
 //--------------------------------------------------------------------------------------------------------------------------------------------------   	
 	@Test

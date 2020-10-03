@@ -65,7 +65,7 @@ public class CMLignedeCommande {
 			return false;
 		if (quantite != other.quantite)
 			return false;
-		if (Double.doubleToLongBits(tarif_unitaire) != Double.doubleToLongBits(other.tarif_unitaire))
+		if (Double.doubleToLongBits(tarifUnitaire) != Double.doubleToLongBits(other.tarifUnitaire))
 			return false;
 		return true;
 	}
