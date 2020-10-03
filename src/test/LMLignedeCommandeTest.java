@@ -5,12 +5,16 @@ import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.fail;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
+import java.util.ArrayList;
+
 import org.junit.Before;
 import org.junit.Test;
 
 import dao.DAOFactory;
 import dao.DAOFactory.Persistance;
+import ListMemoire.ListeMemoireCommandeDAO;
 import ListMemoire.ListeMemoireLignedeCommandeDAO;
+import Metier.CMCommande;
 import Metier.CMLignedeCommande;
 
 public class LMLignedeCommandeTest {
@@ -86,30 +90,22 @@ public class LMLignedeCommandeTest {
 		
 	
 	}
-	
-	
+	//--------------------------------------------------------------------------------------------------------------------------------------------------   
+	@Test
+	public void testfindAll() throws Exception{
+		    	
+		CMLignedeCommande c2=new CMLignedeCommande(2,4, 2.0);
+		
+		ListeMemoireLignedeCommandeDAO lma = (ListeMemoireLignedeCommandeDAO) DAOFactory.getDAOFactory(Persistance.ListMemoire).getLignedeCommandeDAO();			
+		ArrayList<CMLignedeCommande> ar = new ArrayList<CMLignedeCommande>(lma.findAll());
 
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
+		ar.add(c2);
+		lma.create(c2);
+			
+		assertEquals(lma.findAll(), ar);		
+		DAOFactory.getDAOFactory(Persistance.ListMemoire).getLignedeCommandeDAO().delete(l);
+			
+		}
 	
 	
 }
