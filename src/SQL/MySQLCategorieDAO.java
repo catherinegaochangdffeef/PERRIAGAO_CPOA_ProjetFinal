@@ -21,9 +21,7 @@ public CMCategorie getById(int id_categorie) throws SQLException{
 		
 		while (res.next()) {
 			categorie= new CMCategorie(id_categorie, res.getString(2), res.getString(3));
-			  System.out.println("id:"+categorie.getId());
-				System.out.println("titre:"+categorie.getTitre());
-				System.out.println("Visuel"+categorie.getVisuel());
+			
 		}
 		req.close();
 		res.close();
@@ -76,23 +74,19 @@ public CMCategorie getById(int id_categorie) throws SQLException{
     }
 //----------------------------------------------------------------------------------------------------------------------------------------------------------------	
 	public boolean delete(CMCategorie c) {
+		int nbLignes=0;
     	try {
-    	Connection cnx = Connexion.creeConnexion();
-	PreparedStatement req = cnx.prepareStatement("delete from Produit where id_produit=?");
-	req.setInt(1,c.getId());
+    	Connexion.getInstance();
+		Connection laConnexion = Connexion.creeConnexion();
+	PreparedStatement requete = laConnexion.prepareStatement("delete from Categorie where id_categorie=?");
 	
-	
-	
-	int nbLignes = req.executeUpdate();
-	
-
-	cnx.close();
-	req.close();
-	
-	return nbLignes==1;
-    	}catch(Exception e) {
-    	    return false;
+	requete.setInt(1,c.getId());
+	nbLignes = requete.executeUpdate();
+    	} catch(SQLException sqle) {
+    		System.out.println("Pb delete categorie"+sqle.getMessage());
     	}
+
+	return nbLignes==1;
   
 }
 //----------------------------------------------------------------------------------------------------------------------------------------------------------------		
@@ -107,9 +101,9 @@ public CMCategorie getById(int id_categorie) throws SQLException{
 	}
 //----------------------------------------------------------------------------------------------------------------------------------------------------------------	
 
-
+	@Override
 	public ArrayList<CMCategorie> findAll() throws Exception {
-	ArrayList<CMCategorie> cl = new ArrayList<CMCategorie>();
+	ArrayList<CMCategorie> cate = new ArrayList<CMCategorie>();
 		
 		
 		Connection MaConnection = Connexion.creeConnexion();
@@ -120,14 +114,12 @@ public CMCategorie getById(int id_categorie) throws SQLException{
 		ResultSet res = req.executeQuery();
 		
 		while (res.next()) {
-			cl.add(new CMCategorie(res.getInt(1), res.getString(2), res.getString(3)));
+			cate.add(new CMCategorie(res.getInt("id_categorie"), res.getString("titre"), res.getString("visuel")));
 			
 		}
-		
-
 		req.close();
 		res.close();
-		return cl;
+		return cate;
 	}
 
 }
