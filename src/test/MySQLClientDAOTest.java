@@ -9,12 +9,14 @@ import static org.junit.Assert.fail;
 
 import java.io.IOException;
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.InvalidPropertiesFormatException;
 
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
+import ListMemoire.ListeMemoireClientDAO;
 import Metier.CMClient;
 import SQL.MySQLClientDAO;
 import dao.DAOFactory;
@@ -121,4 +123,23 @@ private CMClient c;
 		assertEquals("zteM", c3.getAdrVille());
 		assertEquals("ecnarF", c3.getAdrPays());
 	}
+	@Test
+	public void testfindAll() throws Exception{
+		    	
+			CMClient c2=new CMClient(1,"aa", "aaa", "222xx","xxx",1,"3",57000," Metz","France ");
+			
+			ListeMemoireClientDAO lma = (ListeMemoireClientDAO) DAOFactory.getDAOFactory(Persistance.MYSQL).getClientDAO();
+			
+			ArrayList<CMClient> ar = new ArrayList<CMClient>(lma.findAll());
+			
+			ar.add(c2);
+			
+			lma.create(c2);
+			
+			
+			assertEquals(lma.findAll(), ar);
+			
+			DAOFactory.getDAOFactory(Persistance.MYSQL).getClientDAO().delete(c);
+			
+		}
 }
