@@ -12,7 +12,7 @@ public class MainCommande {
 public static void main(String[] args) {
 		
 		Scanner scanner=new Scanner(System.in);
-		DAOFactory daos =DAOFactory.getDAOFactory(Persistance.ListMemoire);
+		DAOFactory daos =DAOFactory.getDAOFactory(Persistance.MYSQL);
 		
 		System.out.println("Commande");
 		System.out.println("Choisir une méthode");

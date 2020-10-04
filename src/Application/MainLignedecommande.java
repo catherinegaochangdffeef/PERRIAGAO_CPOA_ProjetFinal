@@ -10,7 +10,7 @@ public class MainLignedecommande {
 public static void main(String[] args) {
 		
 		Scanner scanner=new Scanner(System.in);
-		DAOFactory daos =DAOFactory.getDAOFactory(Persistance.ListMemoire);
+		DAOFactory daos =DAOFactory.getDAOFactory(Persistance.MYSQL);
 		
 		System.out.println("Ligne de Commande");
 		System.out.println("Choisir une méthode");
