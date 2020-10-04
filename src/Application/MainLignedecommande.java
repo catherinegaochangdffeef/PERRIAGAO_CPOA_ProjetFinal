@@ -7,7 +7,7 @@ import dao.DAOFactory;
 import dao.DAOFactory.Persistance;
 
 public class MainLignedecommande {
-public static void main(String[] args) {
+public static void main() {
 		
 		Scanner scanner=new Scanner(System.in);
 		DAOFactory daos =DAOFactory.getDAOFactory(Persistance.MYSQL);
@@ -31,6 +31,7 @@ public static void main(String[] args) {
 			} catch (Exception e) {
 				e.printStackTrace();
 			}
+			main();
 			}
 		else if(p==2) {
 			System.out.println("Modifier");
@@ -47,6 +48,7 @@ public static void main(String[] args) {
 			} catch (Exception e) {
 				e.printStackTrace();
 			}
+			main();
 				}
 		else if(p==3) {
 			System.out.println("Supprimer");
@@ -59,6 +61,7 @@ public static void main(String[] args) {
 			} catch (Exception e) {
 				e.printStackTrace();
 			}
+			main();
 		}
 		
 		
@@ -72,7 +75,10 @@ public static void main(String[] args) {
 				System.out.println("cette ligne de commande n'exist pas!");
 				e.printStackTrace();
 			}
+			main();
 		}
+		String[] args = null;
+		Main.main(args);
 	}
 		
 	

@@ -7,7 +7,7 @@ import dao.DAOFactory;
 import dao.DAOFactory.Persistance;
 
 public class MainClient {
-	public static void main(String[] args) {
+	public static void main() {
 		
 		Scanner scanner=new Scanner(System.in);
 		DAOFactory daos =DAOFactory.getDAOFactory(Persistance.MYSQL);
@@ -41,6 +41,7 @@ public class MainClient {
 				} catch (Exception e) {
 					e.printStackTrace();
 				}
+				main();
 				}
 		else if(p==2) {
 			System.out.println("Modifier");
@@ -69,6 +70,7 @@ public class MainClient {
 			} catch (Exception e) {				
 				e.printStackTrace();
 			}
+			main();
 				}
 		else if (p==3) {
 			System.out.println("Supprimer");
@@ -79,6 +81,7 @@ public class MainClient {
 			} catch (Exception e) {				
 				e.printStackTrace();
 			}
+			main();
 		}
 		else if(p==4) {
 			System.out.println("Chercher");
@@ -90,5 +93,10 @@ public class MainClient {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
+			main();
 		}
-	}}
+		String[] args = null;
+		Main.main(args);
+	}
+	
+}

@@ -9,7 +9,7 @@ import dao.DAOFactory;
 import dao.DAOFactory.Persistance;
 
 public class MainCommande {
-public static void main(String[] args) {
+public static void main() {
 		
 		Scanner scanner=new Scanner(System.in);
 		DAOFactory daos =DAOFactory.getDAOFactory(Persistance.MYSQL);
@@ -32,6 +32,7 @@ public static void main(String[] args) {
 				System.out.println("ce commande n'exist pas!");
 				e.printStackTrace();
 			}
+			main();
 				}
 		else if (p==2) {
 			System.out.println("Modifier");
@@ -48,6 +49,7 @@ public static void main(String[] args) {
 			} catch (Exception e) {				
 				e.printStackTrace();
 			}
+			main();
 		}
 		else if (p==3) {
 			System.out.println("Supprimer");
@@ -58,6 +60,7 @@ public static void main(String[] args) {
 			} catch (Exception e) {				
 				e.printStackTrace();
 			}
+			main();
 			
 	}
 		else if(p==4){
@@ -70,11 +73,8 @@ public static void main(String[] args) {
 				System.out.println("ce commande n'exist pas!");
 				e.printStackTrace();
 			}
-			
-			
-			
+			main();
 			}
-		else{
-			System.out.println("invalide");
-		}
+		String[] args = null;
+		Main.main(args);
 }}
