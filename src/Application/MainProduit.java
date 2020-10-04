@@ -13,7 +13,7 @@ public class MainProduit {
 
 	System.out.println("Produit");
 	System.out.println("Choisir une méthode");
-	System.out.println("1.Ajouter 2:Modifier 3:Supprimer 4: Chercher");
+	System.out.println("1.Ajouter 2:Modifier 3:Supprimer 4: Afficher");
 	int p=scanner.nextInt();
 	if(p==1) {
 		System.out.println("Ajouter");
@@ -66,15 +66,21 @@ public class MainProduit {
 			main();
 		}
 		else if(p==4) {
-			System.out.println("Chercher");
-			System.out.println("id produit=");
-			int id=scanner.nextInt();	
-			try {
-				daos.getProduitDAO().getById(id);	;
-			} catch (Exception e) {
-				System.out.println("ce produit n'existe pas!");
-				e.printStackTrace();
-			}
+		
+				try {
+					for(int i=0;i<daos.getProduitDAO().findAll().size();i++){
+					System.out.println("nom: "+daos.getProduitDAO().findAll().get(i).getNom()
+							+" ||| description: "+daos.getProduitDAO().findAll().get(i).getDescription()
+							+" ||| tarif: "+daos.getProduitDAO().findAll().get(i).getTarif()
+							+" ||| visuel: "+daos.getProduitDAO().findAll().get(i).getVisuel()
+							+" ||| categorie: "+daos.getProduitDAO().findAll().get(i).getIdCategorie());
+				}
+					} catch (Exception e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+			
+			
 			main();
 		}
 		String[] args = null;
