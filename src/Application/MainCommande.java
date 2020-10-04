@@ -2,9 +2,11 @@ package Application;
 
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
+import java.util.HashMap;
 import java.util.Scanner;
 
 import Metier.CMCommande;
+import Metier.CMProduit;
 import dao.DAOFactory;
 import dao.DAOFactory.Persistance;
 
@@ -20,19 +22,23 @@ public static void main() {
 		int p=scanner.nextInt();
 		if(p==1) {
 			System.out.println("Ajouter");
-			System.out.println ("date_commande=");
+			System.out.println ("date_commande=(yyyy/MM/dd)");
 			String date=scanner.next();
 			 DateTimeFormatter formatage = DateTimeFormatter.ofPattern("yyyy/MM/dd");
 			    LocalDate dateDebut = LocalDate.parse(date, formatage);
 			System.out.println ("id_client");
 			int idcl=scanner.nextInt();
-			try {
-				daos.getCommandeDAO().create(new CMCommande(dateDebut,idcl));
+			
+				CMCommande co;
+				try {
+					co = new CMCommande(dateDebut,daos.getClientDAO().getById(idcl), new HashMap<CMProduit, Integer>());
+			daos.getCommandeDAO().create(co);
+			MainLignedecommande.main(co);
 			} catch (Exception e) {
 				System.out.println("ce commande n'exist pas!");
 				e.printStackTrace();
 			}
-			main();
+			
 				}
 		else if (p==2) {
 			System.out.println("Modifier");

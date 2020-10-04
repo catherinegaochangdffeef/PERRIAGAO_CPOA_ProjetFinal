@@ -62,7 +62,7 @@ private CMClient c;
 	}
 	@Test
 	public void testCreate() throws Exception {
-	    CMClient c2 = new CMClient(1,"aa", "aaa", "222xx","xxx",1,"3",57000," Metz","France ");
+	    CMClient c2 = new CMClient(1,"aa", "aaa", "222xx","xxx",1,"3",57000,"Metz","France ");
 		try {
 		    
 		MySQLClientDAO.getInstance().create(c2);
@@ -88,7 +88,7 @@ private CMClient c;
 	public void testDelete() throws Exception {
 	    
 
-	    CMClient c2 =new CMClient(1,"aa", "aaa", "222xx","xxx",1,"3",57000," Metz","France ");
+	    CMClient c2 =new CMClient(1,"aa", "aaa", "222xx","xxx",1,"3",57000,"Metz","France ");
 	    MySQLClientDAO.getInstance().create(c2);
 		
 		int idd = c2.getIdClient();
@@ -123,23 +123,5 @@ private CMClient c;
 		assertEquals("zteM", c3.getAdrVille());
 		assertEquals("ecnarF", c3.getAdrPays());
 	}
-	@Test
-	public void testfindAll() throws Exception{
-		    	
-			CMClient c2=new CMClient(1,"aa", "aaa", "222xx","xxx",1,"3",57000," Metz","France ");
-			
-			ListeMemoireClientDAO lma = (ListeMemoireClientDAO) DAOFactory.getDAOFactory(Persistance.MYSQL).getClientDAO();
-			
-			ArrayList<CMClient> ar = new ArrayList<CMClient>(lma.findAll());
-			
-			ar.add(c2);
-			
-			lma.create(c2);
-			
-			
-			assertEquals(lma.findAll(), ar);
-			
-			DAOFactory.getDAOFactory(Persistance.MYSQL).getClientDAO().delete(c);
-			
-		}
+
 }

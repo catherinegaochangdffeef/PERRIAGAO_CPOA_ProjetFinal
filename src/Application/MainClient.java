@@ -14,7 +14,7 @@ public class MainClient {
 		
 		System.out.println("Client");
 		System.out.println("Choisir une méthode");
-		System.out.println("1.Ajouter 2:Modifier 3:Supprimer 4: Chercher");
+		System.out.println("1.Ajouter 2:Modifier 3:Supprimer 4: Afficher");
 		int p=scanner.nextInt();
 		if(p==1) {
 				System.out.println("Ajouter");
@@ -22,22 +22,9 @@ public class MainClient {
 				String nom=scanner.next();
 				System.out.println ("prenom=");
 				String prenom=scanner.next();
-				System.out.println ("identifiant=");
-				String iden=scanner.next();
-				System.out.println ("mode de passe =");
-				String mode=scanner.next();
-				System.out.println("adr_numero=");
-				int adr=scanner.nextInt();
-				System.out.println ("adr_voie=");
-				String adr_voie=scanner.next();
-				System.out.println ("adr_code_postal=");
-				int adr_code_postal=scanner.nextInt();
-				System.out.println ("adr_ville=");
-				String adr_ville=scanner.next();
-				System.out.println ("adr_pays=");
-				String adr_pays=scanner.next();
+				
 				try {
-					daos.getClientDAO().create(new CMClient(nom,prenom,iden,mode,adr,adr_voie,adr_code_postal,adr_ville,adr_pays));
+					daos.getClientDAO().create(new CMClient(nom,prenom));
 				} catch (Exception e) {
 					e.printStackTrace();
 				}
@@ -51,22 +38,9 @@ public class MainClient {
 			String nom=scanner.next();
 			System.out.println ("prenom=");
 			String prenom=scanner.next();
-			System.out.println ("identifiant=");
-			String iden=scanner.next();
-			System.out.println ("mode de passe =");
-			String mode=scanner.next();
-			System.out.println("adr_numero=");
-			int adr=scanner.nextInt();
-			System.out.println ("adr_voie=");
-			String adr_voie=scanner.next();
-			System.out.println ("adr_code_postal=");
-			int adr_code_postal=scanner.nextInt();
-			System.out.println ("adr_ville=");
-			String adr_ville=scanner.next();
-			System.out.println ("adr_pays=");
-			String adr_pays=scanner.next();			
+					
 			try {
-				daos.getClientDAO().update(new CMClient(id, nom, prenom, iden, mode, adr, adr_voie, adr_code_postal, adr_ville, adr_pays));
+				daos.getClientDAO().update(new CMClient(id, nom, prenom));
 			} catch (Exception e) {				
 				e.printStackTrace();
 			}
@@ -84,11 +58,12 @@ public class MainClient {
 			main();
 		}
 		else if(p==4) {
-			System.out.println("Chercher");
-			System.out.println("id_client=");
-			int id=scanner.nextInt();	
+			System.out.println("Affhicer");
 			try {
-				daos.getClientDAO().getById(id);
+				for(int i=0;i<daos.getClientDAO().findAll().size();i++) {
+					System.out.println("nom:"+daos.getClientDAO().findAll().get(i).getNom()+"    prenom:"
+							+daos.getClientDAO().findAll().get(i).getPrenom());
+				}
 			} catch (Exception e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();

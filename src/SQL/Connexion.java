@@ -11,7 +11,6 @@ public class Connexion {
 		Connection maConnexion = null;
 		try {
 			maConnexion = DriverManager.getConnection(url, login, pwd);
-			System.out.println("Connexion établie");
 		} catch (SQLException sqle) {
 			System.out.println("Erreur connexion" + sqle.getMessage());
 		}

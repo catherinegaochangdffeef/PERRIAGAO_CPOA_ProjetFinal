@@ -2,12 +2,13 @@ package Application;
 
 import java.util.Scanner;
 
+import Metier.CMCommande;
 import Metier.CMLignedeCommande;
 import dao.DAOFactory;
 import dao.DAOFactory.Persistance;
 
 public class MainLignedecommande {
-public static void main() {
+public static void main(CMCommande commande) {
 		
 		Scanner scanner=new Scanner(System.in);
 		DAOFactory daos =DAOFactory.getDAOFactory(Persistance.MYSQL);
@@ -18,20 +19,16 @@ public static void main() {
 		int p=scanner.nextInt();
 		if(p==1) {
 			System.out.println("Ajouter");
-			System.out.println ("id_commande=");
-			int idcom=scanner.nextInt();
 			System.out.println ("id_produit=");
 			int idp=scanner.nextInt();
 			System.out.println ("quantite=");
 			int quan=scanner.nextInt();
-			System.out.println ("tarif_unitaire =");
-			double tarifu=scanner.nextDouble();
 			try {
-				daos.getLignedeCommandeDAO().create(new CMLignedeCommande(idcom,idp,quan,tarifu));
+				commande.addProducts(daos.getProduitDAO().getById(idp), quan);
 			} catch (Exception e) {
 				e.printStackTrace();
 			}
-			main();
+			main(commande);
 			}
 		else if(p==2) {
 			System.out.println("Modifier");
@@ -48,7 +45,7 @@ public static void main() {
 			} catch (Exception e) {
 				e.printStackTrace();
 			}
-			main();
+			main(commande);
 				}
 		else if(p==3) {
 			System.out.println("Supprimer");
@@ -61,7 +58,7 @@ public static void main() {
 			} catch (Exception e) {
 				e.printStackTrace();
 			}
-			main();
+			main(commande);
 		}
 		
 		
@@ -75,7 +72,7 @@ public static void main() {
 				System.out.println("cette ligne de commande n'exist pas!");
 				e.printStackTrace();
 			}
-			main();
+			main(commande);
 		}
 		String[] args = null;
 		Main.main(args);

@@ -6,9 +6,13 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.Set;
 
 import dao.CommandeDAO;
 import Metier.CMCommande;
+import Metier.CMProduit;
+
 
 
 public class MySQLCommandeDAO implements CommandeDAO{
@@ -18,7 +22,7 @@ public CMCommande getById(int id_commande) throws SQLException {
 		CMCommande commande = null;
 		
 		Connection cnx = Connexion.creeConnexion();
-		PreparedStatement req =cnx.prepareStatement("select * from Commande where id_commande = ?");
+		PreparedStatement req =cnx.prepareStatement("select id_commande,date_commande,Client.id_client from Commande,Client where id_commande = ? and Commande.id_client=Client.id_client ");
 		req.setInt(1, id_commande);
 		
 		
@@ -27,12 +31,11 @@ public CMCommande getById(int id_commande) throws SQLException {
 		while (res.next()) {
 			commande= new CMCommande(id_commande, res.getDate(2), res.getInt(3));
 			Date d=commande.getDateCommande();
-			  System.out.println("id_commande:"+commande.getId());
+			 int idclient=res.getInt("id_client");
+			    System.out.println("id_commande:"+commande.getId());
 				System.out.println("date_commande:"+d);
-				System.out.println("id_client"+commande.getIdClient());
+				System.out.println("id_client"+idclient);
 		}
-		
-		
 		cnx.close();
 		req.close();
 		res.close();
@@ -47,7 +50,7 @@ public CMCommande getById(int id_commande) throws SQLException {
 		Connection cnx = Connexion.creeConnexion();
 			PreparedStatement req = cnx.prepareStatement("INSERT INTO Commande (date_commande,id_client) values (?,?)", java.sql.Statement.RETURN_GENERATED_KEYS);
 				req.setDate(1, c.getDateCommande());
-				req.setInt(2, c.getIdClient());
+				req.setInt(2, c.getIdClient().getIdClient());
 			
 				
 				int nbLignes = req.executeUpdate();
@@ -56,8 +59,21 @@ public CMCommande getById(int id_commande) throws SQLException {
 				int clef;
 				if(res.next()) {
 					clef = res.getInt(1);
-					c.setId(clef);
-						
+					c.setId(clef);	
+				}
+				if(!c.getProducts().isEmpty()) {
+					Set listkeys=c.getProducts().keySet();
+					Iterator iterateur=listkeys.iterator();
+					while(iterateur.hasNext()) {
+						Object key=iterateur.next();
+						PreparedStatement req1 = cnx.prepareStatement("INSERT INTO Ligne_commande (id_commande,id_produit,quantite,tarif_unitaire) values (?,?,?,?)", java.sql.Statement.RETURN_GENERATED_KEYS);
+						req1.setInt(1, c.getId());
+						req1.setInt(2, ((CMProduit)key).getIdProduit());
+						req1.setInt(3, c.getProducts().get(key));
+						req1.setDouble(4,  ((CMProduit)key).getTarif());
+						req.executeUpdate();
+					}
+					
 				}
 				
 				cnx.close();
@@ -75,10 +91,15 @@ public CMCommande getById(int id_commande) throws SQLException {
 				+ "id_client=? where id_commande=?");
 		req.setInt(3, c.getId());
 		req.setDate(1,c.getDateCommande());
-		req.setInt(2,c.getIdClient());
+		req.setInt(2,c.getIdClient().getIdClient());
 	
 	    nbLignes = req.executeUpdate();
-	
+	    ResultSet res = req.getGeneratedKeys();
+	    int clef;
+		if(res.next()) {
+			clef = res.getInt(1);
+			c.setId(clef);	
+		}
 		
 
 		cnx.close();

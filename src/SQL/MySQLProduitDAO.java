@@ -5,6 +5,7 @@ import java.sql.*;
 import java.util.ArrayList;
 
 import dao.ProduitDAO;
+import Metier.CMClient;
 import Metier.CMProduit;
 
 
@@ -25,12 +26,6 @@ public CMProduit getById(int id_produit) throws SQLException {
 		
 		while (res.next()) {
 			produit= new CMProduit(id_produit, res.getString(2), res.getString(3), res.getFloat(4), res.getString(5), res.getInt(6));
-			System.out.println("id: "+produit.getIdProduit());
-			System.out.println("nom:"+produit.getNom());
-			System.out.println("description: "+produit.getDescription());
-			System.out.println("tarif: "+produit.getTarif());
-			System.out.println("visuel: "+produit.getVisuel());
-			System.out.println("id_categorie:"+produit.getIdCategorie());
 		}
 		
 		
@@ -127,8 +122,25 @@ public CMProduit getById(int id_produit) throws SQLException {
 
 	@Override
 	public ArrayList<CMProduit> findAll() throws Exception {
-		// TODO Auto-generated method stub
-		return null;
+ArrayList<CMProduit> produ = new ArrayList<CMProduit>();
+		
+		
+		Connection MaConnection = Connexion.creeConnexion();
+		PreparedStatement req = MaConnection.prepareStatement("select * from Produit ");
+		
+		
+		
+		ResultSet res = req.executeQuery();
+		
+		while (res.next()) {
+			produ.add(new CMProduit(res.getInt("id_produit"), res.getString("nom"), res.getString("description"),res.getFloat("tarif"),res.getString("visuel"),res.getInt("id_categorie")));
+			
+		}
+		
+
+		req.close();
+		res.close();
+		return produ;
 	}
 	
 

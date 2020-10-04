@@ -3,7 +3,7 @@ package Application;
 import java.util.Scanner;
 import dao.DAOFactory;
 import dao.DAOFactory.Persistance;
-
+import Metier.CMCommande;
 
  
 public class Main {
@@ -45,8 +45,8 @@ public class Main {
 		}
 //ligne de commande
 		else if (partie==5) {
-			MainLignedecommande.main();;
-			
+			CMCommande commande = null;
+			MainLignedecommande.main(commande);
 		}
 		
 		else {
