@@ -5,6 +5,7 @@ import java.time.format.DateTimeFormatter;
 import java.util.HashMap;
 import java.util.Scanner;
 
+import Metier.CMClient;
 import Metier.CMCommande;
 import Metier.CMProduit;
 import dao.DAOFactory;
@@ -55,7 +56,8 @@ public static void main() {
 			System.out.println ("id_client");
 			int idcl=scanner.nextInt();		
 			try {
-				daos.getCommandeDAO().update(new CMCommande(id,dateDebut,idcl));
+				CMClient idc=daos.getClientDAO().getById(idcl);
+				daos.getCommandeDAO().update(new CMCommande(id,dateDebut,idc));
 			} catch (Exception e) {				
 				e.printStackTrace();
 			}
@@ -129,8 +131,10 @@ public static void main() {
 			    LocalDate dateDebut = LocalDate.parse(date, formatage);
 			System.out.println ("id_client");
 			int idcl=scanner.nextInt();		
+			
 			try {
-				daos.getCommandeDAO().update(new CMCommande(id,dateDebut,idcl));
+				CMClient idc=daos.getClientDAO().getById(idcl);
+				daos.getCommandeDAO().update(new CMCommande(id,dateDebut,idc));
 			} catch (Exception e) {				
 				e.printStackTrace();
 			}

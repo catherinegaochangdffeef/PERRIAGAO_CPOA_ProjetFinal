@@ -68,7 +68,7 @@ public CMCategorie getById(int id_categorie) throws SQLException{
 	public boolean delete(CMCategorie c) {
 		try {
 	    	Connection cnx = Connexion.creeConnexion();
-		PreparedStatement req = cnx.prepareStatement("delete from Categorie where id_produit=?");
+		PreparedStatement req = cnx.prepareStatement("delete from Categorie where id_categorie=?");
 		req.setInt(1,c.getId());
 		
 		

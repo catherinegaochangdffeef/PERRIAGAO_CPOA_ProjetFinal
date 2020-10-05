@@ -58,6 +58,14 @@ public CMCommande(int idCommande,String dateCommande,CMClient idClient,HashMap<C
 		this(-1,dateCommande,idClient,products);
 		
 	}
+	public CMCommande(int idCommande, LocalDate dateCommande, CMClient idClient) {
+		this.setId(idCommande);
+		this.setDate_commande3(dateCommande);
+		this.setIdClient(idClient);
+		
+		// TODO Auto-generated constructor stub
+	}
+
 	public void addProducts(CMProduit product, Integer quantity) {
 		if(products==null) {
 			products=new HashMap<>();

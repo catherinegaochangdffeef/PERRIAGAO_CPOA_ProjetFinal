@@ -1,6 +1,8 @@
 package Application;
 
 import java.util.Scanner;
+
+import Metier.CMCategorie;
 import Metier.CMProduit;
 import dao.DAOFactory;
 import dao.DAOFactory.Persistance;
@@ -32,8 +34,10 @@ public class MainProduit {
 			String visuel=scanner.next();
 			System.out.println ("id catégorie=");
 			int idc=scanner.nextInt();
+			
 			try {
-				daos.getProduitDAO().create(new CMProduit(nom,description,tarif,visuel,idc));
+				CMCategorie idca = daos.getCategorieDAO().getById(idc);
+				daos.getProduitDAO().create(new CMProduit(nom,description,tarif,visuel,idca));
 			} catch (Exception e) {
 				e.printStackTrace();
 			}
@@ -52,9 +56,11 @@ public class MainProduit {
 			System.out.println ("visuel=");
 			String visuel=scanner.next();
 			System.out.println ("id catégorie=");
-			int idc=scanner.nextInt();			
+			int idc=scanner.nextInt();		
+			
 			try {
-				daos.getProduitDAO().update(new CMProduit(id,nom,description,tarif,visuel,idc));
+				CMCategorie idca = daos.getCategorieDAO().getById(idc);
+				daos.getProduitDAO().update(new CMProduit(id,nom,description,tarif,visuel,idca));
 			} catch (Exception e) {				
 				e.printStackTrace();}
 			main();
@@ -78,7 +84,7 @@ public class MainProduit {
 								+" ||| description: "+daos.getProduitDAO().findAll().get(i).getDescription()
 								+" ||| tarif: "+daos.getProduitDAO().findAll().get(i).getTarif()
 								+" ||| visuel: "+daos.getProduitDAO().findAll().get(i).getVisuel()
-								+" ||| categorie: "+daos.getProduitDAO().findAll().get(i).getIdCategorie());
+								+" ||| categorie: "+daos.getProduitDAO().findAll().get(i).getCMCategorie().getId());
 					}
 						} catch (Exception e) {
 						// TODO Auto-generated catch block
@@ -113,8 +119,10 @@ public class MainProduit {
 		String visuel=scanner.next();
 		System.out.println ("id catégorie=");
 		int idc=scanner.nextInt();
+		
 		try {
-			daos.getProduitDAO().create(new CMProduit(nom,description,tarif,visuel,idc));
+			CMCategorie idca = daos.getCategorieDAO().getById(idc);
+			daos.getProduitDAO().create(new CMProduit(nom,description,tarif,visuel,idca));
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
@@ -133,9 +141,12 @@ public class MainProduit {
 		System.out.println ("visuel=");
 		String visuel=scanner.next();
 		System.out.println ("id catégorie=");
-		int idc=scanner.nextInt();			
+		int idc=scanner.nextInt();		
+		
 		try {
-			daos.getProduitDAO().update(new CMProduit(id,nom,description,tarif,visuel,idc));
+			CMCategorie idca = daos.getCategorieDAO().getById(idc);
+		
+			daos.getProduitDAO().update(new CMProduit(id,nom,description,tarif,visuel,idca));
 		} catch (Exception e) {				
 			e.printStackTrace();}
 		main();
@@ -159,7 +170,7 @@ public class MainProduit {
 							+" ||| description: "+daos.getProduitDAO().findAll().get(i).getDescription()
 							+" ||| tarif: "+daos.getProduitDAO().findAll().get(i).getTarif()
 							+" ||| visuel: "+daos.getProduitDAO().findAll().get(i).getVisuel()
-							+" ||| categorie: "+daos.getProduitDAO().findAll().get(i).getIdCategorie());
+							+" ||| categorie: "+daos.getProduitDAO().findAll().get(i).getCMCategorie().getId());
 				}
 					} catch (Exception e) {
 					// TODO Auto-generated catch block

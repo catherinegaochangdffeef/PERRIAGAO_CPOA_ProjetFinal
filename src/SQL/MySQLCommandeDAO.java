@@ -12,7 +12,7 @@ import java.util.Set;
 import dao.CommandeDAO;
 import Metier.CMCommande;
 import Metier.CMProduit;
-
+import Metier.CMClient;
 
 
 public class MySQLCommandeDAO implements CommandeDAO{
@@ -86,7 +86,7 @@ public CMCommande getById(int id_commande) throws SQLException {
 		Connection cnx = Connexion.creeConnexion();
 		
 		PreparedStatement req = cnx.prepareStatement("update Commande set date_commande=? ,"
-				+ "id_client=? where id_commande=?");
+				+ "id_client=? where id_commande=?", java.sql.Statement.RETURN_GENERATED_KEYS);
 		req.setInt(3, c.getId());
 		req.setDate(1,c.getDateCommande());
 		req.setInt(2,c.getIdClient().getIdClient());
@@ -102,7 +102,7 @@ public CMCommande getById(int id_commande) throws SQLException {
 
 		cnx.close();
 		req.close();
-		
+		res.close();
 	return nbLignes==1;
 	}
 //----------------------------------------------------------------------------------------------------------------------------------------------------------------	

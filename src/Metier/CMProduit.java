@@ -3,21 +3,22 @@ package Metier;
 //import dao.DAOFactory;
 
 public class CMProduit {
-	private int idProduit,idCategorie;
+	private int idProduit;
 	private String nom, description, visuel;
 	private float tarif;
+	private CMCategorie idCategorie;
 	
-	public CMProduit(String nom, String description, float tarif, String visuel, int idCategorie ){
+	public CMProduit(String nom, String description, float tarif, String visuel, CMCategorie idCategorie ){
 		this(-1,nom,description,tarif,visuel,idCategorie);
 	}
 	
-	public CMProduit(int idProduit,String nom, String description, float tarif, String visuel, int idCategorie) {
+	public CMProduit(int idProduit,String nom, String description, float tarif, String visuel, CMCategorie idCategorie) {
 		this.setIdProduit(idProduit);
 		this.setNom(nom);
 		this.setDescription(description);
 		this.setTarif(tarif);
 		this.setVisuel(visuel);
-		this.setId_categorie(idCategorie);
+		this.setCMCategorie(idCategorie);
 		}
 	
 	public CMProduit(int idProduit) {
@@ -32,14 +33,22 @@ public class CMProduit {
 		this.idProduit = idProduit;
 	}
 
-	public int getIdCategorie() {
+	
+	public CMCategorie getCMCategorie(){
+		return idCategorie;
+	}
+	public void setCMCategorie(CMCategorie idCategorie) {
+		this.idCategorie=idCategorie;
+	}
+	
+	/*public int getIdCategorie() {
 		return idCategorie;
 	}
 
 	public void setId_categorie(int idCategorie) {
 		this.idCategorie = idCategorie;
 	}
-
+*/
 	public String getNom() {
 		return nom;
 	}
