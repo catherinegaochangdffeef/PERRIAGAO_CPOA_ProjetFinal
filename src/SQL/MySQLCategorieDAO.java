@@ -29,7 +29,6 @@ public CMCategorie getById(int id_categorie) throws SQLException{
 		return categorie;
 		
 	}
-	
 //----------------------------------------------------------------------------------------------------------------------------------------------------------------
 //----------------------------------------------------------------------------------------------------------------------------------------------------------------		
 	public boolean create(CMCategorie c) throws  SQLException{
@@ -83,7 +82,7 @@ public CMCategorie getById(int id_categorie) throws SQLException{
 	requete.setInt(1,c.getId());
 	nbLignes = requete.executeUpdate();
     	} catch(SQLException sqle) {
-    		System.out.println("Pb delete categorie"+sqle.getMessage());
+    		System.out.println("Pb suppression categorie"+sqle.getMessage());
     	}
 
 	return nbLignes==1;
