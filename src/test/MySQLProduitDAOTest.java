@@ -105,7 +105,7 @@ private CMProduit p;
 	public void testUpdate() throws Exception {
 		
 		
-		CMProduit p2= new CMProduit(p.getIdProduit(),"bbb","333zz",(float)2.0,"yyy.png",12);
+		CMProduit p2= new CMProduit(p.getIdProduit(),"bbb","333zz",(float)2.0,"yyy.png",2);
 		DAOFactory.getDAOFactory(Persistance.MYSQL).getProduitDAO().update(p2);
 		CMProduit p3 = DAOFactory.getDAOFactory(Persistance.MYSQL).getProduitDAO().getById(p2.getIdProduit());
 		
@@ -115,23 +115,5 @@ private CMProduit p;
 		assertEquals("yyy.png", p3.getVisuel());
 		assertEquals(2, p3.getIdCategorie());
 	}
-	@Test
-	public void testfindAll() throws Exception{
-		    	
-			CMProduit p2=new CMProduit(p.getIdProduit(),"bbb","333zz",(float)2.0,"yyy.png",12);
-			
-			ListeMemoireProduitDAO lma = (ListeMemoireProduitDAO) DAOFactory.getDAOFactory(Persistance.MYSQL).getProduitDAO();
-			
-			ArrayList<CMProduit> ar = new ArrayList<CMProduit>(lma.findAll());
-			
-			ar.add(p2);
-			
-			lma.create(p2);
-			
-			
-			assertEquals(lma.findAll(), ar);
-			
-			DAOFactory.getDAOFactory(Persistance.MYSQL).getProduitDAO().delete(p);
-			
-		}
+	
 }

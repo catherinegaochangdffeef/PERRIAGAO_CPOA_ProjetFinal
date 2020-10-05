@@ -110,23 +110,5 @@ private CMLignedeCommande l;
 		assertEquals(3, l3.getQuantite());
 		assertEquals(1.0, 1.0 ,l3.getTarifUnitaire());
 	}
-	@Test
-	public void testfindAll() throws Exception{
-		    	
-			CMLignedeCommande c2=new CMLignedeCommande(2,4, 2.0);
-			
-			ListeMemoireLignedeCommandeDAO lma = (ListeMemoireLignedeCommandeDAO) DAOFactory.getDAOFactory(Persistance.MYSQL).getLignedeCommandeDAO();
-			
-			ArrayList<CMLignedeCommande> ar = new ArrayList<CMLignedeCommande>(lma.findAll());
-			
-			ar.add(c2);
-			
-			lma.create(c2);
-			
-			
-			assertEquals(lma.findAll(), ar);
-			
-			DAOFactory.getDAOFactory(Persistance.MYSQL).getLignedeCommandeDAO().delete(l);
-			
-		}
+
 }

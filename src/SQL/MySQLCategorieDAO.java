@@ -3,6 +3,7 @@ import java.sql.*;
 import java.util.ArrayList;
 import dao.CategorieDAO;
 import Metier.CMCategorie;
+
 public class MySQLCategorieDAO implements CategorieDAO {
 	
 public CMCategorie getById(int id_categorie) throws SQLException{
@@ -26,6 +27,7 @@ public CMCategorie getById(int id_categorie) throws SQLException{
 		return categorie;
 
 	}
+
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------------------
 //----------------------------------------------------------------------------------------------------------------------------------------------------------------		
@@ -74,7 +76,7 @@ public CMCategorie getById(int id_categorie) throws SQLException{
 	requete.setInt(1,c.getId());
 	nbLignes = requete.executeUpdate();
     	} catch(SQLException sqle) {
-    		System.out.println("Pb delete categorie"+sqle.getMessage());
+
     		System.out.println("Pb suppression categorie"+sqle.getMessage());
     	}
 
@@ -91,6 +93,7 @@ public CMCategorie getById(int id_categorie) throws SQLException{
 		return instance;
 	}
 //----------------------------------------------------------------------------------------------------------------------------------------------------------------	
+
 	@Override
 	public ArrayList<CMCategorie> findAll() throws Exception {
 	ArrayList<CMCategorie> cate = new ArrayList<CMCategorie>();

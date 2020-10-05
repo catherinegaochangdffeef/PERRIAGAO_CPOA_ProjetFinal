@@ -18,7 +18,9 @@ import org.junit.jupiter.api.Test;
 
 import ListMemoire.ListeMemoireCategorieDAO;
 import Metier.CMCategorie;
+import Metier.CMProduit;
 import SQL.MySQLCategorieDAO;
+import SQL.MySQLProduitDAO;
 import dao.DAOFactory;
 import dao.DAOFactory.Persistance;
 
@@ -80,20 +82,16 @@ private CMCategorie c;
 	public void testDelete() throws Exception {
 	    
 
-	    CMCategorie c2 =new CMCategorie(1,"aa", "aaa.png");
+	    CMCategorie c2 =new CMCategorie(10,"bb","bbb.png");
 	    MySQLCategorieDAO.getInstance().create(c2);
 		
-		int idd = c2.getId();
-		assertTrue(MySQLCategorieDAO.getInstance().delete(c2));
-		
-		CMCategorie cl = DAOFactory.getDAOFactory(Persistance.MYSQL).getCategorieDAO().getById(idd);
-		assertNull(cl);
-		
-		assertFalse(MySQLCategorieDAO.getInstance().delete(cl));
-	
-		
-	
-		
+	 		int idd =c2.getId();
+	 		assertTrue(MySQLCategorieDAO.getInstance().delete(c2));
+	 		
+	 		CMCategorie pr = DAOFactory.getDAOFactory(Persistance.MYSQL).getCategorieDAO().getById(idd);
+	 		assertNull(pr);
+	 		
+	 		assertFalse(MySQLCategorieDAO.getInstance().delete(pr));
 		
 	}
 	
@@ -106,25 +104,7 @@ private CMCategorie c;
 		CMCategorie c3 = DAOFactory.getDAOFactory(Persistance.MYSQL).getCategorieDAO().getById(c2.getId());
 		
 		assertEquals("bb", c3.getTitre());
-		assertEquals("bbb", c3.getVisuel());
+		assertEquals("bbb.png", c3.getVisuel());
 	}
-	@Test
-	public void testfindAll() throws Exception{
-		    	
-			CMCategorie c2=new CMCategorie(1,"aa", "aaa");
-			
-			ListeMemoireCategorieDAO lma = (ListeMemoireCategorieDAO) DAOFactory.getDAOFactory(Persistance.MYSQL).getCategorieDAO();
-			
-			ArrayList<CMCategorie> ar = new ArrayList<CMCategorie>(lma.findAll());
-			
-			ar.add(c2);
-			
-			lma.create(c2);
-			
-			
-			assertEquals(lma.findAll(), ar);
-			
-			DAOFactory.getDAOFactory(Persistance.MYSQL).getCategorieDAO().delete(c);
-			
-		}
+
 }

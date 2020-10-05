@@ -16,7 +16,6 @@ import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-import ListMemoire.ListeMemoireCommandeDAO;
 import Metier.CMCommande;
 import SQL.MySQLCommandeDAO;
 import dao.DAOFactory;
@@ -27,7 +26,7 @@ private CMCommande c;
     
     @BeforeEach
     public void Setup() throws InvalidPropertiesFormatException, SQLException, IOException {
-	c=new CMCommande(1, "01-01-2020",1);
+	c=new CMCommande(1, "01-01-2020" ,1);
 	MySQLCommandeDAO.getInstance().create(c);
     }
     
@@ -109,23 +108,5 @@ private CMCommande c;
 		assertEquals(1, c3.getIdClient());
 		assertEquals("01-01-2020", c3.getDateCommande() );
 	}
-	@Test
-	public void testfindAll() throws Exception{
-		    	
-			CMCommande c2=new CMCommande(2,"02-02-2020", 2);
-			
-			ListeMemoireCommandeDAO lma = (ListeMemoireCommandeDAO) DAOFactory.getDAOFactory(Persistance.MYSQL).getCommandeDAO();
-			
-			ArrayList<CMCommande> ar = new ArrayList<CMCommande>(lma.findAll());
-			
-			ar.add(c2);
-			
-			lma.create(c2);
-			
-			
-			assertEquals(lma.findAll(), ar);
-			
-			DAOFactory.getDAOFactory(Persistance.MYSQL).getCommandeDAO().delete(c);
-			
-		}
+
 }
