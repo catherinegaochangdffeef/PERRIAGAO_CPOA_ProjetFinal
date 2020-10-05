@@ -18,7 +18,7 @@ public static void main() {
 		
 		System.out.println("Commande");
 		System.out.println("Choisir une méthode");
-		System.out.println("1.Ajouter 2:Modifier 3:Supprimer 4: Chercher");
+		System.out.println("1.Ajouter 2:Modifier 3:Supprimer 4: Afficher");
 		int p=scanner.nextInt();
 		if(p==1) {
 			System.out.println("Ajouter");
@@ -70,13 +70,12 @@ public static void main() {
 			
 	}
 		else if(p==4){
-			System.out.println("Chercher");
-			System.out.println("id_commande=");
-			int id=scanner.nextInt();	
 			try {
-				daos.getCommandeDAO().getById(id);	;
+				for(int i=0;i<daos.getCommandeDAO().findAll().size();i++){
+					System.out.println("id: "+daos.getCommandeDAO().findAll().get(i).getId()+" ||| date: "+daos.getCommandeDAO().findAll().get(i).getDateCommande().toString()+" ||| client: "+daos.getCommandeDAO().findAll().get(i).getIdClient2());
+				}
 			} catch (Exception e) {
-				System.out.println("ce commande n'exist pas!");
+				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
 			main();

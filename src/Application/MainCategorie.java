@@ -13,7 +13,7 @@ public class MainCategorie {
 	
 	System.out.println("Catégorie");
 	System.out.println("Choisir une méthode");
-	System.out.println("1.Ajouter 2:Modifier 3:Supprimer 4: Chercher");
+	System.out.println("1.Ajouter 2:Modifier 3:Supprimer 4: Afficher");
 	
 	int p=scanner.nextInt();
 	if(p==1) {
@@ -57,13 +57,11 @@ public class MainCategorie {
 		
 }
 	else if(p==4){
-		System.out.println("Chercher");
-		System.out.println("id_categorie=");
-		int id=scanner.nextInt();	
 		try {
-			daos.getCategorieDAO().getById(id);	;
+			for(int i=0;i<daos.getCategorieDAO().findAll().size();i++){
+				System.out.println("titre: "+daos.getCategorieDAO().findAll().get(i).getTitre()+" ||| image: "+daos.getCategorieDAO().findAll().get(i).getVisuel());
+			}
 		} catch (Exception e) {
-			System.out.println("cette catégorie n'existe pas!");
 			e.printStackTrace();
 		}
 		main();		

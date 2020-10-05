@@ -1,11 +1,8 @@
 package SQL;
-
 import java.sql.*;
 import java.util.ArrayList;
-
 import dao.CategorieDAO;
 import Metier.CMCategorie;
-
 public class MySQLCategorieDAO implements CategorieDAO {
 	
 public CMCategorie getById(int id_categorie) throws SQLException{
@@ -27,8 +24,9 @@ public CMCategorie getById(int id_categorie) throws SQLException{
 		res.close();
 		
 		return categorie;
-		
+
 	}
+
 //----------------------------------------------------------------------------------------------------------------------------------------------------------------
 //----------------------------------------------------------------------------------------------------------------------------------------------------------------		
 	public boolean create(CMCategorie c) throws  SQLException{
@@ -39,7 +37,6 @@ public CMCategorie getById(int id_categorie) throws SQLException{
 				req.setString(2, c.getVisuel());
 				int nbLignes = req.executeUpdate();
 				ResultSet res = req.getGeneratedKeys();
-
 				int clef;
 				if(res.next()) {
 					clef = res.getInt(1);
@@ -61,14 +58,9 @@ public CMCategorie getById(int id_categorie) throws SQLException{
         req.setInt(3, c.getId());
         req.setString(1,c.getTitre());
         req.setString(2,c.getVisuel());
-
         nbLignes = req.executeUpdate();
-
-
-
         cnx.close();
         req.close();
-
     return nbLignes==1;
     }
 //----------------------------------------------------------------------------------------------------------------------------------------------------------------	
@@ -82,6 +74,7 @@ public CMCategorie getById(int id_categorie) throws SQLException{
 	requete.setInt(1,c.getId());
 	nbLignes = requete.executeUpdate();
     	} catch(SQLException sqle) {
+    		System.out.println("Pb delete categorie"+sqle.getMessage());
     		System.out.println("Pb suppression categorie"+sqle.getMessage());
     	}
 
@@ -91,7 +84,6 @@ public CMCategorie getById(int id_categorie) throws SQLException{
 //----------------------------------------------------------------------------------------------------------------------------------------------------------------		
 	private static MySQLCategorieDAO instance;
 	private MySQLCategorieDAO() {}
-
 	public static MySQLCategorieDAO getInstance() {
 		if (instance==null) {
 			instance = new MySQLCategorieDAO();
@@ -99,7 +91,6 @@ public CMCategorie getById(int id_categorie) throws SQLException{
 		return instance;
 	}
 //----------------------------------------------------------------------------------------------------------------------------------------------------------------	
-
 	@Override
 	public ArrayList<CMCategorie> findAll() throws Exception {
 	ArrayList<CMCategorie> cate = new ArrayList<CMCategorie>();
@@ -120,5 +111,4 @@ public CMCategorie getById(int id_categorie) throws SQLException{
 		res.close();
 		return cate;
 	}
-
 }

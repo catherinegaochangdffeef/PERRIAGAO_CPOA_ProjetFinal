@@ -32,9 +32,7 @@ public CMCommande getById(int id_commande) throws SQLException {
 			commande= new CMCommande(id_commande, res.getDate(2), res.getInt(3));
 			Date d=commande.getDateCommande();
 			 int idclient=res.getInt("id_client");
-			    System.out.println("id_commande:"+commande.getId());
-				System.out.println("date_commande:"+d);
-				System.out.println("id_client"+idclient);
+			commande=new CMCommande(id_commande,d,idclient);
 		}
 		cnx.close();
 		req.close();
@@ -151,7 +149,7 @@ public CMCommande getById(int id_commande) throws SQLException {
 		ResultSet res = req.executeQuery();
 		
 		while (res.next()) {
-			c.add(new CMCommande(res.getInt(1), res.getDate(2), res.getInt(3)));
+			c.add(new CMCommande(res.getInt("id_commande"), res.getDate("date_commande"), res.getInt("id_client")));
 			
 		}
 		
