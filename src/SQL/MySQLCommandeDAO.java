@@ -48,7 +48,7 @@ public CMCommande getById(int id_commande) throws SQLException {
 		Connection cnx = Connexion.creeConnexion();
 			PreparedStatement req = cnx.prepareStatement("INSERT INTO Commande (date_commande,id_client) values (?,?)", java.sql.Statement.RETURN_GENERATED_KEYS);
 				req.setDate(1, c.getDateCommande());
-				req.setInt(2, c.getIdClient().getIdClient());
+				req.setInt(2, c.getIdClient2());
 			
 				
 				int nbLignes = req.executeUpdate();
@@ -89,7 +89,7 @@ public CMCommande getById(int id_commande) throws SQLException {
 				+ "id_client=? where id_commande=?");
 		req.setInt(3, c.getId());
 		req.setDate(1,c.getDateCommande());
-		req.setInt(2,c.getIdClient().getIdClient());
+		req.setInt(2,c.getIdClient2());
 	
 	    nbLignes = req.executeUpdate();
 	    ResultSet res = req.getGeneratedKeys();

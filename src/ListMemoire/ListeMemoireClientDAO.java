@@ -21,8 +21,8 @@ public class ListeMemoireClientDAO implements ClientDAO{
 	private ListeMemoireClientDAO() {
 		this.donnees=new ArrayList<CMClient>();
 		
-		this.donnees.add(new CMClient(1,"GAO","Chang","gao9","2",2334,"57",57000,"Metz","France"));
-		this.donnees.add(new CMClient(2,"AlEX","Nicola","nicola0","4",4444,"57",57510,"Lyon","France"));
+		this.donnees.add(new CMClient(1,"GAO","Chang"));
+		this.donnees.add(new CMClient(2,"AlEX","Nicola"));
 	}
 	
 	@Override
@@ -67,7 +67,7 @@ public class ListeMemoireClientDAO implements ClientDAO{
 	public CMClient getById(int id) throws Exception {
 	
 			
-		int idx = this.donnees.indexOf(new CMClient(id,"GAO","Chang","gao9","2",2334,"57",57000,"Metz","France"));
+		int idx = this.donnees.indexOf(new CMClient(id,"GAO","Chang"));
 				if (idx == -1) {
 					throw new IllegalArgumentException("Aucune categorie ne possède de cet identifiant");
 				} else {

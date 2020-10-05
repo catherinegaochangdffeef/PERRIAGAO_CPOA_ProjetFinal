@@ -21,7 +21,11 @@ public CMCommande(LocalDate dateCommande,int idClient) {
 }
 */
 	
-	
+	public CMCommande(int idCommande,String dateCommande,int idclient) {
+		this.setId(idCommande);
+		this.setDate_commande2(dateCommande);
+		this.setIdClient2(idclient);	
+	}
 	
 public CMCommande(int idCommande,Date dateCommande,int idclient) {
 	this.setId(idCommande);

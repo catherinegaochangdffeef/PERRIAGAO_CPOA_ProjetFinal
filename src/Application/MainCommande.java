@@ -72,7 +72,7 @@ public static void main() {
 		else if(p==4){
 			try {
 				for(int i=0;i<daos.getCommandeDAO().findAll().size();i++){
-					System.out.println("id: "+daos.getCommandeDAO().findAll().get(i).getId()+" ||| date: "+daos.getCommandeDAO().findAll().get(i).getDateCommande().toString()+" ||| client: "+daos.getCommandeDAO().findAll().get(i).getIdClient2());
+					System.out.println("id: "+daos.getCommandeDAO().findAll().get(i).getId()+" ||| date: "+daos.getCommandeDAO().findAll().get(i).getDateCommande().toString()+" ||| client: "+daos.getCommandeDAO().findAll().get(i).getIdClient());
 				}
 			} catch (Exception e) {
 				// TODO Auto-generated catch block

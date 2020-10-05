@@ -24,7 +24,7 @@ public class LMClientTest {
     
     @Before
     public void Setup() {
-	c=new CMClient(1,"aa", "aaa", "222xx","xxx",1,"3",57000," Metz","France ");
+	c=new CMClient(1,"aa", "aaa");
 	ListeMemoireClientDAO.getInstance().create(c);
     }
     
@@ -53,14 +53,7 @@ public class LMClientTest {
 		//assertEquals(c.getId(),1);
 		assertEquals(c.getNom(),"aa");
 		assertEquals(c.getPrenom(),"aaa");
-		assertEquals(c.getIdentifiant(),"222xx");
-		assertEquals(c.getMotDePasse(),"xxx");
-		assertEquals(c.getAdrNumero(),1);
-		assertEquals(c.getAdrVoie(),"3");
-		assertEquals(c.getAdrCodePostal(),57000);
-		assertEquals(c.getAdrVille(),"Metz");
-		assertEquals(c.getAdrPays(),"France");
-		
+
 	}
 //--------------------------------------------------------------------------------------------------------------------------------------------------   	
 	@Test
@@ -91,25 +84,19 @@ public class LMClientTest {
 	public void testUpdate() throws Exception {
 
 		
-		CMClient c2= new CMClient(c.getIdClient(),"bb","bbb","333zz","yyy",2, "5",58111,"zteM","ecnarF");
+		CMClient c2= new CMClient(c.getIdClient(),"bb","bbb");
 		DAOFactory.getDAOFactory(Persistance.ListMemoire).getClientDAO().update(c2);
 		CMClient c3 = DAOFactory.getDAOFactory(Persistance.ListMemoire).getClientDAO().getById(c2.getIdClient());
 		
 		assertEquals("bb", c3.getNom());
 		assertEquals("bbb", c3.getPrenom());
-		assertEquals("333zz", c3.getIdentifiant());
-		assertEquals("yyy", c3.getMotDePasse());
-		assertEquals(2, c3.getAdrNumero());
-		assertEquals("5", c3.getAdrVoie());
-		assertEquals(58111, c3.getAdrCodePostal());
-		assertEquals("zteM", c3.getAdrVille());
-		assertEquals("ecnarF", c3.getAdrPays());
+
 	}
 //--------------------------------------------------------------------------------------------------------------------------------------------------   	
 	@Test
 	public void testfindAll() throws Exception{
 		    	
-			CMClient c2=new CMClient(1,"aa", "aaa", "222xx","xxx",1,"3",57000," Metz","France ");
+			CMClient c2=new CMClient(1,"aa", "aaa");
 			
 			ListeMemoireClientDAO lma = (ListeMemoireClientDAO) DAOFactory.getDAOFactory(Persistance.ListMemoire).getClientDAO();
 			
