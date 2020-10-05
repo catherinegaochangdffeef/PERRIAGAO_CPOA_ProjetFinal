@@ -13,6 +13,7 @@ import org.junit.Test;
 import dao.DAOFactory;
 import dao.DAOFactory.Persistance;
 import ListMemoire.ListeMemoireProduitDAO;
+import Metier.CMCategorie;
 import Metier.CMProduit;
 
 
@@ -21,8 +22,8 @@ public class LMProduitTest {
     
     @Before
     public void Setup() throws Exception {
-    	
-	p =new CMProduit(1, "aaa", "222xx",(float) 1.0,"xxx.png",10);
+    	CMCategorie cat=new CMCategorie(3,"Watch","watch.png");	
+    	p =new CMProduit(1, "aaa", "222xx",(float) 1.0,"xxx.png",cat);
 	ListeMemoireProduitDAO.getInstance().create(p);
     }
 //--------------------------------------------------------------------------------------------------------------------------------------------------       
@@ -39,7 +40,8 @@ public class LMProduitTest {
 	public void testGetbyId() throws Exception {
 		
 	    try {
-		DAOFactory.getDAOFactory(Persistance.ListMemoire).getProduitDAO().getById(p.getIdProduit());} catch(Exception e) {
+		DAOFactory.getDAOFactory(Persistance.ListMemoire).getProduitDAO().getById(p.getIdProduit());}
+	    catch(Exception e) {
 		    fail("Erreur lors de la récupération");
 		}
 		
@@ -47,13 +49,13 @@ public class LMProduitTest {
 //--------------------------------------------------------------------------------------------------------------------------------------------------    
 	@Test
 	public void testCreate() throws Exception {
-		
+		CMCategorie cat=new CMCategorie(3,"Watch","watch.png");
 		//assertEquals(c.getId(),1);
 		assertEquals(p.getNom(),"aaa");
 		assertEquals(p.getDescription(),"222xx");
 		assertEquals(p.getTarif(),1.0,1.0); //utilisation d'un delta car float
 		assertEquals(p.getVisuel(),"xxx.png");
-		assertEquals(p.getIdCategorie(),10);
+		assertEquals(p.getCMCategorie().getId(),cat);
 
 	}
 //--------------------------------------------------------------------------------------------------------------------------------------------------    
@@ -81,8 +83,8 @@ public class LMProduitTest {
 //--------------------------------------------------------------------------------------------------------------------------------------------------    
 	@Test
 	public void testUpdate() throws Exception {
-		
-		CMProduit p2= new CMProduit(p.getIdProduit(),"bbb","333zz",(float)2.0,"yyy.png",12);
+		CMCategorie cat=new CMCategorie(3,"Watch","watch.png");
+		CMProduit p2= new CMProduit(p.getIdProduit(),"bbb","333zz",(float)2.0,"yyy.png",cat);
 		DAOFactory.getDAOFactory(Persistance.ListMemoire).getProduitDAO().update(p2);
 		CMProduit p3 = DAOFactory.getDAOFactory(Persistance.ListMemoire).getProduitDAO().getById(p2.getIdProduit());
 		
@@ -90,13 +92,13 @@ public class LMProduitTest {
 		assertEquals("333zz", p3.getDescription());
 		assertEquals((float)1,0, p3.getTarif());
 		assertEquals("yyy.png", p3.getVisuel());
-		assertEquals(2, p3.getIdCategorie());
+		assertEquals(2, p3.getCMCategorie().getId());
 	}
 //--------------------------------------------------------------------------------------------------------------------------------------------------    
 	@Test
 	public void testfindAll() throws Exception{
-		
-			CMProduit c2=new CMProduit(1, "aaa", "222xx",(float) 1.0,"xxx.png",10);
+		CMCategorie cat=new CMCategorie(3,"Watch","watch.png");
+		CMProduit c2=new CMProduit(1, "aaa", "222xx",(float) 1.0,"xxx.png",cat);
 			ListeMemoireProduitDAO lma = (ListeMemoireProduitDAO) DAOFactory.getDAOFactory(Persistance.ListMemoire).getProduitDAO();
 			ArrayList<CMProduit> ar = new ArrayList<CMProduit>(lma.findAll());
 			ar.add(c2);

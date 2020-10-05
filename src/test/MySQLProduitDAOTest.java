@@ -15,6 +15,7 @@ import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
+import Metier.CMCategorie;
 import Metier.CMProduit;
 import SQL.MySQLProduitDAO;
 import dao.DAOFactory;
@@ -25,7 +26,8 @@ private CMProduit p;
     
     @BeforeEach
     public void Setup() throws InvalidPropertiesFormatException, SQLException, IOException {
-	p=new CMProduit(1, "aaa", "222xx",(float) 1.0,"xxx.png",10);
+    	CMCategorie cat=new CMCategorie(3,"Watch","watch.png");
+    	p=new CMProduit(1, "aaa", "222xx",(float) 1.0,"xxx.png",cat);
 	MySQLProduitDAO.getInstance().create(p);
     }
     
@@ -59,7 +61,8 @@ private CMProduit p;
 	}
 	@Test
 	public void testCreate() throws Exception {
-	    CMProduit c2 = new CMProduit(1, "aaa", "222xx",(float) 1.0,"xxx.png",10);
+		CMCategorie cat=new CMCategorie(3,"Watch","watch.png");
+		 CMProduit c2 = new CMProduit(1, "aaa", "222xx",(float) 1.0,"xxx.png",cat);
 		try {
 		    
 		MySQLProduitDAO.getInstance().create(c2);
@@ -72,7 +75,7 @@ private CMProduit p;
 		assertEquals(p.getDescription(),"222xx");
 		assertEquals(p.getTarif(),1.0,1.0); //utilisation d'un delta car float
 		assertEquals(p.getVisuel(),"xxx.png");
-		assertEquals(p.getIdCategorie(),10);
+		assertEquals(p.getCMCategorie().getId(),3);
 
 		
 		MySQLProduitDAO.getInstance().delete(c2);
@@ -81,8 +84,8 @@ private CMProduit p;
 	@Test
 	public void testDelete() throws Exception {
 	    
-
-	    CMProduit p2 =new CMProduit(1, "aaa", "222xx",(float) 1.0,"xxx.png",10);
+		CMCategorie cat=new CMCategorie(3,"Watch","watch.png");
+		  CMProduit p2 =new CMProduit(1, "aaa", "222xx",(float) 1.0,"xxx.png",cat);
 	    MySQLProduitDAO.getInstance().create(p2);
 		
 		int idd =p2.getIdProduit();
@@ -102,8 +105,8 @@ private CMProduit p;
 	@Test
 	public void testUpdate() throws Exception {
 		
-		
-		CMProduit p2= new CMProduit(p.getIdProduit(),"bbb","333zz",(float)2.0,"yyy.png",2);
+		CMCategorie cat=new CMCategorie(3,"Watch","watch.png");
+		CMProduit p2= new CMProduit(p.getIdProduit(),"bbb","333zz",(float)2.0,"yyy.png",cat);
 		DAOFactory.getDAOFactory(Persistance.MYSQL).getProduitDAO().update(p2);
 		CMProduit p3 = DAOFactory.getDAOFactory(Persistance.MYSQL).getProduitDAO().getById(p2.getIdProduit());
 		
@@ -111,7 +114,7 @@ private CMProduit p;
 		assertEquals("333zz", p3.getDescription());
 		assertEquals((float)1,0, p3.getTarif());
 		assertEquals("yyy.png", p3.getVisuel());
-		assertEquals(2, p3.getIdCategorie());
+		assertEquals(3, p3.getCMCategorie().getId());
 	}
 	
 }

@@ -9,17 +9,22 @@ import static org.junit.Assert.fail;
 
 import java.io.IOException;
 import java.sql.SQLException;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.InvalidPropertiesFormatException;
 
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
+import Metier.CMClient;
 import Metier.CMCommande;
 import SQL.MySQLCommandeDAO;
 import dao.DAOFactory;
 import dao.DAOFactory.Persistance;
+
 
 public class MySQLCommandeDAOTest {
 private CMCommande c;
@@ -60,7 +65,8 @@ private CMCommande c;
 	}
 	@Test
 	public void testCreate() throws Exception {
-	    CMCommande c2 = new CMCommande(1, "01-01-2020",1);
+		CMClient client=new CMClient(0,"JOURNET","Maxime");
+		CMCommande c2=new CMCommande(0,"2020-01-01",client,new HashMap<>());
 		try {
 		    
 		MySQLCommandeDAO.getInstance().create(c2);
@@ -69,9 +75,9 @@ private CMCommande c;
 		    fail("Erreur lors de l'insertion");
 		}
 		
-		assertEquals(c.getId(),1);
-		assertEquals(c.getIdClient(),1);
-		assertEquals(c.getDateCommande(),"01-01-2020");
+		assertEquals(c.getId(),0);
+		assertEquals(c.getIdClient().getIdClient(),0);
+		assertEquals(c.getDateCommande(),"2020-01-01");
 		
 		MySQLCommandeDAO.getInstance().delete(c2);
 		
