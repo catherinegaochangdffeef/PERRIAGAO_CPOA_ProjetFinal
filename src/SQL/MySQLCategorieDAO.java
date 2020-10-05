@@ -1,11 +1,8 @@
 package SQL;
-
 import java.sql.*;
 import java.util.ArrayList;
-
 import dao.CategorieDAO;
 import Metier.CMCategorie;
-
 public class MySQLCategorieDAO implements CategorieDAO {
 	
 public CMCategorie getById(int id_categorie) throws SQLException{
@@ -21,17 +18,15 @@ public CMCategorie getById(int id_categorie) throws SQLException{
 		
 		while (res.next()) {
 			categorie= new CMCategorie(id_categorie, res.getString(2), res.getString(3));
-			  System.out.println("id:"+categorie.getId());
-				System.out.println("titre:"+categorie.getTitre());
-				System.out.println("Visuel"+categorie.getVisuel());
+			
 		}
 		req.close();
 		res.close();
 		
 		return categorie;
-		
+
 	}
-	
+
 //----------------------------------------------------------------------------------------------------------------------------------------------------------------
 //----------------------------------------------------------------------------------------------------------------------------------------------------------------		
 	public boolean create(CMCategorie c) throws  SQLException{
@@ -42,7 +37,6 @@ public CMCategorie getById(int id_categorie) throws SQLException{
 				req.setString(2, c.getVisuel());
 				int nbLignes = req.executeUpdate();
 				ResultSet res = req.getGeneratedKeys();
-
 				int clef;
 				if(res.next()) {
 					clef = res.getInt(1);
@@ -64,14 +58,9 @@ public CMCategorie getById(int id_categorie) throws SQLException{
         req.setInt(3, c.getId());
         req.setString(1,c.getTitre());
         req.setString(2,c.getVisuel());
-
         nbLignes = req.executeUpdate();
-
-
-
         cnx.close();
         req.close();
-
     return nbLignes==1;
     }
 //----------------------------------------------------------------------------------------------------------------------------------------------------------------	
@@ -86,6 +75,7 @@ public CMCategorie getById(int id_categorie) throws SQLException{
 	nbLignes = requete.executeUpdate();
     	} catch(SQLException sqle) {
     		System.out.println("Pb delete categorie"+sqle.getMessage());
+    		System.out.println("Pb suppression categorie"+sqle.getMessage());
     	}
 
 	return nbLignes==1;
@@ -94,7 +84,6 @@ public CMCategorie getById(int id_categorie) throws SQLException{
 //----------------------------------------------------------------------------------------------------------------------------------------------------------------		
 	private static MySQLCategorieDAO instance;
 	private MySQLCategorieDAO() {}
-
 	public static MySQLCategorieDAO getInstance() {
 		if (instance==null) {
 			instance = new MySQLCategorieDAO();
@@ -102,10 +91,9 @@ public CMCategorie getById(int id_categorie) throws SQLException{
 		return instance;
 	}
 //----------------------------------------------------------------------------------------------------------------------------------------------------------------	
-
-
+	@Override
 	public ArrayList<CMCategorie> findAll() throws Exception {
-	ArrayList<CMCategorie> cl = new ArrayList<CMCategorie>();
+	ArrayList<CMCategorie> cate = new ArrayList<CMCategorie>();
 		
 		
 		Connection MaConnection = Connexion.creeConnexion();
@@ -116,14 +104,11 @@ public CMCategorie getById(int id_categorie) throws SQLException{
 		ResultSet res = req.executeQuery();
 		
 		while (res.next()) {
-			cl.add(new CMCategorie(res.getInt(1), res.getString(2), res.getString(3)));
+			cate.add(new CMCategorie(res.getInt("id_categorie"), res.getString("titre"), res.getString("visuel")));
 			
 		}
-		
-
 		req.close();
 		res.close();
-		return cl;
+		return cate;
 	}
-
 }

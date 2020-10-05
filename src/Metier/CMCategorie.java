@@ -36,10 +36,10 @@ public CMCategorie(int id) {
 	}
 	public void setTitre(String titre)
 	{   
-		if(titre==null|| titre.trim().length()==0)
+		/*if(titre==null|| titre.trim().length()==0)
 		{
 			throw new IllegalArgumentException("Titre de la catégorie!");
-		}
+		}*/
 		this.titre=titre;
 	}
 //-------------------------------------------------
