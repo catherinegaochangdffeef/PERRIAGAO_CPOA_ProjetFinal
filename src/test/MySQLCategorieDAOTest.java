@@ -9,18 +9,14 @@ import static org.junit.Assert.fail;
 
 import java.io.IOException;
 import java.sql.SQLException;
-import java.util.ArrayList;
 import java.util.InvalidPropertiesFormatException;
 
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-import ListMemoire.ListeMemoireCategorieDAO;
 import Metier.CMCategorie;
-import Metier.CMProduit;
 import SQL.MySQLCategorieDAO;
-import SQL.MySQLProduitDAO;
 import dao.DAOFactory;
 import dao.DAOFactory.Persistance;
 
@@ -82,11 +78,11 @@ private CMCategorie c;
 	public void testDelete() throws Exception {
 	    
 
-	    CMCategorie c2 =new CMCategorie(10,"bb","bbb.png");
-	    MySQLCategorieDAO.getInstance().create(c2);
+	    CMCategorie c3 =new CMCategorie(10,"bb","bbb.png");
+	    MySQLCategorieDAO.getInstance().create(c3);
 		
-	 		int idd =c2.getId();
-	 		assertTrue(MySQLCategorieDAO.getInstance().delete(c2));
+	 		int idd =c3.getId();
+	 		assertTrue(MySQLCategorieDAO.getInstance().delete(c3));
 	 		
 	 		CMCategorie pr = DAOFactory.getDAOFactory(Persistance.MYSQL).getCategorieDAO().getById(idd);
 	 		assertNull(pr);

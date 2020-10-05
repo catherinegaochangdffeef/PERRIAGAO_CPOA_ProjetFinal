@@ -82,7 +82,7 @@ public class LMCategorieTest {
 		DAOFactory.getDAOFactory(Persistance.ListMemoire).getCategorieDAO().update(c2);
 		CMCategorie c3 = DAOFactory.getDAOFactory(Persistance.ListMemoire).getCategorieDAO().getById(c2.getId());
 		assertEquals("bb", c3.getTitre());
-		assertEquals("bbb", c3.getVisuel());
+		assertEquals("bbb.png", c3.getVisuel());
 	
 	}
 //--------------------------------------------------------------------------------------------------------------------------------------------------   

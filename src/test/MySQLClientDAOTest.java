@@ -9,19 +9,16 @@ import static org.junit.Assert.fail;
 
 import java.io.IOException;
 import java.sql.SQLException;
-import java.util.ArrayList;
 import java.util.InvalidPropertiesFormatException;
 
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-import ListMemoire.ListeMemoireClientDAO;
 import Metier.CMClient;
 import SQL.MySQLClientDAO;
 import dao.DAOFactory;
 import dao.DAOFactory.Persistance;
-
 
 public class MySQLClientDAOTest {
 private CMClient c;

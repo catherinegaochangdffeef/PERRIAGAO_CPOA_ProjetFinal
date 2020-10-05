@@ -20,6 +20,7 @@ public CMCategorie getById(int id_categorie) throws SQLException{
 			categorie= new CMCategorie(id_categorie, res.getString(2), res.getString(3));
 			
 		}
+		cnx.close();
 		req.close();
 		res.close();
 		
@@ -65,20 +66,23 @@ public CMCategorie getById(int id_categorie) throws SQLException{
     }
 //----------------------------------------------------------------------------------------------------------------------------------------------------------------	
 	public boolean delete(CMCategorie c) {
-		int nbLignes=0;
-    	try {
-    	Connexion.getInstance();
-		Connection laConnexion = Connexion.creeConnexion();
-	PreparedStatement requete = laConnexion.prepareStatement("delete from Categorie where id_categorie=?");
-	
-	requete.setInt(1,c.getId());
-	nbLignes = requete.executeUpdate();
-    	} catch(SQLException sqle) {
-    		System.out.println("Pb delete categorie"+sqle.getMessage());
-    		System.out.println("Pb suppression categorie"+sqle.getMessage());
-    	}
+		try {
+	    	Connection cnx = Connexion.creeConnexion();
+		PreparedStatement req = cnx.prepareStatement("delete from Categorie where id_produit=?");
+		req.setInt(1,c.getId());
+		
+		
+		
+		int nbLignes = req.executeUpdate();
+		
 
-	return nbLignes==1;
+		cnx.close();
+		req.close();
+		
+		return nbLignes==1;
+	    	}catch(Exception e) {
+	    	    return false;
+	    	}
   
 }
 //----------------------------------------------------------------------------------------------------------------------------------------------------------------		

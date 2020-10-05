@@ -20,14 +20,14 @@ public CMCategorie(int id) {
 	this.setId(id);
 	}
 
-	//-------------------------------------------------	
+//-------------------------------------------------	
 	public int getId() 
 	{
 		return this.idCategorie;
 	}
-	public void setId(int id_categorie)
+	public void setId(int idCategorie)
 	{
-		this.idCategorie=id_categorie;
+		this.idCategorie=idCategorie;
 	}
 //------------------------------------------------	
 	public String getTitre()
