@@ -1,24 +1,16 @@
 package Application;
 
 import java.util.Scanner;
-import dao.DAOFactory;
-import dao.DAOFactory.Persistance;
 import Metier.CMCommande;
 
  
 public class Main {
 	public static void main(String[] args) {
 
-		Scanner scanner=new Scanner(System.in);
-		System.out.println("Passer de MySQL à ListeMemoire?  1:yes 2:no");
-		int option=scanner.nextInt();
-		if(option==1) {
-			DAOFactory daos =DAOFactory.getDAOFactory(Persistance.ListMemoire);
-		}
-		else if(option==2) {
-			DAOFactory daos =DAOFactory.getDAOFactory(Persistance.MYSQL);	
-		System.out.println("choisir une partie");
+		System.out.println("Choisir une partie");
+		System.out.println("");
 		System.out.println("1:Catégorie 2: Produit 3: Client 4: Commande 5: Ligne de commande");
+		Scanner scanner=new Scanner(System.in);
 		int partie = scanner.nextInt();
 		
 // categorie
@@ -53,7 +45,7 @@ public class Main {
 			main(args);
 		}
 		
-}}}
+}}
 		
 
 	
