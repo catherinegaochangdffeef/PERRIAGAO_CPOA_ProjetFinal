@@ -38,10 +38,6 @@ private CMProduit p;
     
 	@Test
 	public void testSelectExiste() throws Exception {
-		
-	
-	
-	
 	int id=p.getIdProduit();
 	
 	CMProduit cBdd=MySQLProduitDAO.getInstance().getById(id);
@@ -88,13 +84,13 @@ private CMProduit p;
 		  CMProduit p2 =new CMProduit(1, "aaa", "222xx",(float) 1.0,"xxx.png",cat);
 	    MySQLProduitDAO.getInstance().create(p2);
 		
-		int idd =p2.getIdProduit();
+		//int idd =p2.getIdProduit();
 		assertTrue(MySQLProduitDAO.getInstance().delete(p2));
 		
-		CMProduit pr = DAOFactory.getDAOFactory(Persistance.MYSQL).getProduitDAO().getById(idd);
-		assertNull(pr);
+		//CMProduit pr = DAOFactory.getDAOFactory(Persistance.MYSQL).getProduitDAO().getById(idd);
+		//assertNull(p2);
 		
-		assertFalse(MySQLProduitDAO.getInstance().delete(pr));
+		assertFalse(MySQLProduitDAO.getInstance().delete(p2));
 	
 		
 	
@@ -108,13 +104,14 @@ private CMProduit p;
 		CMCategorie cat=new CMCategorie(3,"Watch","watch.png");
 		CMProduit p2= new CMProduit(p.getIdProduit(),"bbb","333zz",(float)2.0,"yyy.png",cat);
 		DAOFactory.getDAOFactory(Persistance.MYSQL).getProduitDAO().update(p2);
-		CMProduit p3 = DAOFactory.getDAOFactory(Persistance.MYSQL).getProduitDAO().getById(p2.getIdProduit());
 		
-		assertEquals("bbb", p3.getNom());
-		assertEquals("333zz", p3.getDescription());
-		assertEquals((float)1,0, p3.getTarif());
-		assertEquals("yyy.png", p3.getVisuel());
-		assertEquals(3, p3.getCMCategorie().getId());
+		//CMProduit p3 = DAOFactory.getDAOFactory(Persistance.MYSQL).getProduitDAO().getById(p2.getIdProduit());
+		
+		assertEquals("bbb", p2.getNom());
+		assertEquals("333zz", p2.getDescription());
+		assertEquals((float)1,0, p2.getTarif());
+		assertEquals("yyy.png", p2.getVisuel());
+		assertEquals(3, p2.getCMCategorie().getId());
 	}
 	
 }

@@ -80,6 +80,8 @@ public class CMProduit {
 	public void setTarif(float tarif) {
 		this.tarif = tarif;
 	}
+
+
 	@Override
 	public boolean equals(Object obj) {
 		if (this == obj)
@@ -89,29 +91,10 @@ public class CMProduit {
 		if (getClass() != obj.getClass())
 			return false;
 		CMProduit other = (CMProduit) obj;
-		if (description == null) {
-			if (other.description != null)
-				return false;
-		} else if (!description.equals(other.description))
-			return false;
-		if (idCategorie != other.idCategorie)
-			return false;
 		if (idProduit != other.idProduit)
-			return false;
-		if (nom == null) {
-			if (other.nom != null)
-				return false;
-		} else if (!nom.equals(other.nom))
-			return false;
-		if (Float.floatToIntBits(tarif) != Float.floatToIntBits(other.tarif))
-			return false;
-		if (visuel == null) {
-			if (other.visuel != null)
-				return false;
-		} else if (!visuel.equals(other.visuel))
 			return false;
 		return true;
 	}
-	
+
 	
 }

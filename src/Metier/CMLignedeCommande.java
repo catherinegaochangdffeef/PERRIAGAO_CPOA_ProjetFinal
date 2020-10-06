@@ -14,11 +14,7 @@ public class CMLignedeCommande {
 		this.setIdCommande(id);
 		this.setIdProduit(idp);
 		}
- 
 	
-	public CMLignedeCommande(int idProduit, int quantite, double tarifUnitaire) {
-		this(-1,idProduit,quantite,tarifUnitaire);
-	}
 	public CMLignedeCommande(int idCommande,int idProduit, int quantite, double tarifUnitaire) {
 		this.setIdCommande(idCommande);
 		this.setIdProduit(idProduit);
@@ -50,6 +46,7 @@ public class CMLignedeCommande {
 		this.tarifUnitaire = tarifUnitaire;
 	}
 	
+	
 	@Override
 	public boolean equals(Object obj) {
 		if (this == obj)
@@ -62,10 +59,6 @@ public class CMLignedeCommande {
 		if (idCommande != other.idCommande)
 			return false;
 		if (idProduit != other.idProduit)
-			return false;
-		if (quantite != other.quantite)
-			return false;
-		if (Double.doubleToLongBits(tarifUnitaire) != Double.doubleToLongBits(other.tarifUnitaire))
 			return false;
 		return true;
 	}

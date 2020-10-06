@@ -38,7 +38,7 @@ public CMCategorie(int id) {
 	{   
 		/*if(titre==null|| titre.trim().length()==0)
 		{
-			throw new IllegalArgumentException("Titre de la catégorie!");
+			throw new IllegalArgumentException("Titre de la catï¿½gorie!");
 		}*/
 		this.titre=titre;
 	}
@@ -53,12 +53,20 @@ public CMCategorie(int id) {
 	}
 //--------------------------------------------------
 	
-	public boolean equals(Object objet) {
-	    if(objet == null) return false;
-	    if(this == objet) return true;
-	    if(getClass() != objet.getClass()) return false;
-	    CMCategorie cat = (CMCategorie) objet;
-	    return this.getId() == cat.getId();}
+	
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		CMCategorie other = (CMCategorie) obj;
+		if (idCategorie != other.idCategorie)
+			return false;
+		return true;
+	}
 	
 	
 	

@@ -26,8 +26,7 @@ public class ListeMemoireProduitDAO implements ProduitDAO {
 		CMCategorie cat=new CMCategorie(1,"Ipad","ipad.png");
 		CMCategorie cat2=new CMCategorie(2,"Ipad2","ipad2.png");
 		this.donnees = new ArrayList<CMProduit>();
-
-		this.donnees.add(new CMProduit(1, "Café", "café sans sucre",3,"eif.png",cat));
+		this.donnees.add(new CMProduit(1, "Cafï¿½", "cafï¿½ sans sucre",3,"eif.png",cat));
 		this.donnees.add(new CMProduit(2, "Stylo", "stylo noire",5,"stylo.png",cat2));
 	}
 	
@@ -73,9 +72,9 @@ boolean ok = this.donnees.add(objet);
 	@Override
 	public CMProduit getById(int id) throws Exception {
 		CMCategorie cat=new CMCategorie(1,"Ipad","ipad.png");
-		int idx = this.donnees.indexOf(new CMProduit(id,"Café", "café sans sucre",3,"eif.png",cat));
+		int idx = this.donnees.indexOf(new CMProduit(id,"Cafï¿½", "cafï¿½ sans sucre",3,"eif.png",cat));
 		if (idx == -1) {
-			throw new IllegalArgumentException("Aucune produit prossède cet identifiant");
+			throw new IllegalArgumentException("Aucune produit prossï¿½de cet identifiant");
 		} else {
 			return this.donnees.get(idx);
 		}

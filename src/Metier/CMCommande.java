@@ -118,6 +118,8 @@ public CMCommande(int idCommande,String dateCommande,CMClient idClient,HashMap<C
 		this.dateCommande = java.sql.Date.valueOf(dateCommande);
 	}
 
+
+
 	@Override
 	public boolean equals(Object obj) {
 		if (this == obj)
@@ -127,13 +129,6 @@ public CMCommande(int idCommande,String dateCommande,CMClient idClient,HashMap<C
 		if (getClass() != obj.getClass())
 			return false;
 		CMCommande other = (CMCommande) obj;
-		if (dateCommande == null) {
-			if (other.dateCommande != null)
-				return false;
-		} else if (!dateCommande.equals(other.dateCommande))
-			return false;
-		if (idClient != other.idClient)
-			return false;
 		if (idCommande != other.idCommande)
 			return false;
 		return true;

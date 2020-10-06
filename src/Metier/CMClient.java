@@ -63,8 +63,6 @@ public int hashCode() {
 	final int prime = 31;
 	int result = 1;
 	result = prime * result + idClient;
-	result = prime * result + ((nom == null) ? 0 : nom.hashCode());
-	result = prime * result + ((prenom == null) ? 0 : prenom.hashCode());
 	return result;
 }
 
@@ -79,16 +77,6 @@ public boolean equals(Object obj) {
 		return false;
 	CMClient other = (CMClient) obj;
 	if (idClient != other.idClient)
-		return false;
-	if (nom == null) {
-		if (other.nom != null)
-			return false;
-	} else if (!nom.equals(other.nom))
-		return false;
-	if (prenom == null) {
-		if (other.prenom != null)
-			return false;
-	} else if (!prenom.equals(other.prenom))
 		return false;
 	return true;
 }
