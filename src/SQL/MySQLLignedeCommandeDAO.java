@@ -7,7 +7,10 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 
 import dao.LignedeCommandeDAO;
+import Metier.CMCategorie;
+import Metier.CMCommande;
 import Metier.CMLignedeCommande;
+import Metier.CMProduit;
 
 public class MySQLLignedeCommandeDAO implements LignedeCommandeDAO{
 
@@ -16,20 +19,17 @@ public CMLignedeCommande getById(int id_commande) throws SQLException {
 		CMLignedeCommande lignedecommande = null;
 		
 		Connection cnx = Connexion.creeConnexion();
-		PreparedStatement req =cnx.prepareStatement("select * from Ligne_commande where id_commande = ?");
+		PreparedStatement req =cnx.prepareStatement("select Commande.id_commande,Produit.id_produit,quantite,Produit.tatif from Ligne_commande,Commande,Produit where id_commande = ? and Commande.id_commande=Ligne_commande.id_commande and Ligne_commande.id_produit=Produit.id_produit");
 		req.setInt(1, id_commande);
-		
 		
 		ResultSet res = req.executeQuery();
 		
 		while (res.next()) {
+		
 			lignedecommande= new CMLignedeCommande(id_commande, res.getInt(2),res.getInt(3), res.getDouble(4));
-			System.out.println("id_commande:"+lignedecommande.getIdCommande());
-			System.out.println("id_produit:"+lignedecommande.getIdProduit());
-			System.out.println("quantite:"+lignedecommande.getQuantite());
-			System.out.println("tarif_unitaire"+lignedecommande.getTarifUnitaire());
 		}
 		
+	
 	
 		cnx.close();
 		req.close();
@@ -45,11 +45,11 @@ public CMLignedeCommande getById(int id_commande) throws SQLException {
 	public boolean create(CMLignedeCommande ldc) throws  SQLException{
 		//
 		Connection cnx = Connexion.creeConnexion();
-			PreparedStatement req = cnx.prepareStatement("INSERT INTO Ligne_commande (id_commande,id_produit,quantite,tarif_unitaire) values (?,?,?,?)");
-			    req.setInt(1, ldc.getIdCommande());
-			    req.setInt(2, ldc.getIdProduit());
+			PreparedStatement req = cnx.prepareStatement("INSERT INTO Ligne_commande (id_commande,id_produit,quantite,tarif_unitaire) values (?,?,?,?)", java.sql.Statement.RETURN_GENERATED_KEYS);
+			    req.setInt(1, ldc.getCMCommande().getId());
+			    req.setInt(2, ldc.getCMProduit().getIdProduit());
 				req.setInt(3, ldc.getQuantite());
-				req.setDouble(4, ldc.getTarifUnitaire());
+				req.setDouble(4, ldc.getCMProduit().getTarif());
 				
 				int nbLignes = req.executeUpdate();
 			
@@ -65,12 +65,12 @@ public CMLignedeCommande getById(int id_commande) throws SQLException {
 	    
 		Connection cnx = Connexion.creeConnexion();
 		
-		PreparedStatement req = cnx.prepareStatement("update Ligne_commande set quantite=?, tarif_unitaire = ? where id_commande=? and id_produit=?");
-		req.setInt(3, ldc.getIdCommande());
-		req.setInt(4, ldc.getIdProduit());
+		PreparedStatement req = cnx.prepareStatement("update Ligne_commande set quantite=?, tarif_unitaire = ? where id_commande=? and id_produit=?", java.sql.Statement.RETURN_GENERATED_KEYS);;
+		req.setInt(3, ldc.getCMCommande().getId());
+		req.setInt(4,ldc.getCMProduit().getIdProduit());
 	
 		req.setInt(1,ldc.getQuantite());
-		req.setDouble(2,ldc.getTarifUnitaire());
+		req.setDouble(2, ldc.getCMProduit().getTarif());
 		
 	
 		int nbLignes = req.executeUpdate();
@@ -88,7 +88,7 @@ public CMLignedeCommande getById(int id_commande) throws SQLException {
     	try {
     	Connexion.getInstance();
 		Connection laConnexion = Connexion.creeConnexion();
-	PreparedStatement requete = laConnexion.prepareStatement("delete from Ligne_commande where id_commande=? id_produit=?");
+	PreparedStatement requete = laConnexion.prepareStatement("delete from Ligne_commande where id_commande=? and id_produit=?");
 	
 	requete.setInt(1,ldc.getIdCommande());
 	requete.setInt(2, ldc.getIdProduit());
@@ -116,15 +116,15 @@ public CMLignedeCommande getById(int id_commande) throws SQLException {
 	public ArrayList<CMLignedeCommande> findAll() throws Exception {
 	ArrayList<CMLignedeCommande> ldc = new ArrayList<CMLignedeCommande>();
 		
-		
 		Connection MaConnection = Connexion.creeConnexion();
-		PreparedStatement req = MaConnection.prepareStatement("select * from LignedeCommande ");
-		
-		
-		
+		//PreparedStatement req = MaConnection.prepareStatement("select * from LignedeCommande, Commande,Produit where Commande.id_commande=LigneCommande.id_commande and LigneCommande.id_produit=Produit.id_produit; ");
+		PreparedStatement req = MaConnection.prepareStatement("select * from Ligne_commande ");
+			
 		ResultSet res = req.executeQuery();
 		
 		while (res.next()) {
+		//	CMCommande cmco= new CMCommande(res.getInt("id_commande"),res.getDate("date_commande"),);
+			//CMProduit cmpr=new CMProduit();
 			ldc.add(new CMLignedeCommande(res.getInt(1), res.getInt(2), res.getInt(3), res.getDouble(4)));
 			
 		}

@@ -5,14 +5,16 @@ package Metier;
 public class CMLignedeCommande {
 	private int idCommande,idProduit, quantite;
 	private double tarifUnitaire;
+	private CMCommande idCommandeCM;
+	private CMProduit idProduitCM;
 	
 	public CMLignedeCommande(int id) {
 		this.setIdCommande(id);
 		}
  
-	public CMLignedeCommande(int id,int idp) {
-		this.setIdCommande(id);
-		this.setIdProduit(idp);
+	public CMLignedeCommande(CMCommande idCommande,CMProduit idProduit) {
+		this.setCMCommande(idCommande);
+		this.setCMProduit(idProduit);
 		}
 	
 	public CMLignedeCommande(int idCommande,int idProduit, int quantite, double tarifUnitaire) {
@@ -21,6 +23,34 @@ public class CMLignedeCommande {
 		this.setQuantite(quantite);
 		this.setTarifUnitaire(tarifUnitaire);
 	}
+	
+	public CMLignedeCommande(CMCommande idCommande, CMProduit idProduit, int quantite) {
+		this.setCMCommande(idCommande);
+		this.setCMProduit(idProduit);
+		this.setQuantite(quantite);
+	}
+	
+	
+	
+	public CMLignedeCommande(int idCommande, int idProduit) {
+		this.setIdCommande(idCommande);
+		this.setIdProduit(idProduit);
+	}
+
+	public CMCommande getCMCommande() {
+		return idCommandeCM;
+	}
+	public void setCMCommande(CMCommande idCommande) {
+		this.idCommandeCM=idCommande;
+	}
+	
+	public CMProduit getCMProduit() {
+		return idProduitCM;
+	}
+	public void setCMProduit(CMProduit idProduit) {
+		this.idProduitCM=idProduit;
+	}
+	
 	public int getIdCommande() {
 		return idCommande;
 	}

@@ -38,7 +38,7 @@ public static void main() {
 				try {
 					co = new CMCommande(dateDebut,daos.getClientDAO().getById(idcl), new HashMap<CMProduit, Integer>());
 			daos.getCommandeDAO().create(co);
-			MainLignedecommande.main(co);
+			//MainLignedecommande.main(co);
 			} catch (Exception e) {
 				System.out.println("ce commande n'existe pas!");
 				e.printStackTrace();
@@ -98,7 +98,7 @@ public static void main() {
 		DAOFactory daos =DAOFactory.getDAOFactory(Persistance.MYSQL);
 		
 		System.out.println("Commande");
-		System.out.println("Choisir une mï¿½thode");
+		System.out.println("Choisir une méthode");
 		System.out.println("1.Ajouter 2:Modifier 3:Supprimer 4: Afficher");
 		int p=scanner.nextInt();
 		if(p==1) {
@@ -113,13 +113,12 @@ public static void main() {
 				CMCommande co;
 				try {
 					co = new CMCommande(dateDebut,daos.getClientDAO().getById(idcl), new HashMap<CMProduit, Integer>());
-			daos.getCommandeDAO().create(co);
-			MainLignedecommande.main(co);
+					daos.getCommandeDAO().create(co);
 			} catch (Exception e) {
 				System.out.println("ce commande n'exist pas!");
 				e.printStackTrace();
 			}
-			
+				main();
 				}
 		else if (p==2) {
 			System.out.println("Modifier");
@@ -155,7 +154,7 @@ public static void main() {
 		else if(p==4){
 			try {
 				for(int i=0;i<daos.getCommandeDAO().findAll().size();i++){
-					System.out.println("id: "+daos.getCommandeDAO().findAll().get(i).getId()+" ||| date: "+daos.getCommandeDAO().findAll().get(i).getDateCommande().toString()+" ||| client: "+daos.getCommandeDAO().findAll().get(i).getIdClient2());
+					System.out.println("id: "+daos.getCommandeDAO().findAll().get(i).getId()+" ||| date: "+daos.getCommandeDAO().findAll().get(i).getDateCommande().toString()+" ||| client: "+daos.getCommandeDAO().findAll().get(i).getIdClient().getIdClient());
 				}
 			} catch (Exception e) {
 				// TODO Auto-generated catch block

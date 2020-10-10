@@ -59,6 +59,7 @@ public CMCommande getById(int id_commande) throws SQLException {
 					clef = res.getInt(1);
 					c.setId(clef);	
 				}
+				/*
 				if(!c.getProducts().isEmpty()) {
 					Set listkeys=c.getProducts().keySet();
 					Iterator iterateur=listkeys.iterator();
@@ -73,6 +74,7 @@ public CMCommande getById(int id_commande) throws SQLException {
 					}
 					
 				}
+				*/
 				
 				cnx.close();
 				req.close();
@@ -142,14 +144,15 @@ public CMCommande getById(int id_commande) throws SQLException {
 		
 		
 		Connection MaConnection = Connexion.creeConnexion();
-		PreparedStatement req = MaConnection.prepareStatement("select * from Commande ");
+		PreparedStatement req = MaConnection.prepareStatement("select * from Commande,Client where Commande.id_client=Client.id_client;");
 		
 		
 		
 		ResultSet res = req.executeQuery();
 		
 		while (res.next()) {
-			c.add(new CMCommande(res.getInt("id_commande"), res.getDate("date_commande"), res.getInt("id_client")));
+			CMClient cl=new CMClient(res.getInt("id_client"),res.getString("nom"),res.getString("prenom"));
+			c.add(new CMCommande(res.getInt("id_commande"), res.getDate("date_commande"), cl));
 			
 		}
 		

@@ -32,6 +32,11 @@ public CMCommande(int idCommande,Date dateCommande,int idclient) {
 	this.setDate_commande1(dateCommande);
 	this.setIdClient2(idclient);	
 }
+public CMCommande(int idCommande,Date dateCommande,CMClient idclient) {
+	this.setId(idCommande);
+	this.setDate_commande1(dateCommande);
+	this.setIdClient(idclient);	
+}
 public CMCommande(int idCommande,LocalDate dateCommande,int idclient) {
 	this.setId(idCommande);
 	this.setDate_commande3(dateCommande);

@@ -37,8 +37,7 @@ public class Main {
 		}
 //ligne de commande
 		else if (partie==5) {
-			CMCommande commande = null;
-			MainLignedecommande.main(commande);
+			MainLignedecommande.main();
 		}
 		
 		else {
