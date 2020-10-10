@@ -22,18 +22,23 @@ public CMCommande getById(int id_commande) throws SQLException {
 		CMCommande commande = null;
 		
 		Connection cnx = Connexion.creeConnexion();
-		PreparedStatement req =cnx.prepareStatement("select id_commande,date_commande,Client.id_client from Commande,Client where id_commande = ? and Commande.id_client=Client.id_client ");
+		PreparedStatement req =cnx.prepareStatement("select * from Commande where id_commande=? ");
 		req.setInt(1, id_commande);
-		
-		
+
 		ResultSet res = req.executeQuery();
-		
+		CMClient cli=null;
+		int idclient=0;
 		while (res.next()) {
-			commande= new CMCommande(id_commande, res.getDate(2), res.getInt(3));
-			Date d=commande.getDateCommande();
-			 int idclient=res.getInt("id_client");
-			commande=new CMCommande(id_commande,d,idclient);
+			commande= new CMCommande(id_commande,commande.getDateCommande(), cli);
+			  idclient=res.getInt("id_client");
 		}
+		PreparedStatement req1=cnx.prepareStatement("select * from Client where id_client="+idclient);
+		ResultSet res1 = req.executeQuery();
+		while (res1.next()) {
+			cli= new CMClient(idclient,res1.getString("Nom"),res1.getString("Prenom"));
+			
+		}
+		commande.setIdClient(cli);
 		cnx.close();
 		req.close();
 		res.close();

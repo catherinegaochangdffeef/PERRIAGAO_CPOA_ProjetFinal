@@ -17,7 +17,11 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import ListMemoire.ListeMemoireLignedeCommandeDAO;
+import Metier.CMCategorie;
+import Metier.CMClient;
+import Metier.CMCommande;
 import Metier.CMLignedeCommande;
+import Metier.CMProduit;
 import SQL.MySQLLignedeCommandeDAO;
 import dao.DAOFactory;
 import dao.DAOFactory.Persistance;
@@ -27,7 +31,11 @@ private CMLignedeCommande l;
     
     @BeforeEach
     public void Setup() throws InvalidPropertiesFormatException, SQLException, IOException {
-	l=new CMLignedeCommande(1,1,5,3.0);
+    	CMCategorie cat=new CMCategorie(3,"Watch","watch.png");
+    	CMProduit p=new CMProduit(1, "aaa", "222xx",(float) 1.0,"xxx.png",cat);
+    	CMClient cli=new CMClient(2,"Jack","Ma");
+    	CMCommande c=new CMCommande(1, "01-01-2020" ,cli);
+    	l=new CMLignedeCommande(c,p,5);
 	MySQLLignedeCommandeDAO.getInstance().create(l);
     }
     
@@ -38,11 +46,7 @@ private CMLignedeCommande l;
     
 	@Test
 	public void testSelectExiste() throws Exception {
-		
-	
-	
-	
-	int id=l.getIdCommande();
+	int id=l.getCMCommande().getId();
 	
 	CMLignedeCommande cBdd=MySQLLignedeCommandeDAO.getInstance().getById(id);
 	assertNotNull(cBdd);
@@ -52,16 +56,21 @@ private CMLignedeCommande l;
 		
 	    
 	    	try {
-		DAOFactory.getDAOFactory(Persistance.MYSQL).getLignedeCommandeDAO().getById(l.getIdCommande());}
+		DAOFactory.getDAOFactory(Persistance.MYSQL).getLignedeCommandeDAO().getById(l.getCMCommande().getId());}
 	    	catch(Exception e) {
 	    	    fail("erreur de getbyid");
 	    	}
 	    	
 	    
 	}
+	@SuppressWarnings("deprecation")
 	@Test
 	public void testCreate() throws Exception {
-	    CMLignedeCommande l2 = new CMLignedeCommande(1,1,5,3.0);
+		CMCategorie cat=new CMCategorie(3,"Watch","watch.png");
+    	CMProduit p=new CMProduit(1, "aaa", "222xx",(float) 1.0,"xxx.png",cat);
+    	CMClient cli=new CMClient(2,"Jack","Ma");
+    	CMCommande c=new CMCommande(1, "01-01-2020" ,cli);
+    	CMLignedeCommande l2=new CMLignedeCommande(c,p,6);
 		try {
 		    
 		MySQLLignedeCommandeDAO.getInstance().create(l2);
@@ -70,27 +79,31 @@ private CMLignedeCommande l;
 		    fail("Erreur lors de l'insertion");
 		}
 		
-		assertEquals(l.getIdProduit(),1);
-		assertEquals(l.getQuantite(),3);
-		assertEquals(l.getTarifUnitaire(), 1.0, 1.0); 
+		assertEquals(l.getCMProduit().getIdProduit(),1);
+		assertEquals(l.getQuantite(),6);
+		assertEquals(l.getCMProduit().getTarif(),1.0); 
 		
 		MySQLLignedeCommandeDAO.getInstance().delete(l2);
 		
 	}
 	@Test
 	public void testDelete() throws Exception {
-	    
-
-	    CMLignedeCommande l2 =new CMLignedeCommande(1,1,5,3.0);
+	   
+		CMCategorie cat=new CMCategorie(3,"Watch","watch.png");
+    	CMProduit p=new CMProduit(1, "aaa", "222xx",(float) 1.0,"xxx.png",cat);
+    	CMClient cli=new CMClient(2,"Jack","Ma");
+    	CMCommande c=new CMCommande(1, "01-01-2020" ,cli);
+    	CMLignedeCommande l2=new CMLignedeCommande(c,p,6);
+    	
 	    MySQLLignedeCommandeDAO.getInstance().create(l2);
 		
-		int idd = l2.getIdCommande();
+		//int idd = l2.getIdCommande();
 		assertTrue(MySQLLignedeCommandeDAO.getInstance().delete(l2));
 		
-		CMLignedeCommande cl = DAOFactory.getDAOFactory(Persistance.MYSQL).getLignedeCommandeDAO().getById(idd);
-		assertNull(cl);
+		//CMLignedeCommande cl = DAOFactory.getDAOFactory(Persistance.MYSQL).getLignedeCommandeDAO().getById(idd);
+		//assertNull(cl);
 		
-		assertFalse(MySQLLignedeCommandeDAO.getInstance().delete(cl));
+		assertFalse(MySQLLignedeCommandeDAO.getInstance().delete(l2));
 	
 		
 	

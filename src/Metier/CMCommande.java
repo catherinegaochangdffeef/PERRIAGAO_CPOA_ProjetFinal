@@ -4,14 +4,10 @@ import java.sql.Date;
 import java.time.LocalDate;
 import java.util.HashMap;
 
-
-
-
-  
-
 public class CMCommande {
 	private int idCommande;
 	private Date dateCommande;
+	private String dateCommande2;
 	private HashMap<CMProduit,Integer> products;
 	private CMClient idClient;	
 	int idClient2;
@@ -25,6 +21,12 @@ public CMCommande(LocalDate dateCommande,int idClient) {
 		this.setId(idCommande);
 		this.setDate_commande2(dateCommande);
 		this.setIdClient2(idclient);	
+	}
+	
+	public CMCommande(int idCommande,String dateCommande,CMClient  idclient) {
+		this.setId(idCommande);
+		this.setDate_commande2(dateCommande);
+		this.setIdClient(idclient);	
 	}
 	
 public CMCommande(int idCommande,Date dateCommande,int idclient) {
@@ -112,7 +114,9 @@ public CMCommande(int idCommande,String dateCommande,CMClient idClient,HashMap<C
 	public Date getDateCommande() {
 		return dateCommande;
 	}
-
+	public String getDateCommande2() {
+		return dateCommande2;
+	}
 	public void setDate_commande1(Date dateCommande) {
 		this.dateCommande = dateCommande;
 	}
