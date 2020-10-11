@@ -16,6 +16,7 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import Metier.CMClient;
+import SQL.MySQLCategorieDAO;
 import SQL.MySQLClientDAO;
 import dao.DAOFactory;
 import dao.DAOFactory.Persistance;
@@ -106,6 +107,8 @@ private CMClient c;
 		
 		assertEquals("bb", c3.getNom());
 		assertEquals("bbb", c3.getPrenom());
+		MySQLClientDAO.getInstance().delete(c2);
+		MySQLClientDAO.getInstance().delete(c3);
 
 	}
 

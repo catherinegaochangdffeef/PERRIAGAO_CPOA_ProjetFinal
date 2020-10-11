@@ -61,7 +61,8 @@ private CMClient client;
 		
 		assertEquals(c.getIdClient().getNom(),"JOURNET");
 		assertEquals(c.getDateCommande().toString(),"2020-01-01");
-		
+		MySQLCommandeDAO.getInstance().delete(c);
+		MySQLClientDAO.getInstance().delete(client);
 	}
 	@Test
 	public void testDelete() throws Exception {
@@ -81,6 +82,8 @@ private CMClient client;
 		
 		assertEquals(c.getIdClient().getNom(),"JOURNET");
 		assertEquals(c.getDateCommande().toString(),"2020-01-01");
+		MySQLCommandeDAO.getInstance().delete(c);
+		MySQLClientDAO.getInstance().delete(client);
 	}
 
 }

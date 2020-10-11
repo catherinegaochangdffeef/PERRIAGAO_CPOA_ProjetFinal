@@ -101,6 +101,8 @@ private CMCategorie c;
 		
 		assertEquals("bb", c3.getTitre());
 		assertEquals("bbb.png", c3.getVisuel());
+		MySQLCategorieDAO.getInstance().delete(c2);
+		MySQLCategorieDAO.getInstance().delete(c3);
 	}
 
 }

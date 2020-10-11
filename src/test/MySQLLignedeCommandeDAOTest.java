@@ -81,8 +81,12 @@ private CMCommande c;
 		
 		assertEquals(l.getQuantite(),6);
 		assertEquals(l.getCMCommande().getIdClient().getNom(),"Jack");
+
 		MySQLLignedeCommandeDAO.getInstance().delete(l);
-		
+		MySQLCommandeDAO.getInstance().delete(c);
+		MySQLProduitDAO.getInstance().delete(p);
+		MySQLCategorieDAO.getInstance().delete(cat);
+		MySQLClientDAO.getInstance().delete(cli);
 	}
 	@Test
 	public void testDelete() throws Exception {
@@ -104,6 +108,12 @@ private CMCommande c;
 	 DAOFactory.getDAOFactory(Persistance.MYSQL).getLignedeCommandeDAO().update(l);
 		assertEquals(l.getQuantite(),5);
 		assertEquals(l.getCMCommande().getIdClient().getNom(),"Jack");
+		
+		MySQLLignedeCommandeDAO.getInstance().delete(l);
+		MySQLCommandeDAO.getInstance().delete(c);
+		MySQLProduitDAO.getInstance().delete(p);
+		MySQLCategorieDAO.getInstance().delete(cat);
+		MySQLClientDAO.getInstance().delete(cli);
 	}
 
 }
