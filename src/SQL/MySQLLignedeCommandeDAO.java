@@ -6,7 +6,9 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
+import dao.DAOFactory;
 import dao.LignedeCommandeDAO;
+import dao.DAOFactory.Persistance;
 import Metier.CMCategorie;
 import Metier.CMCommande;
 import Metier.CMLignedeCommande;
@@ -21,16 +23,16 @@ public CMLignedeCommande getById(int id_commande) throws SQLException {
 		Connection cnx = Connexion.creeConnexion();
 		PreparedStatement req =cnx.prepareStatement("select Commande.id_commande,Produit.id_produit,quantite,Produit.tatif from Ligne_commande,Commande,Produit where id_commande = ? and Commande.id_commande=Ligne_commande.id_commande and Ligne_commande.id_produit=Produit.id_produit");
 		req.setInt(1, id_commande);
+	
 		
 		ResultSet res = req.executeQuery();
-		
+		double d=0;
 		while (res.next()) {
 		
-			lignedecommande= new CMLignedeCommande(id_commande, res.getInt(2),res.getInt(3), res.getDouble(4));
+			lignedecommande= new CMLignedeCommande(id_commande, res.getInt(2),res.getInt(3),d);
+			d=lignedecommande.getCMProduit().getTarif();
+			lignedecommande.setTarifUnitaire(d);
 		}
-		
-	
-	
 		cnx.close();
 		req.close();
 		res.close();
@@ -38,6 +40,35 @@ public CMLignedeCommande getById(int id_commande) throws SQLException {
 		return lignedecommande;
 		
 	}
+public CMLignedeCommande getById2(int id_commande,int id_produit) throws SQLException, IllegalArgumentException {
+	CMCommande cm=null;
+	CMLignedeCommande lignedecommande = null;
+	CMProduit p= null;
+	try {
+	    cm = DAOFactory.getDAOFactory(Persistance.MYSQL).getCommandeDAO().getById(id_commande);
+	    p = DAOFactory.getDAOFactory(Persistance.MYSQL).getProduitDAO().getById(id_produit);
+	} catch (Exception e) {
+	    throw new IllegalArgumentException("Le client ou la revue n'existe pas");
+	}
+	
+	Connection cnx = Connexion.creeConnexion();
+	PreparedStatement req =cnx.prepareStatement("select* from Ligne_commande where id_commande=? and id_produit=?");
+	req.setInt(1, id_commande);
+	req.setInt(2, id_produit);
+	
+	ResultSet res = req.executeQuery();
+	
+	while (res.next()) {
+	
+		lignedecommande= new CMLignedeCommande(cm,p);
+	}
+	cnx.close();
+	req.close();
+	res.close();
+	
+	return lignedecommande;
+	
+}
 	
 //----------------------------------------------------------------------------------------------------------------------------------------------------------------	
 

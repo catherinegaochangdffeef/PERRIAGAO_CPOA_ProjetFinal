@@ -29,13 +29,16 @@ public CMCommande getById(int id_commande) throws SQLException {
 		CMClient cli=null;
 		int idclient=0;
 		while (res.next()) {
-			commande= new CMCommande(id_commande,commande.getDateCommande(), cli);
+			
+			commande= new CMCommande(id_commande,res.getDate(2), cli);
+			Date d=commande.getDateCommande();
+			commande.setDate_commande1(d);;
 			  idclient=res.getInt("id_client");
 		}
 		PreparedStatement req1=cnx.prepareStatement("select * from Client where id_client="+idclient);
-		ResultSet res1 = req.executeQuery();
+		ResultSet res1 = req1.executeQuery();
 		while (res1.next()) {
-			cli= new CMClient(idclient,res1.getString("Nom"),res1.getString("Prenom"));
+			cli= new CMClient(idclient,res1.getString("nom"),res1.getString("prenom"));
 			
 		}
 		commande.setIdClient(cli);
