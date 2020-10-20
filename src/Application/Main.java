@@ -6,7 +6,7 @@ import Metier.CMCommande;
  
 public class Main {
 	public static void main(String[] args) {
-
+/*
 		System.out.println("Choisir une partie");
 		System.out.println("");
 		System.out.println("1:Catégorie 2: Produit 3: Client 4: Commande 5: Ligne de commande");
@@ -44,6 +44,8 @@ public class Main {
 			main(args);
 		}
 		
+*/
+		MainInterface.main(args);
 }}
 		
 
