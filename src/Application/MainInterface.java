@@ -14,10 +14,11 @@ public class MainInterface extends Application {
 	@Override
 	public void start(Stage primaryStage){
 		try {
-			Parent root = FXMLLoader.load(getClass().getResource("Fenetreproduit.fxml"));
+			//Fenetreproduit.fxml
+			Parent root = FXMLLoader.load(getClass().getResource("FenetreAccueil.fxml"));
 			Scene scene = new Scene((VBox) root, 600, 400);		
 			primaryStage.setScene(scene);
-			primaryStage.setTitle("Ma première fenêtre JavaFX");
+			primaryStage.setTitle("Accueil");
 			primaryStage.show();
 		} catch(Exception e) {
 			e.printStackTrace();
