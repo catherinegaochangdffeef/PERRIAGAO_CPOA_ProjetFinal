@@ -15,8 +15,8 @@ public class MainInterface extends Application {
 	public void start(Stage primaryStage){
 		try {
 			//Fenetreproduit.fxml
-			Parent root = FXMLLoader.load(getClass().getResource("Fenetreproduit.fxml"));
-			//Parent root = FXMLLoader.load(getClass().getResource("FenetreAccueil.fxml"));
+			//Parent root = FXMLLoader.load(getClass().getResource("Fenetreproduit.fxml"));
+			Parent root = FXMLLoader.load(getClass().getResource("FenetreAccueil.fxml"));
 			Scene scene = new Scene((VBox) root, 600, 400);		
 			primaryStage.setScene(scene);
 			primaryStage.setTitle("Accueil");
