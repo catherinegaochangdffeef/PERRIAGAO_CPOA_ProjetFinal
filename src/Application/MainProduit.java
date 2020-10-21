@@ -29,7 +29,7 @@ public class MainProduit {
 			System.out.println ("description=");
 			String description=scanner.next();
 			System.out.println ("tarif=");
-			float tarif=scanner.nextFloat();
+			Float tarif=scanner.nextFloat();
 			System.out.println ("visuel=");
 			String visuel=scanner.next();
 			System.out.println ("id catégorie=");
@@ -52,7 +52,7 @@ public class MainProduit {
 			System.out.println ("description=");
 			String description=scanner.next();
 			System.out.println ("tarif=");
-			float tarif=scanner.nextFloat();
+			Float tarif=scanner.nextFloat();
 			System.out.println ("visuel=");
 			String visuel=scanner.next();
 			System.out.println ("id catégorie=");
@@ -114,7 +114,7 @@ public class MainProduit {
 		System.out.println ("description=");
 		String description=scanner.next();
 		System.out.println ("tarif=");
-		float tarif=scanner.nextFloat();
+		Float tarif=scanner.nextFloat();
 		System.out.println ("visuel=");
 		String visuel=scanner.next();
 		System.out.println ("id catégorie=");
@@ -137,7 +137,7 @@ public class MainProduit {
 		System.out.println ("description=");
 		String description=scanner.next();
 		System.out.println ("tarif=");
-		float tarif=scanner.nextFloat();
+		Float tarif=scanner.nextFloat();
 		System.out.println ("visuel=");
 		String visuel=scanner.next();
 		System.out.println ("id catégorie=");
