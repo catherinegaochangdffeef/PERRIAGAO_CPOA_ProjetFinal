@@ -46,6 +46,7 @@ public class Main {
 		
 */
 		MainInterface.main(args);
+		//InterfaceAccueil.main(args);
 }}
 		
 

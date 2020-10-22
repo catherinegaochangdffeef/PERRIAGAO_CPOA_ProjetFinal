@@ -5,26 +5,24 @@
 <?import javafx.scene.control.MenuItem?>
 <?import javafx.scene.layout.VBox?>
 
-
-<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1">
+<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.Accueil">
    <children>
       <MenuBar>
         <menus>
-          <Menu mnemonicParsing="false" text="Voir">
+          <Menu fx:id="MenuVoir" mnemonicParsing="false" text="Voir">
             <items>
-              <MenuItem mnemonicParsing="false" text="produit" />
-                  <MenuItem mnemonicParsing="false" text="client" />
-                  <MenuItem mnemonicParsing="false" text="catégorie" />
-                  <MenuItem mnemonicParsing="false" text="commande" />
+              <MenuItem fx:id="MenuItemProduit" mnemonicParsing="false" onAction="#VerProduit" text="produit" />
+                  <MenuItem fx:id="MeunItemClient" mnemonicParsing="false" onAction="#VerClient" text="client" />
+                  <MenuItem fx:id="MenuItemCategorie" mnemonicParsing="false" onAction="#VerCategorie" text="catégorie" />
+                  <MenuItem fx:id="MenuItemCommande" mnemonicParsing="false" onAction="#VerCommande" text="commande" />
             </items>
           </Menu>
-          <Menu mnemonicParsing="false" text="Persistance">
+          <Menu fx:id="MenuPersistance" mnemonicParsing="false" text="Persistance">
             <items>
-              <MenuItem mnemonicParsing="false" text="SQL" />
-                  <MenuItem mnemonicParsing="false" text="ListeMemoire" />
+              <MenuItem fx:id="MenuItemSQL" mnemonicParsing="false" onAction="#PasserASql" text="SQL" />
+                  <MenuItem fx:id="MenuItemListeMemoire" mnemonicParsing="false" onAction="#PasserAListeMemoire" text="ListeMemoire" />
             </items>
           </Menu>
-          <Menu mnemonicParsing="false" text="Quitter" />
         </menus>
       </MenuBar>
    </children>
