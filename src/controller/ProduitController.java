@@ -1,4 +1,4 @@
-package Application;
+package controller;
 import java.net.URL;
 import java.util.ResourceBundle;
 
@@ -12,7 +12,7 @@ import javafx.scene.control.Label;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 
-public class Produit implements Initializable{
+public class ProduitController implements Initializable{
 
 	@FXML
 	private TextField textfieldNom;

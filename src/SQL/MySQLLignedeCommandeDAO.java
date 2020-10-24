@@ -21,7 +21,7 @@ public CMLignedeCommande getById(int id_commande) throws SQLException {
 		CMLignedeCommande lignedecommande = null;
 		
 		Connection cnx = Connexion.creeConnexion();
-		PreparedStatement req =cnx.prepareStatement("select Commande.id_commande,Produit.id_produit,quantite,Produit.tatif from Ligne_commande,Commande,Produit where id_commande = ? and Commande.id_commande=Ligne_commande.id_commande and Ligne_commande.id_produit=Produit.id_produit");
+		PreparedStatement req =cnx.prepareStatement("select Commande.id_commande,ProduitController.id_produit,quantite,ProduitController.tatif from Ligne_commande,Commande,ProduitController where id_commande = ? and Commande.id_commande=Ligne_commande.id_commande and Ligne_commande.id_produit=ProduitController.id_produit");
 		req.setInt(1, id_commande);
 	
 		
@@ -148,7 +148,7 @@ public CMLignedeCommande getById2(int id_commande,int id_produit) throws SQLExce
 	ArrayList<CMLignedeCommande> ldc = new ArrayList<CMLignedeCommande>();
 		
 		Connection MaConnection = Connexion.creeConnexion();
-		//PreparedStatement req = MaConnection.prepareStatement("select * from LignedeCommande, Commande,Produit where Commande.id_commande=LigneCommande.id_commande and LigneCommande.id_produit=Produit.id_produit; ");
+		//PreparedStatement req = MaConnection.prepareStatement("select * from LignedeCommande, Commande,ProduitController where Commande.id_commande=LigneCommande.id_commande and LigneCommande.id_produit=ProduitController.id_produit; ");
 		PreparedStatement req = MaConnection.prepareStatement("select * from Ligne_commande ");
 			
 		ResultSet res = req.executeQuery();

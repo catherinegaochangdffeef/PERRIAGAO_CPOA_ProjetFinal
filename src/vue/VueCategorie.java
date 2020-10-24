@@ -1,24 +1,21 @@
-package Application;
+package vue;
 
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
-import javafx.stage.Stage;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-
 import javafx.scene.layout.VBox;
+import javafx.stage.Stage;
 
-
-public class MainInterface extends Application {
+public class VueCategorie extends Application{
 
 	@Override
 	public void start(Stage primaryStage){
 		try {
-			Parent root = FXMLLoader.load(getClass().getResource("Fenetreproduit.fxml"));
-			//Parent root = FXMLLoader.load(getClass().getResource("FenetreAccueil.fxml"));
-			Scene scene = new Scene((VBox) root, 600, 400);		
+			Parent root = FXMLLoader.load(getClass().getResource("/fxml/FenetreCategorie.fxml"));
+			Scene scene = new Scene((VBox) root, 600, 600);		
 			primaryStage.setScene(scene);
-			primaryStage.setTitle("Accueil");
+			primaryStage.setTitle("Catégorie");
 			primaryStage.show();
 		} catch(Exception e) {
 			e.printStackTrace();
@@ -28,6 +25,4 @@ public class MainInterface extends Application {
 	public static void main(String[] args) {
 		launch(args);
 	}
-	
-	
 }

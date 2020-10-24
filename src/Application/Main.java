@@ -2,6 +2,7 @@ package Application;
 
 import java.util.Scanner;
 import Metier.CMCommande;
+import vue.VueAccueil;
 
  
 public class Main {
@@ -9,7 +10,7 @@ public class Main {
 /*
 		System.out.println("Choisir une partie");
 		System.out.println("");
-		System.out.println("1:Catégorie 2: Produit 3: Client 4: Commande 5: Ligne de commande");
+		System.out.println("1:Catégorie 2: ProduitController 3: Client 4: Commande 5: Ligne de commande");
 		Scanner scanner=new Scanner(System.in);
 		int partie = scanner.nextInt();
 		
@@ -19,7 +20,7 @@ public class Main {
 		}
 		
 		
-// Produit
+// ProduitController
 		else if(partie==2) {
 			MainProduit.main();
 		}
@@ -45,8 +46,8 @@ public class Main {
 		}
 		
 */
-		MainInterface.main(args);
-		//InterfaceAccueil.main(args);
+		VueAccueil.main(args);
+		//VueAccueil.main(args);
 }}
 		
 

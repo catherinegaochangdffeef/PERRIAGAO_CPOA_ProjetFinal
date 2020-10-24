@@ -18,7 +18,7 @@ public class MainProduit {
 			DAOFactory daos =DAOFactory.getDAOFactory(Persistance.ListMemoire);
 		
 
-		System.out.println("Produit");
+		System.out.println("ProduitController");
 		System.out.println("Choisir une méthode");
 		System.out.println("1.Ajouter 2:Modifier 3:Supprimer 4: Afficher");
 		int p=scanner.nextInt();
@@ -103,7 +103,7 @@ public class MainProduit {
 		else if(option==2) {
 	DAOFactory daos =DAOFactory.getDAOFactory(Persistance.MYSQL);
 
-	System.out.println("Produit");
+	System.out.println("ProduitController");
 	System.out.println("Choisir une méthode");
 	System.out.println("1.Ajouter 2:Modifier 3:Supprimer 4: Afficher");
 	int p=scanner.nextInt();

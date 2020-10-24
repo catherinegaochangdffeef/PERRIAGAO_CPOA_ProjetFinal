@@ -1,10 +1,10 @@
-package Application;
-
+package controller;
+import controller.ProduitController;
+import controller.AccueilController;
 
 import java.net.URL;
 import java.util.ResourceBundle;
 import java.util.List;
-
 
 import dao.DAOFactory;
 import javafx.fxml.FXML;
@@ -13,9 +13,17 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.Menu;
 import javafx.scene.control.MenuItem;
 import javafx.scene.layout.VBox;
+import javafx.stage.Stage;
+import vue.VueAccueil;
+import vue.VueProduit;
+import vue.VueCommande;
+import vue.VueCategorie;
+import vue.VueClient;
 import javafx.scene.Node;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 
-public class Accueil implements Initializable  {
+public class AccueilController implements Initializable  {
 
 	@FXML
 	private Menu Menuvoir;
@@ -36,8 +44,9 @@ public class Accueil implements Initializable  {
 	
 	
 	
-	
+	//Stage stage=new Stage();
 	 DAOFactory.Persistance Peri ;
+	
 	
 
 	@Override
@@ -48,27 +57,28 @@ public class Accueil implements Initializable  {
 	public void PasserASql() {
 		Peri =DAOFactory.Persistance.MYSQL;
 	}
-	public void asserAListeMemoire() {
+	public void PasserAListeMemoire() {
 		Peri= DAOFactory.Persistance.ListMemoire;
 	}
 	
 	
 	// changer à l'interface de commande
 	public void VerCommande() {
-		
+		new VueCommande().start(new Stage());
 	}
 	// changer à l'interface du produit
-	public void VerProduit() {
-		  FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("TAbonnement.fxml"));
-		   
+	public void VerProduit() throws Exception {
+		new VueProduit().start(new Stage());
+	
 	}
+	
 	// changer à l'interface du client
 	public void VerClient() {
-		
+		new VueClient().start(new Stage());
 	}
 	// Changer à l'interdace du catégorie
 	public void VerCategorie() {
-		
+		new VueCategorie().start(new Stage());
 	}
 	
 	
