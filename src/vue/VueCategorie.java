@@ -13,7 +13,7 @@ public class VueCategorie extends Application{
 	public void start(Stage primaryStage){
 		try {
 			Parent root = FXMLLoader.load(getClass().getResource("/fxml/FenetreCategorie.fxml"));
-			Scene scene = new Scene((VBox) root, 600, 600);		
+			Scene scene = new Scene((VBox) root, 600,400);		
 			primaryStage.setScene(scene);
 			primaryStage.setTitle("Catégorie");
 			primaryStage.show();

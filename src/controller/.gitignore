@@ -2,3 +2,6 @@
 /Produit.class
 /AccueilController.class
 /ProduitController.class
+/CategorieController.class
+/ClientController.class
+/CommandeController.class

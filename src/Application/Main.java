@@ -7,6 +7,27 @@ import vue.VueAccueil;
  
 public class Main {
 	public static void main(String[] args) {
+		
+		
+		VueAccueil.main(args);
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
 /*
 		System.out.println("Choisir une partie");
 		System.out.println("");
@@ -46,9 +67,11 @@ public class Main {
 		}
 		
 */
-		VueAccueil.main(args);
-		//VueAccueil.main(args);
-}}
+	
+		
+}
+	
+}
 		
 
 	
