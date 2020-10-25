@@ -2,11 +2,14 @@ package controller;
 import controller.ProduitController;
 import controller.AccueilController;
 
+import java.awt.Toolkit;
+import java.awt.event.WindowEvent;
 import java.net.URL;
 import java.util.ResourceBundle;
 import java.util.List;
 
 import dao.DAOFactory;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
@@ -41,7 +44,8 @@ public class AccueilController implements Initializable  {
 	private MenuItem MenuItemSQL;
 	@FXML
 	private MenuItem MenuItemListeMemoire;
-	
+	@FXML
+	private VBox VboxMenu;
 	
 	
 	//Stage stage=new Stage();
@@ -67,11 +71,10 @@ public class AccueilController implements Initializable  {
 		new VueCommande().start(new Stage());
 	}
 	// changer à l'interface du produit
-	public void VerProduit() throws Exception {
+	public void VerProduit(ActionEvent event) throws Exception {
 		new VueProduit().start(new Stage());
-	
 	}
-	
+
 	// changer à l'interface du client
 	public void VerClient() {
 		new VueClient().start(new Stage());

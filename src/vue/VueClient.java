@@ -14,7 +14,7 @@ public class VueClient  extends Application{
 		try {
 			Parent root = FXMLLoader.load(getClass().getResource("/fxml/FenetreClient.fxml"));
 			
-			Scene scene = new Scene((VBox) root, 600,400);		
+			Scene scene = new Scene((VBox) root,825,753);		
 			primaryStage.setScene(scene);
 			primaryStage.setTitle("Client");
 			primaryStage.show();

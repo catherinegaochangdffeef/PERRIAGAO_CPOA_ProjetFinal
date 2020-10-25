@@ -19,6 +19,7 @@ public class VueAccueil extends Application {
 			primaryStage.setScene(scene);
 			primaryStage.setTitle("AccueilController");
 			primaryStage.show();
+			
 		} catch(Exception e) {
 			e.printStackTrace();
 		}
