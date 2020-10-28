@@ -12,19 +12,7 @@ public class Main {
 		VueAccueil.main(args);
 		
 		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
+	
 		
 		
 		

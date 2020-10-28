@@ -13,7 +13,7 @@ public class VueCommande extends Application{
 		try {
 			Parent root = FXMLLoader.load(getClass().getResource("/fxml/FenetreCommande.fxml"));
 			
-			Scene scene = new Scene((VBox) root, 600, 600);		
+			Scene scene = new Scene((VBox) root, 700, 529);		
 			primaryStage.setScene(scene);
 			primaryStage.setTitle("Commande");
 			primaryStage.show();
