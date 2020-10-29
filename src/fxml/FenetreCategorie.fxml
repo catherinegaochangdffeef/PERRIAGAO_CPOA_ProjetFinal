@@ -29,18 +29,18 @@
          <children>
             <Label alignment="CENTER_RIGHT" contentDisplay="RIGHT" prefHeight="18.0" prefWidth="306.0" text="Titre" textAlignment="CENTER" />
             <Label alignment="CENTER_RIGHT" prefHeight="18.0" prefWidth="146.0" text="Visuel" textAlignment="JUSTIFY" GridPane.rowIndex="1" />
-            <TextField fx:id="titre" GridPane.columnIndex="1" />
-            <TextField fx:id="visuel" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+            <TextField fx:id="textFieldTitre" GridPane.columnIndex="1" />
+            <TextField fx:id="textFieldVisuel" GridPane.columnIndex="1" GridPane.rowIndex="1" />
          </children>
       </GridPane>
       <FlowPane orientation="VERTICAL" prefHeight="87.0" prefWidth="826.0">
          <children>
-            <Button fx:id="buttonCreer" alignment="TOP_CENTER" contentDisplay="TOP" graphicTextGap="8.0" mnemonicParsing="false" prefHeight="22.0" prefWidth="200.0" text="Creer" textAlignment="CENTER">
+            <Button fx:id="buttonCreer" alignment="TOP_CENTER" contentDisplay="TOP" graphicTextGap="8.0" mnemonicParsing="false" onAction="#creerCategorie" prefHeight="22.0" prefWidth="200.0" text="Creer" textAlignment="CENTER">
                <FlowPane.margin>
                   <Insets left="200.0" top="20.0" />
                </FlowPane.margin>
             </Button>
-            <Label prefHeight="18.0" prefWidth="276.0">
+            <Label fx:id="labelAffichage" alignment="CENTER" prefHeight="18.0" prefWidth="276.0">
                <FlowPane.margin>
                   <Insets left="150.0" top="5.0" />
                </FlowPane.margin>
@@ -57,7 +57,6 @@
             </TableView>
             <Button fx:id="buttonModifier" layoutX="472.0" layoutY="32.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="91.0" text="Modifier" />
             <Button fx:id="buttonSupprimer" layoutX="472.0" layoutY="93.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="91.0" text="Supprimer" />
-            <Button fx:id="buttonRetourMenu" layoutX="472.0" layoutY="143.0" mnemonicParsing="false" text="Retour menu" />
          </children>
       </Pane>
    </children>

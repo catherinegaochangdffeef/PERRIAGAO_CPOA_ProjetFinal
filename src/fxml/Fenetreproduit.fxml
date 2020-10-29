@@ -15,9 +15,9 @@
 <?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.layout.VBox?>
 
-<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.ProduitController">
+<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="553.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.ProduitController">
    <children>
-      <GridPane>
+      <GridPane prefHeight="244.0" prefWidth="600.0">
         <columnConstraints>
             <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
             <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
@@ -28,36 +28,43 @@
           <RowConstraints maxHeight="196.80001525878907" minHeight="10.0" prefHeight="62.39999771118164" vgrow="SOMETIMES" />
           <RowConstraints maxHeight="184.8" minHeight="0.0" prefHeight="63.60000610351563" vgrow="SOMETIMES" />
           <RowConstraints maxHeight="197.59998168945313" minHeight="10.0" prefHeight="58.399993896484375" vgrow="SOMETIMES" />
-            <RowConstraints maxHeight="197.59998168945313" minHeight="10.0" prefHeight="92.80000610351564" vgrow="SOMETIMES" />
+            <RowConstraints maxHeight="197.59998168945313" minHeight="10.0" prefHeight="26.19999999999999" vgrow="SOMETIMES" />
+            <RowConstraints maxHeight="197.59998168945313" minHeight="10.0" prefHeight="115.0" vgrow="SOMETIMES" />
         </rowConstraints>
          <children>
             <Label fx:id="nom" alignment="CENTER_RIGHT" contentDisplay="RIGHT" prefHeight="26.0" prefWidth="138.0" text="Nom:" textAlignment="JUSTIFY" />
             <Label fx:id="description" alignment="CENTER_RIGHT" prefHeight="18.0" prefWidth="138.0" text="Description:" GridPane.rowIndex="1" />
             <Label fx:id="tarif" alignment="CENTER_RIGHT" prefHeight="18.0" prefWidth="139.0" text="Tarif:" GridPane.rowIndex="2" />
-            <Label fx:id="categorie" alignment="CENTER_RIGHT" prefHeight="18.0" prefWidth="140.0" text="Categorie:" GridPane.rowIndex="3" />
-            <TextField fx:id="textfieldNom" GridPane.columnIndex="1" />
-            <TextField fx:id="textfieldTarif" prefHeight="26.0" prefWidth="62.0" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+            <Label fx:id="categorie" alignment="CENTER_RIGHT" prefHeight="18.0" prefWidth="140.0" text="Categorie:" GridPane.rowIndex="4" />
+            <TextField fx:id="textFieldNom" GridPane.columnIndex="1" />
+            <TextField fx:id="textFieldTarif" prefHeight="26.0" prefWidth="62.0" GridPane.columnIndex="1" GridPane.rowIndex="2" />
             <Label alignment="CENTER" graphicTextGap="0.0" prefHeight="18.0" prefWidth="214.0" text="euros a l'unite" GridPane.columnIndex="2" GridPane.rowIndex="2" />
             <TextArea fx:id="textAreaDescription" prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="1" />
-            <ChoiceBox fx:id="choiceboxCategorie" prefWidth="150.0" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+            <ChoiceBox fx:id="choiceBoxCategorie" prefWidth="150.0" GridPane.columnIndex="1" GridPane.rowIndex="4" />
+            <Label alignment="CENTER_RIGHT" prefHeight="18.0" prefWidth="134.0" text="Visuel:" GridPane.rowIndex="3" />
+            <TextField fx:id="textFieldVisuel" GridPane.columnIndex="1" GridPane.rowIndex="3" />
          </children>
       </GridPane>
-      <FlowPane alignment="CENTER" columnHalignment="CENTER" orientation="VERTICAL" prefHeight="62.0" prefWidth="600.0" rowValignment="BOTTOM">
+      <FlowPane alignment="CENTER" columnHalignment="CENTER" orientation="VERTICAL" prefHeight="55.0" prefWidth="600.0" rowValignment="BOTTOM">
          <children>
-            <Button fx:id="botton" alignment="TOP_CENTER" contentDisplay="TOP" layoutX="10.0" layoutY="50.0" mnemonicParsing="false" onMouseClicked="#creerModele" prefHeight="28.0" prefWidth="78.0" text="Creer" textAlignment="CENTER">
+            <Button fx:id="buttonCreer" alignment="TOP_CENTER" contentDisplay="TOP" layoutX="10.0" layoutY="50.0" mnemonicParsing="false" onAction="#creerProduit" prefHeight="28.0" prefWidth="78.0" text="Creer" textAlignment="CENTER">
                <FlowPane.margin>
                   <Insets />
                </FlowPane.margin>
             </Button>
-            <Label fx:id="LabelAffichage" prefHeight="18.0" prefWidth="305.0" />
+            <Label fx:id="labelAffichage" prefHeight="18.0" prefWidth="305.0" />
          </children>
       </FlowPane>
-      <Pane prefHeight="200.0" prefWidth="200.0">
+      <Pane prefHeight="254.0" prefWidth="600.0">
          <children>
-            <TableView layoutX="19.0" prefHeight="200.0" prefWidth="477.0">
+            <TableView fx:id="tableViewProduit" layoutX="22.0" layoutY="38.0" prefHeight="200.0" prefWidth="442.0">
               <columns>
-                <TableColumn prefWidth="75.0" text="C1" />
-                <TableColumn prefWidth="75.0" text="C2" />
+                <TableColumn fx:id="tableColumnIdProduit" prefWidth="72.0" text="id_produit" />
+                <TableColumn fx:id="tableColumnNom" prefWidth="60.00006103515625" text="nom" />
+                  <TableColumn fx:id="tableColumnDescription" prefWidth="123.199951171875" text="description" />
+                  <TableColumn fx:id="tableColumnTarif" prefWidth="47.199951171875" text="tarif" />
+                  <TableColumn fx:id="tableColumnVisuel" minWidth="0.0" prefWidth="54.4000244140625" text="visuel" />
+                  <TableColumn fx:id="tableColumnIdCategorie" prefWidth="88.79998779296875" text="id_categorie" />
               </columns>
             </TableView>
             <Button layoutX="521.0" layoutY="42.0" mnemonicParsing="false" text="Modifier" />

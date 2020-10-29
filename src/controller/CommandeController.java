@@ -3,11 +3,13 @@ package controller;
 import java.net.URL;
 import java.util.ResourceBundle;
 
+import javafx.collections.FXCollections;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Alert;
 import javafx.scene.control.ButtonType;
 import javafx.scene.control.ChoiceBox;
+import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.Button;
@@ -35,19 +37,21 @@ public class CommandeController implements Initializable {
 	private Button buttonModifier;
 	@FXML
 	private Button buttonSupprimer;
+	@FXML
+	private Label labelAffichage;
 	
 
 
 	public void initialize(URL arg0, ResourceBundle arg1) {
 		choiceBoxCommande.getItems().add("produit");
 		choiceBoxCommande.getItems().add("client");
-	
+		
 	}
 	
 	
 	public void CreerCommande() {
 		if(!error()) {
-			
+			labelAffichage.setText("id commande:"+textFieldIdCommande.getText()+", id produit:"+textFieldIdProduit.getText());
 		}
 	}
 	
