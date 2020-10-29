@@ -14,6 +14,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Menu;
+import javafx.scene.control.MenuBar;
 import javafx.scene.control.MenuItem;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
@@ -46,7 +47,8 @@ public class AccueilController implements Initializable  {
 	private MenuItem MenuItemListeMemoire;
 	@FXML
 	private VBox VboxMenu;
-	
+	@FXML
+	private MenuBar menuBar;
 	
 	//Stage stage=new Stage();
 	 DAOFactory.Persistance Peri ;
@@ -55,8 +57,7 @@ public class AccueilController implements Initializable  {
 
 	@Override
 	public void initialize(URL arg0, ResourceBundle arg1) {
-		Peri =DAOFactory.Persistance.MYSQL;
-		
+		Peri =DAOFactory.Persistance.MYSQL;	
 	}
 	public void PasserASql() {
 		Peri =DAOFactory.Persistance.MYSQL;
@@ -64,8 +65,7 @@ public class AccueilController implements Initializable  {
 	public void PasserAListeMemoire() {
 		Peri= DAOFactory.Persistance.ListMemoire;
 	}
-	
-	
+
 	// changer à l'interface de commande
 	public void VerCommande() {
 		new VueCommande().start(new Stage());
@@ -73,18 +73,24 @@ public class AccueilController implements Initializable  {
 	// changer à l'interface du produit
 	public void VerProduit(ActionEvent event) throws Exception {
 		new VueProduit().start(new Stage());
+		this.quitter();
 	}
 
 	// changer à l'interface du client
 	public void VerClient() {
 		new VueClient().start(new Stage());
+		this.quitter();
 	}
 	// Changer à l'interdace du catégorie
 	public void VerCategorie() {
 		new VueCategorie().start(new Stage());
+		this.quitter();
 	}
 	
-	
+	public void quitter() {
+		Stage stage=(Stage) menuBar.getScene().getWindow();
+		stage.close();
+	}
 	
 	
 	

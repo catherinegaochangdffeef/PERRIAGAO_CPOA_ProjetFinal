@@ -6,21 +6,29 @@ public class CMProduit {
 	private int idProduit;
 	private String nom, description, visuel;
 	private float tarif;
-	private CMCategorie idCategorie;
-	
+	private CMCategorie idCMCategorie;
+	private int idCategorie;
 	public CMProduit(String nom, String description, float tarif, String visuel, CMCategorie idCategorie ){
 		this(-1,nom,description,tarif,visuel,idCategorie);
 	}
 	
-	public CMProduit(int idProduit,String nom, String description, float tarif, String visuel, CMCategorie idCategorie) {
+	public CMProduit(int idProduit,String nom, String description, float tarif, String visuel, CMCategorie idCMCategorie) {
 		this.setIdProduit(idProduit);
 		this.setNom(nom);
 		this.setDescription(description);
 		this.setTarif(tarif);
 		this.setVisuel(visuel);
-		this.setCMCategorie(idCategorie);
+		this.setIdCMCategorie(idCMCategorie);
 		}
 	
+	public CMProduit(int idProduit,String nom, String description, float tarif, String visuel, int idCategorie) {
+		this.setIdProduit(idProduit);
+		this.setNom(nom);
+		this.setDescription(description);
+		this.setTarif(tarif);
+		this.setVisuel(visuel);
+		this.setIdCategorie(idCategorie);
+		}
 	public CMProduit(int idProduit) {
 		this.setIdProduit(idProduit);
 		}
@@ -34,21 +42,21 @@ public class CMProduit {
 	}
 
 	
-	public CMCategorie getCMCategorie(){
-		return idCategorie;
+	public CMCategorie getIdCMCategorie(){
+		return idCMCategorie;
 	}
-	public void setCMCategorie(CMCategorie idCategorie) {
-		this.idCategorie=idCategorie;
+	public void setIdCMCategorie(CMCategorie idCMCategorie) {
+		this.idCMCategorie=idCMCategorie;
 	}
 	
-	/*public int getIdCategorie() {
+	public int getIdCategorie() {
 		return idCategorie;
 	}
 
-	public void setId_categorie(int idCategorie) {
+	public void setIdCategorie(int idCategorie) {
 		this.idCategorie = idCategorie;
 	}
-*/
+
 	public String getNom() {
 		return nom;
 	}

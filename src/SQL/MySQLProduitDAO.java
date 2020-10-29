@@ -34,7 +34,7 @@ public CMProduit getById(int id_produit) throws SQLException {
 		while(res1.next()) {
 			cat=new CMCategorie(idCat,res1.getString("titre"),res1.getString("visuel"));
 		}
-		produit.setCMCategorie(cat);
+		produit.setIdCMCategorie(cat);
 		cnx.close();
 		req.close();
 		res.close();
@@ -54,7 +54,7 @@ public CMProduit getById(int id_produit) throws SQLException {
 				req.setString(2, p.getDescription());
 				req.setFloat(3, p.getTarif());
 				req.setString(4,p.getVisuel());
-				req.setInt(5, p.getCMCategorie().getId());
+				req.setInt(5, p.getIdCMCategorie().getId());
 				
 				int nbLignes = req.executeUpdate();
 				ResultSet res = req.getGeneratedKeys();
@@ -83,7 +83,7 @@ public CMProduit getById(int id_produit) throws SQLException {
 		req.setString(2, p.getDescription());
 		req.setFloat(3, p.getTarif());
 		req.setString(4,p.getVisuel());
-		req.setInt(5, p.getCMCategorie().getId());
+		req.setInt(5, p.getIdCMCategorie().getId());
 	
 		int nbLignes = req.executeUpdate();
 	
@@ -132,7 +132,7 @@ ArrayList<CMProduit> produ = new ArrayList<CMProduit>();
 		
 		
 		Connection MaConnection = Connexion.creeConnexion();
-		PreparedStatement req = MaConnection.prepareStatement("select * from ProduitController,Categorie where ProduitController.id_categorie=Categorie.id_categorie");
+		PreparedStatement req = MaConnection.prepareStatement("select * from Produit,Categorie where Produit.id_categorie=Categorie.id_categorie");
 		
 		
 		
@@ -140,7 +140,7 @@ ArrayList<CMProduit> produ = new ArrayList<CMProduit>();
 		
 		while (res.next()) {
 			CMCategorie cat=new CMCategorie(res.getInt("id_categorie"),res.getString("titre"),res.getString("visuel"));
-			produ.add(new CMProduit(res.getInt("id_produit"), res.getString("nom"), res.getString("description"),res.getFloat("tarif"),res.getString("visuel"),cat));
+			produ.add(new CMProduit(res.getInt("id_produit"), res.getString("nom"), res.getString("description"),res.getFloat("tarif"),res.getString("visuel"),cat.getId()));
 			
 		}
 		

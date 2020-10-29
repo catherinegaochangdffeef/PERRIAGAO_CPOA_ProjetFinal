@@ -14,7 +14,7 @@ public class VueProduit extends Application {
 	public void start(Stage primaryStage){
 		try {
 			Parent root = FXMLLoader.load(getClass().getResource("/fxml/Fenetreproduit.fxml"));
-			Scene scene = new Scene((VBox) root, 600, 600);		
+			Scene scene = new Scene((VBox) root, 743, 609);		
 			primaryStage.setScene(scene);
 			primaryStage.setTitle("Produit");
 			primaryStage.show();

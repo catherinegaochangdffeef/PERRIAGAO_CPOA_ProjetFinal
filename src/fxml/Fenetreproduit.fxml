@@ -15,7 +15,7 @@
 <?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.layout.VBox?>
 
-<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="553.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.ProduitController">
+<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="609.0" prefWidth="743.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.ProduitController">
    <children>
       <GridPane prefHeight="244.0" prefWidth="600.0">
         <columnConstraints>
@@ -28,8 +28,8 @@
           <RowConstraints maxHeight="196.80001525878907" minHeight="10.0" prefHeight="62.39999771118164" vgrow="SOMETIMES" />
           <RowConstraints maxHeight="184.8" minHeight="0.0" prefHeight="63.60000610351563" vgrow="SOMETIMES" />
           <RowConstraints maxHeight="197.59998168945313" minHeight="10.0" prefHeight="58.399993896484375" vgrow="SOMETIMES" />
-            <RowConstraints maxHeight="197.59998168945313" minHeight="10.0" prefHeight="26.19999999999999" vgrow="SOMETIMES" />
-            <RowConstraints maxHeight="197.59998168945313" minHeight="10.0" prefHeight="115.0" vgrow="SOMETIMES" />
+            <RowConstraints maxHeight="197.59998168945313" minHeight="10.0" prefHeight="44.20001831054688" vgrow="SOMETIMES" />
+            <RowConstraints maxHeight="197.59998168945313" minHeight="10.0" prefHeight="66.39998168945314" vgrow="SOMETIMES" />
         </rowConstraints>
          <children>
             <Label fx:id="nom" alignment="CENTER_RIGHT" contentDisplay="RIGHT" prefHeight="26.0" prefWidth="138.0" text="Nom:" textAlignment="JUSTIFY" />
@@ -55,21 +55,21 @@
             <Label fx:id="labelAffichage" prefHeight="18.0" prefWidth="305.0" />
          </children>
       </FlowPane>
-      <Pane prefHeight="254.0" prefWidth="600.0">
+      <Pane prefHeight="310.0" prefWidth="743.0">
          <children>
-            <TableView fx:id="tableViewProduit" layoutX="22.0" layoutY="38.0" prefHeight="200.0" prefWidth="442.0">
+            <TableView fx:id="tableViewProduit" layoutY="28.0" prefHeight="286.0" prefWidth="640.0">
               <columns>
-                <TableColumn fx:id="tableColumnIdProduit" prefWidth="72.0" text="id_produit" />
-                <TableColumn fx:id="tableColumnNom" prefWidth="60.00006103515625" text="nom" />
-                  <TableColumn fx:id="tableColumnDescription" prefWidth="123.199951171875" text="description" />
-                  <TableColumn fx:id="tableColumnTarif" prefWidth="47.199951171875" text="tarif" />
-                  <TableColumn fx:id="tableColumnVisuel" minWidth="0.0" prefWidth="54.4000244140625" text="visuel" />
-                  <TableColumn fx:id="tableColumnIdCategorie" prefWidth="88.79998779296875" text="id_categorie" />
+                <TableColumn fx:id="tableColumnIdProduit" prefWidth="84.79998779296875" text="id_produit" />
+                <TableColumn fx:id="tableColumnNom" prefWidth="58.399932861328125" text="nom" />
+                  <TableColumn fx:id="tableColumnDescription" prefWidth="225.60003662109375" text="description" />
+                  <TableColumn fx:id="tableColumnTarif" prefWidth="56.0" text="tarif" />
+                  <TableColumn fx:id="tableColumnVisuel" minWidth="-Infinity" prefWidth="130.4000244140625" text="visuel" />
+                  <TableColumn fx:id="tableColumnIdCategorie" prefWidth="85.5999755859375" text="id_categorie" />
               </columns>
             </TableView>
-            <Button layoutX="521.0" layoutY="42.0" mnemonicParsing="false" text="Modifier" />
-            <Button layoutX="516.0" layoutY="88.0" mnemonicParsing="false" text="Supprimer" />
-            <Button layoutX="509.0" layoutY="138.0" mnemonicParsing="false" text="Retour menu" />
+            <Button fx:id="buttonModifier" layoutX="657.0" layoutY="38.0" mnemonicParsing="false" text="Modifier" />
+            <Button fx:id="buttonSupprimer" layoutX="651.0" layoutY="82.0" mnemonicParsing="false" text="Supprimer" />
+            <Button fx:id="buttonRetourMenu" layoutX="643.0" layoutY="138.0" mnemonicParsing="false" onAction="#versAccueil" text="Retour menu" />
          </children>
       </Pane>
    </children>
