@@ -67,8 +67,8 @@
                   <TableColumn fx:id="tableColumnIdCategorie" prefWidth="85.5999755859375" text="id_categorie" />
               </columns>
             </TableView>
-            <Button fx:id="buttonModifier" layoutX="657.0" layoutY="38.0" mnemonicParsing="false" text="Modifier" />
-            <Button fx:id="buttonSupprimer" layoutX="651.0" layoutY="82.0" mnemonicParsing="false" text="Supprimer" />
+            <Button fx:id="buttonModifier" layoutX="657.0" layoutY="38.0" mnemonicParsing="false" onAction="#modifierProduit" text="Modifier" />
+            <Button fx:id="buttonSupprimer" layoutX="651.0" layoutY="82.0" mnemonicParsing="false" onAction="#supprimerProduit" text="Supprimer" />
             <Button fx:id="buttonRetourMenu" layoutX="643.0" layoutY="138.0" mnemonicParsing="false" onAction="#versAccueil" text="Retour menu" />
          </children>
       </Pane>
