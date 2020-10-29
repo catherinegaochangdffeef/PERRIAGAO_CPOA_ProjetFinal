@@ -15,7 +15,7 @@
 <?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.layout.VBox?>
 
-<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="609.0" prefWidth="743.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.ProduitController">
+<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onMouseClicked="#cliquerblanc" prefHeight="609.0" prefWidth="743.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.ProduitController">
    <children>
       <GridPane prefHeight="244.0" prefWidth="600.0">
         <columnConstraints>
@@ -36,13 +36,13 @@
             <Label fx:id="description" alignment="CENTER_RIGHT" prefHeight="18.0" prefWidth="138.0" text="Description:" GridPane.rowIndex="1" />
             <Label fx:id="tarif" alignment="CENTER_RIGHT" prefHeight="18.0" prefWidth="139.0" text="Tarif:" GridPane.rowIndex="2" />
             <Label fx:id="categorie" alignment="CENTER_RIGHT" prefHeight="18.0" prefWidth="140.0" text="Categorie:" GridPane.rowIndex="4" />
-            <TextField fx:id="textFieldNom" GridPane.columnIndex="1" />
-            <TextField fx:id="textFieldTarif" prefHeight="26.0" prefWidth="62.0" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+            <TextField fx:id="textFieldNom" onMouseClicked="#cliquertext" GridPane.columnIndex="1" />
+            <TextField fx:id="textFieldTarif" onMouseClicked="#cliquertext" prefHeight="26.0" prefWidth="62.0" GridPane.columnIndex="1" GridPane.rowIndex="2" />
             <Label alignment="CENTER" graphicTextGap="0.0" prefHeight="18.0" prefWidth="214.0" text="euros a l'unite" GridPane.columnIndex="2" GridPane.rowIndex="2" />
-            <TextArea fx:id="textAreaDescription" prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+            <TextArea fx:id="textAreaDescription" onMouseClicked="#cliquertext" prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="1" />
             <ChoiceBox fx:id="choiceBoxCategorie" prefWidth="150.0" GridPane.columnIndex="1" GridPane.rowIndex="4" />
             <Label alignment="CENTER_RIGHT" prefHeight="18.0" prefWidth="134.0" text="Visuel:" GridPane.rowIndex="3" />
-            <TextField fx:id="textFieldVisuel" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+            <TextField fx:id="textFieldVisuel" onMouseClicked="#cliquertext" GridPane.columnIndex="1" GridPane.rowIndex="3" />
          </children>
       </GridPane>
       <FlowPane alignment="CENTER" columnHalignment="CENTER" orientation="VERTICAL" prefHeight="55.0" prefWidth="600.0" rowValignment="BOTTOM">
@@ -57,7 +57,7 @@
       </FlowPane>
       <Pane prefHeight="310.0" prefWidth="743.0">
          <children>
-            <TableView fx:id="tableViewProduit" layoutY="28.0" prefHeight="286.0" prefWidth="640.0">
+            <TableView fx:id="tableViewProduit" layoutY="28.0" onMouseClicked="#cliquertable" prefHeight="278.0" prefWidth="640.0">
               <columns>
                 <TableColumn fx:id="tableColumnIdProduit" prefWidth="84.79998779296875" text="id_produit" />
                 <TableColumn fx:id="tableColumnNom" prefWidth="58.399932861328125" text="nom" />

@@ -51,7 +51,7 @@ public class AccueilController implements Initializable  {
 	private MenuBar menuBar;
 	
 	//Stage stage=new Stage();
-	 DAOFactory.Persistance Peri ;
+	public static DAOFactory.Persistance Peri ;
 	
 	
 

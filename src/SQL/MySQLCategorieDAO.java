@@ -28,6 +28,23 @@ public CMCategorie getById(int id_categorie) throws SQLException{
 
 	}
 
+public CMCategorie getByTitre(String titre)throws SQLException{
+	CMCategorie categorie= null;
+	Connection cnx=Connexion.creeConnexion();
+	PreparedStatement req= cnx.prepareStatement("select * from Categorie where titre = ?");
+	req.setString(1, titre);
+	
+	ResultSet res = req.executeQuery();
+	while (res.next()) {
+		categorie= new CMCategorie(res.getInt(1),titre, res.getString(3));
+		
+	}
+	cnx.close();
+	req.close();
+	res.close();
+	
+	return categorie;
+}
 //----------------------------------------------------------------------------------------------------------------------------------------------------------------
 //----------------------------------------------------------------------------------------------------------------------------------------------------------------		
 	public boolean create(CMCategorie c) throws  SQLException{

@@ -21,17 +21,17 @@ import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.stage.Stage;
 import vue.VueAccueil;
-import vue.VueCommande;
-import dao.DAO;
 import dao.DAOFactory;
 import dao.DAOFactory.Persistance;
 import Metier.CMProduit;
 
 import Metier.CMCategorie;
-import Metier.CMClient;
+
 
 public class ProduitController implements Initializable{
 
+
+	
 	@FXML
 	private TextField textFieldNom;
 	@FXML
@@ -75,8 +75,8 @@ public class ProduitController implements Initializable{
 	@Override
 	public void initialize(URL arg0, ResourceBundle arg1) {
 		try {
-			for(int i=0;i<daos.getCategorieDAO().findAll().size();i++) {
-			choiceBoxCategorie.getItems().add(daos.getCategorieDAO().findAll().get(i).getTitre());
+			for(int i=0;i<DAOFactory.getDAOFactory(AccueilController.Peri).getCategorieDAO().findAll().size();i++) {
+			choiceBoxCategorie.getItems().add(DAOFactory.getDAOFactory(AccueilController.Peri).getCategorieDAO().findAll().get(i).getTitre());
 			}
 			
 		} catch (Exception e) {
@@ -118,12 +118,47 @@ public class ProduitController implements Initializable{
 	Stage stage = (Stage) buttonRetourMenu.getScene().getWindow();
 	stage.close();
 	}
+	
+	public void cliquertable() {
+		buttonSupprimer.setDisable(false);
+		buttonCreer.setDisable(true);
+		buttonModifier.setDisable(true);
+	}
+	public void cliquertext() {
+		buttonCreer.setDisable(false);
+		buttonModifier.setDisable(false);
+		buttonSupprimer.setDisable(true);
+	}
+	public void cliquerblanc() {
+		buttonCreer.setDisable(true);
+		buttonModifier.setDisable(true);
+		buttonSupprimer.setDisable(true);
+		this.tableViewProduit.getSelectionModel().clearSelection();
+	}
+	
+	
 	public void creerProduit() {
 		
 		
 		if(!error()) {
 		labelAffichage.setText(textFieldNom.getText() +"("+choiceBoxCategorie.getValue()+") , " + textFieldTarif.getText() + " euros");
-	}
+		CMCategorie Cate;
+		try {
+			Cate = DAOFactory.getDAOFactory(AccueilController.Peri).getCategorieDAO().getByTitre(choiceBoxCategorie.getValue());
+			CMProduit pro=new CMProduit(1,textFieldNom.getText(),textAreaDescription.getText(),Float.parseFloat(textFieldTarif.getText()),textFieldVisuel.getText(),Cate);
+			DAOFactory.getDAOFactory(AccueilController.Peri).getProduitDAO().create(pro);
+			
+			textFieldNom.setText("");
+			textFieldTarif.setText("");
+			textAreaDescription.setText("");
+			textFieldVisuel.setText("");
+			choiceBoxCategorie.setValue(null);
+			this.teamMembers.add(pro);
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		}
 	}
 
 	

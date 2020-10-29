@@ -42,14 +42,15 @@ public CMProduit getById(int id_produit) throws SQLException {
 		return produit;
 		
 	}
-	
+
+
 //----------------------------------------------------------------------------------------------------------------------------------------------------------------	
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------------------		
 	public boolean create(CMProduit p) throws  SQLException{
 		//
 		Connection cnx = Connexion.creeConnexion();
-			PreparedStatement req = cnx.prepareStatement("INSERT INTO ProduitController (nom,description,tarif,visuel,id_categorie) values (?,?,?,?,?)", java.sql.Statement.RETURN_GENERATED_KEYS);
+			PreparedStatement req = cnx.prepareStatement("INSERT INTO Produit (nom,description,tarif,visuel,id_categorie) values (?,?,?,?,?)", java.sql.Statement.RETURN_GENERATED_KEYS);
 				req.setString(1, p.getNom());
 				req.setString(2, p.getDescription());
 				req.setFloat(3, p.getTarif());
@@ -77,7 +78,7 @@ public CMProduit getById(int id_produit) throws SQLException {
 		
 		Connection cnx = Connexion.creeConnexion();
 		
-		PreparedStatement req = cnx.prepareStatement("update ProduitController set nom=?, description=?, tarif=?, visuel = ?, id_categorie=?  where id_produit=?");
+		PreparedStatement req = cnx.prepareStatement("update Produit set nom=?, description=?, tarif=?, visuel = ?, id_categorie=?  where id_produit=?");
 		req.setInt(6, p.getIdProduit());
 		req.setString(1,p.getNom());
 		req.setString(2, p.getDescription());
@@ -99,7 +100,7 @@ public CMProduit getById(int id_produit) throws SQLException {
 		
     	try {
     	Connection cnx = Connexion.creeConnexion();
-	PreparedStatement req = cnx.prepareStatement("delete from ProduitController where id_produit=?");
+	PreparedStatement req = cnx.prepareStatement("delete from Produit where id_produit=?");
 	req.setInt(1,p.getIdProduit());
 	
 	

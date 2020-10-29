@@ -170,7 +170,7 @@ public class MainProduit {
 							+" ||| description: "+daos.getProduitDAO().findAll().get(i).getDescription()
 							+" ||| tarif: "+daos.getProduitDAO().findAll().get(i).getTarif()
 							+" ||| visuel: "+daos.getProduitDAO().findAll().get(i).getVisuel()
-							+" ||| categorie: "+daos.getProduitDAO().findAll().get(i).getCMCategorie().getId());
+							+" ||| categorie: "+daos.getProduitDAO().findAll().get(i).getIdCMCategorie().getId());
 				}
 					} catch (Exception e) {
 					// TODO Auto-generated catch block
