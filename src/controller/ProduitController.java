@@ -122,11 +122,11 @@ public class ProduitController implements Initializable{
 	public void cliquertable() {
 		buttonSupprimer.setDisable(false);
 		buttonCreer.setDisable(true);
-		buttonModifier.setDisable(true);
+		buttonModifier.setDisable(false);
 	}
 	public void cliquertext() {
 		buttonCreer.setDisable(false);
-		buttonModifier.setDisable(false);
+		buttonModifier.setDisable(true);
 		buttonSupprimer.setDisable(true);
 	}
 	public void cliquerblanc() {
@@ -138,13 +138,11 @@ public class ProduitController implements Initializable{
 	
 	
 	public void creerProduit() {
-		
-		
 		if(!error()) {
 		labelAffichage.setText(textFieldNom.getText() +"("+choiceBoxCategorie.getValue()+") , " + textFieldTarif.getText() + " euros");
-		CMCategorie Cate;
+		int Cate;
 		try {
-			Cate = DAOFactory.getDAOFactory(AccueilController.Peri).getCategorieDAO().getByTitre(choiceBoxCategorie.getValue());
+			Cate = DAOFactory.getDAOFactory(AccueilController.Peri).getCategorieDAO().getByTitre(choiceBoxCategorie.getValue()).getId();
 			CMProduit pro=new CMProduit(1,textFieldNom.getText(),textAreaDescription.getText(),Float.parseFloat(textFieldTarif.getText()),textFieldVisuel.getText(),Cate);
 			DAOFactory.getDAOFactory(AccueilController.Peri).getProduitDAO().create(pro);
 			
@@ -161,7 +159,35 @@ public class ProduitController implements Initializable{
 		}
 	}
 
-	
+	public void supprimerProduit() {
+		CMProduit cpro=this.tableViewProduit.getSelectionModel().getSelectedItem();
+		try {
+			teamMembers.remove(cpro);
+			DAOFactory.getDAOFactory(AccueilController.Peri).getProduitDAO().delete(cpro);
+		}catch(Exception e) {
+			e.printStackTrace();
+		}
+	}
+	public void modifierProduit() {
+		if(!error()) {
+			labelAffichage.setText(textFieldNom.getText() +"("+choiceBoxCategorie.getValue()+") , " + textFieldTarif.getText() + " euros");
+			try {
+			int idpro=this.tableViewProduit.getSelectionModel().getSelectedItem().getIdProduit();
+			int index=this.tableViewProduit.getSelectionModel().getFocusedIndex();
+			int Cate = DAOFactory.getDAOFactory(AccueilController.Peri).getCategorieDAO().getByTitre(choiceBoxCategorie.getValue()).getId();
+			CMProduit cmpm=new CMProduit(idpro,textFieldNom.getText(),textAreaDescription.getText(),Float.parseFloat(textFieldTarif.getText()),textFieldVisuel.getText(),Cate);
+			DAOFactory.getDAOFactory(AccueilController.Peri).getProduitDAO().update(cmpm);
+			textFieldNom.setText("");
+			textFieldTarif.setText("");
+			textAreaDescription.setText("");
+			textFieldVisuel.setText("");
+			choiceBoxCategorie.setValue(null);
+			this.teamMembers.set(index, cmpm);
+			}catch(Exception e) {
+				e.printStackTrace();
+			}
+			}
+	}
 	public   boolean error() {
 		String erreur="";
 		if(textFieldNom.getText().trim().isEmpty()) {

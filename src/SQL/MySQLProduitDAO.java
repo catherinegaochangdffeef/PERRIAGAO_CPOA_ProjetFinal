@@ -55,7 +55,7 @@ public CMProduit getById(int id_produit) throws SQLException {
 				req.setString(2, p.getDescription());
 				req.setFloat(3, p.getTarif());
 				req.setString(4,p.getVisuel());
-				req.setInt(5, p.getIdCMCategorie().getId());
+				req.setInt(5, p.getIdCategorie());
 				
 				int nbLignes = req.executeUpdate();
 				ResultSet res = req.getGeneratedKeys();
@@ -84,7 +84,7 @@ public CMProduit getById(int id_produit) throws SQLException {
 		req.setString(2, p.getDescription());
 		req.setFloat(3, p.getTarif());
 		req.setString(4,p.getVisuel());
-		req.setInt(5, p.getIdCMCategorie().getId());
+		req.setInt(5, p.getIdCategorie());
 	
 		int nbLignes = req.executeUpdate();
 	
