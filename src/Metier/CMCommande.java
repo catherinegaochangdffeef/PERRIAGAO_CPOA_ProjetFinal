@@ -18,13 +18,13 @@ public CMCommande(LocalDate dateCommande,int idClient) {
 */
 	
 	public CMCommande(int idCommande,String dateCommande,int idclient) {
-		this.setId(idCommande);
+		this.setIdCommande(idCommande);
 		this.setDate_commande2(dateCommande);
 		this.setIdClient2(idclient);	
 	}
 	
 	public CMCommande(int idCommande,String dateCommande,CMClient  idclient) {
-		this.setId(idCommande);
+		this.setIdCommande(idCommande);
 		this.setDate_commande2(dateCommande);
 		this.setIdClient(idclient);	
 	}
@@ -34,44 +34,49 @@ public CMCommande(LocalDate dateCommande,int idClient) {
 		this.setDate_commande2(dateCommande);
 		this.setIdClient(idclient);	
 	}
-public CMCommande(int idCommande,Date dateCommande,int idclient) {
-	this.setId(idCommande);
+	public CMCommande(String dateCommande,int idclient) {
+		
+		this.setDate_commande2(dateCommande);
+		this.setIdClient2(idclient);	
+	}
+public CMCommande(int idCommande,Date dateCommande,int idclient2) {
+	this.setIdCommande(idCommande);
 	this.setDate_commande1(dateCommande);
-	this.setIdClient2(idclient);	
+	this.setIdClient2(idclient2);	
 }
 public CMCommande(int idCommande,Date dateCommande,CMClient idclient) {
-	this.setId(idCommande);
+	this.setIdCommande(idCommande);
 	this.setDate_commande1(dateCommande);
 	this.setIdClient(idclient);	
 }
-public CMCommande(int idCommande,LocalDate dateCommande,int idclient) {
-	this.setId(idCommande);
+public CMCommande(int idCommande,LocalDate dateCommande,int idclient2) {
+	this.setIdCommande(idCommande);
 	this.setDate_commande3(dateCommande);
-	this.setIdClient2(idclient);	
+	this.setIdClient2(idclient2);	
 }
 public CMCommande(int idCommande,String dateCommande,CMClient idClient,HashMap<CMProduit, Integer> products) {
-	this.setId(idCommande);
+	this.setIdCommande(idCommande);
 	this.setDate_commande2(dateCommande);
 	this.setIdClient(idClient);
 	this.setProducts(products);
 }
 
 	public CMCommande(int idCommande,LocalDate dateCommande,CMClient idClient,HashMap<CMProduit, Integer> products) {
-		this.setId(idCommande);
+		this.setIdCommande(idCommande);
 		this.setDate_commande3(dateCommande);
 		this.setIdClient(idClient);
 		this.setProducts(products);
 	}
 
 	public CMCommande(int id) {
-		this.setId(id);
+		this.setIdCommande(id);
 		}
 	public CMCommande(LocalDate dateCommande, CMClient idClient, HashMap<CMProduit, Integer> products) {
 		this(-1,dateCommande,idClient,products);
 		
 	}
 	public CMCommande(int idCommande, LocalDate dateCommande, CMClient idClient) {
-		this.setId(idCommande);
+		this.setIdCommande(idCommande);
 		this.setDate_commande3(dateCommande);
 		this.setIdClient(idClient);
 		
@@ -88,11 +93,11 @@ public CMCommande(int idCommande,String dateCommande,CMClient idClient,HashMap<C
 	{
 		products.remove(product);
 	}
-	public int getId() {
+	public int getIdCommande() {
 		return idCommande;
 	}
 
-	public void setId(int idCommande) {
+	public void setIdCommande(int idCommande) {
 		this.idCommande = idCommande;
 	}
 
@@ -106,8 +111,8 @@ public CMCommande(int idCommande,String dateCommande,CMClient idClient,HashMap<C
 	public int getIdClient2() {
 		return idClient2;
 	}
-	public void setIdClient2(int idclient) {
-		this.idClient=idClient;
+	public void setIdClient2(int idClient2) {
+		this.idClient2=idClient2;
 	}
 	public HashMap<CMProduit, Integer> getProducts() {
 		return products;

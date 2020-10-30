@@ -56,7 +56,7 @@ public CMCommande getById(int id_commande) throws SQLException {
 		Connection cnx = Connexion.creeConnexion();
 			PreparedStatement req = cnx.prepareStatement("INSERT INTO Commande (date_commande,id_client) values (?,?)", java.sql.Statement.RETURN_GENERATED_KEYS);
 				req.setDate(1, c.getDateCommande());
-				req.setInt(2, c.getIdClient().getIdClient());
+				req.setInt(2, c.getIdClient2());
 			
 				
 				int nbLignes = req.executeUpdate();
@@ -65,7 +65,7 @@ public CMCommande getById(int id_commande) throws SQLException {
 				int clef;
 				if(res.next()) {
 					clef = res.getInt(1);
-					c.setId(clef);	
+					c.setIdCommande(clef);	
 				}
 				/*
 				if(!c.getProducts().isEmpty()) {
@@ -97,16 +97,16 @@ public CMCommande getById(int id_commande) throws SQLException {
 		
 		PreparedStatement req = cnx.prepareStatement("update Commande set date_commande=? ,"
 				+ "id_client=? where id_commande=?", java.sql.Statement.RETURN_GENERATED_KEYS);
-		req.setInt(3, c.getId());
+		req.setInt(3, c.getIdCommande());
 		req.setDate(1,c.getDateCommande());
-		req.setInt(2,c.getIdClient().getIdClient());
+		req.setInt(2,c.getIdClient2());
 	
 	    nbLignes = req.executeUpdate();
 	    ResultSet res = req.getGeneratedKeys();
 	    int clef;
 		if(res.next()) {
 			clef = res.getInt(1);
-			c.setId(clef);	
+			c.setIdCommande(clef);	
 		}
 		
 
@@ -122,11 +122,9 @@ public CMCommande getById(int id_commande) throws SQLException {
     	Connexion.getInstance();
 		Connection laConnexion = Connexion.creeConnexion();
 	PreparedStatement requete = laConnexion.prepareStatement("delete  from Commande where id_commande=?");
-	PreparedStatement requete1 = laConnexion.prepareStatement("delete  from Ligne_commande where id_commande=?");
-	requete.setInt(1,c.getId());
-	requete1.setInt(1,c.getId());
+	requete.setInt(1,c.getIdCommande());
 	nbLignes = requete.executeUpdate();
-	nbLignes = requete1.executeUpdate();
+	
     	} catch(SQLException sqle) {
     		System.out.println("Pb delete commande"+sqle.getMessage());
     	}
@@ -152,15 +150,15 @@ public CMCommande getById(int id_commande) throws SQLException {
 		
 		
 		Connection MaConnection = Connexion.creeConnexion();
-		PreparedStatement req = MaConnection.prepareStatement("select * from Commande,Client where Commande.id_client=Client.id_client;");
+		PreparedStatement req = MaConnection.prepareStatement("select * from Commande;");
 		
 		
 		
 		ResultSet res = req.executeQuery();
 		
 		while (res.next()) {
-			CMClient cl=new CMClient(res.getInt("id_client"),res.getString("nom"),res.getString("prenom"));
-			c.add(new CMCommande(res.getInt("id_commande"), res.getDate("date_commande"), cl));
+			//CMClient cl=new CMClient(res.getInt("id_client"),res.getString("nom"),res.getString("prenom"));
+			c.add(new CMCommande(res.getInt("id_commande"), res.getDate("date_commande"), res.getInt("id_client")));
 			
 		}
 		

@@ -13,8 +13,7 @@
 <?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.layout.VBox?>
 
-
-<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="529.0" prefWidth="700.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.CommandeController">
+<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onMouseClicked="#cliquerblanc" prefHeight="627.0" prefWidth="751.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.CommandeController">
    <children>
       <GridPane>
         <columnConstraints>
@@ -29,62 +28,59 @@
           <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
         </rowConstraints>
          <children>
-            <Label alignment="CENTER_RIGHT" prefHeight="18.0" prefWidth="143.0" text="id_commande:" />
-            <Label alignment="CENTER_RIGHT" prefHeight="18.0" prefWidth="139.0" text="id_produit:" GridPane.rowIndex="1" />
+            <Label alignment="CENTER_RIGHT" prefHeight="18.0" prefWidth="139.0" text="id_produit:" GridPane.columnIndex="2" GridPane.rowIndex="1" />
             <Label alignment="CENTER_RIGHT" prefHeight="18.0" prefWidth="139.0" text="id_client:" GridPane.rowIndex="2" />
-            <Label alignment="CENTER_RIGHT" prefHeight="18.0" prefWidth="142.0" text="date_commande:" GridPane.columnIndex="2" />
-            <Label alignment="CENTER_RIGHT" prefHeight="18.0" prefWidth="143.0" text="quantite:" GridPane.columnIndex="2" GridPane.rowIndex="1" />
-            <Label alignment="CENTER_RIGHT" prefHeight="18.0" prefWidth="139.0" text="tarif_unitaire:" GridPane.columnIndex="2" GridPane.rowIndex="2" />
-            <TextField fx:id="textFieldIdCommande" GridPane.columnIndex="1">
+            <Label alignment="CENTER_RIGHT" prefHeight="18.0" prefWidth="142.0" text="date_commande:" GridPane.rowIndex="1" />
+            <Label alignment="CENTER_RIGHT" prefHeight="18.0" prefWidth="143.0" text="quantite:" GridPane.columnIndex="2" GridPane.rowIndex="2" />
+            <TextField fx:id="textFieldIdProduit" onMouseClicked="#cliquertext2" GridPane.columnIndex="3" GridPane.rowIndex="1">
                <GridPane.margin>
                   <Insets left="5.0" right="5.0" />
                </GridPane.margin>
             </TextField>
-            <TextField fx:id="textFieldIdProduit" GridPane.columnIndex="1" GridPane.rowIndex="1">
+            <TextField fx:id="textFieldIdClient" onMouseClicked="#cliquertext1" GridPane.columnIndex="1" GridPane.rowIndex="2">
                <GridPane.margin>
                   <Insets left="5.0" right="5.0" />
                </GridPane.margin>
             </TextField>
-            <TextField fx:id="textFieldIdClient" GridPane.columnIndex="1" GridPane.rowIndex="2">
+            <TextField fx:id="textFieldDateCommande" onMouseClicked="#cliquertext1" GridPane.columnIndex="1" GridPane.rowIndex="1">
                <GridPane.margin>
                   <Insets left="5.0" right="5.0" />
                </GridPane.margin>
             </TextField>
-            <TextField fx:id="textFieldDateCommande" GridPane.columnIndex="3">
-               <GridPane.margin>
-                  <Insets left="5.0" right="5.0" />
-               </GridPane.margin>
-            </TextField>
-            <TextField fx:id="textFieldQuantite" GridPane.columnIndex="3" GridPane.rowIndex="1">
-               <GridPane.margin>
-                  <Insets left="5.0" right="5.0" />
-               </GridPane.margin>
-            </TextField>
-            <TextField fx:id="textFieldTarifUnitaire" GridPane.columnIndex="3" GridPane.rowIndex="2">
+            <TextField fx:id="textFieldQuantite" onMouseClicked="#cliquertext2" GridPane.columnIndex="3" GridPane.rowIndex="2">
                <GridPane.margin>
                   <Insets left="5.0" right="5.0" />
                </GridPane.margin>
             </TextField>
          </children>
       </GridPane>
-      <Pane prefHeight="440.0" prefWidth="700.0">
+      <Pane prefHeight="542.0" prefWidth="751.0">
          <children>
-            <Button fx:id="buttonCreer" layoutX="259.0" layoutY="14.0" mnemonicParsing="false" onAction="#CreerCommande" text="Creer" />
-            <TableView layoutX="6.0" layoutY="110.0" prefHeight="318.0" prefWidth="526.0">
+            <Button fx:id="buttonCreer1" layoutX="190.0" layoutY="14.0" mnemonicParsing="false" onAction="#CreerCommande" text="Creer un commande" />
+            <TableView fx:id="tableViewCommande" layoutX="9.0" layoutY="111.0" onMouseClicked="#cliquertable1" prefHeight="318.0" prefWidth="274.0">
               <columns>
-                <TableColumn prefWidth="95.19994974136353" text="id_commande" />
-                <TableColumn prefWidth="74.40003204345703" text="id_produit" />
-                  <TableColumn prefWidth="64.0" text="id_client" />
-                  <TableColumn prefWidth="112.79998779296875" text="date_commande" />
-                  <TableColumn prefWidth="76.0" text="quantite" />
-                  <TableColumn prefWidth="99.19992065429688" text="tarif_unitaire" />
+                <TableColumn fx:id="tableColumnIdCommande" prefWidth="95.19994974136353" text="id_commande" />
+                  <TableColumn fx:id="tableColumnDateCommande" prefWidth="112.79998779296875" text="date_commande" />
+                  <TableColumn fx:id="tableColumnIdClient" prefWidth="64.0" text="id_client" />
               </columns>
             </TableView>
-            <Button fx:id="buttonModifier" layoutX="566.0" layoutY="126.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="76.0" text="Modifier" />
-            <Button fx:id="buttonSupprimer" layoutX="574.0" layoutY="195.0" mnemonicParsing="false" text="Supprimer" />
+            <TableView fx:id="tableViewLigneDeCommande" layoutX="300.0" layoutY="112.0" onMouseClicked="#cliquertable2" prefHeight="318.0" prefWidth="356.0">
+              <columns>
+                  <TableColumn fx:id="tableColumnIdCommande2" prefWidth="103.20001220703125" text="id_commande" />
+                <TableColumn fx:id="tableColumnIdProduit" prefWidth="95.20001220703125" text="id_produit" />
+                  <TableColumn fx:id="tableColumnQuantite" prefWidth="68.79998779296875" text="quantite" />
+                  <TableColumn fx:id="tableColumnTarifUnitaire" prefWidth="88.0" text="tarif_unitaire" />
+              </columns>
+            </TableView>
+            <Button fx:id="buttonModifier1" layoutX="98.0" layoutY="446.0" mnemonicParsing="false" onAction="#modifierCommande" prefHeight="25.0" prefWidth="76.0" text="Modifier" />
+            <Button fx:id="buttonSupprimer1" layoutX="98.0" layoutY="487.0" mnemonicParsing="false" onAction="#supprimerCommande" text="Supprimer" />
             <Label fx:id="labelAffichage" alignment="CENTER" layoutX="62.0" layoutY="49.0" prefHeight="26.0" prefWidth="482.0" />
             <Label layoutX="14.0" layoutY="75.0" prefHeight="25.0" prefWidth="76.0" text="Trier par:" />
             <ChoiceBox fx:id="choiceBoxCommande" layoutX="77.0" layoutY="75.0" prefHeight="25.0" prefWidth="69.0" />
+            <Button fx:id="buttonRetour" layoutX="661.0" layoutY="270.0" mnemonicParsing="false" onAction="#versAccueil" prefHeight="25.0" prefWidth="76.0" text="Retour" />
+            <Button fx:id="buttonCreer2" layoutX="497.0" layoutY="14.0" mnemonicParsing="false" onAction="#CreerLigneDeCommande" text="Creer une ligne de commande" />
+            <Button fx:id="buttonModifier2" layoutX="442.0" layoutY="446.0" mnemonicParsing="false" onAction="#modifierLigneDeCommande" text="Modifier" />
+            <Button fx:id="buttonSupprimer2" layoutX="442.0" layoutY="487.0" mnemonicParsing="false" onAction="#supprimerLigneDeCommande" text="Supprimer" />
          </children>
       </Pane>
    </children>

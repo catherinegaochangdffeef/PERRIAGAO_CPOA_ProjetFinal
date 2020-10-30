@@ -34,7 +34,15 @@ public CMClient(String nom,String prenom,String identifiant,String motDePasse, S
 	
 	}
 
-
+	
+	public CMClient(int idClient,String nom,String prenom) {
+		this.setIdClient(idClient);
+		this.setNom(nom);
+		this.setPrenom(prenom);
+		
+		
+	
+	}
 	public int getIdClient() {
 		return idClient;
 	}

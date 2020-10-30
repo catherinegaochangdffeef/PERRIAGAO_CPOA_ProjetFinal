@@ -69,6 +69,7 @@ public class AccueilController implements Initializable  {
 	// changer à l'interface de commande
 	public void VerCommande() {
 		new VueCommande().start(new Stage());
+		this.quitter();
 	}
 	// changer à l'interface du produit
 	public void VerProduit(ActionEvent event) throws Exception {

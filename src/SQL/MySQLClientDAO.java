@@ -19,14 +19,14 @@ public class MySQLClientDAO implements ClientDAO {
 		CMClient client = null;
 		
 		Connection MaConnection = Connexion.creeConnexion();
-		PreparedStatement req = MaConnection.prepareStatement("select id_client,nom, prenom,identifiant,motDePasse,adrNumero,adrVoie,adrCodePostal,ville,pays from Client where id_client = ?");
+		PreparedStatement req = MaConnection.prepareStatement("select id_client,nom, prenom, identifiant,mot_de_passe,adr_numero,adr_voie,adr_code_postal,adr_ville,adr_pays from Client where id_client = ?");
 		req.setInt(1, id_client);
 		
 		
 		ResultSet res = req.executeQuery();
 		
 		while (res.next()) {
-			client= new CMClient(res.getInt(1), res.getString("nom"), res.getString("prenom"),res.getString("identifiant"),res.getString("motDePasse"),res.getString("adrNumero"),res.getString("adrVoie"),res.getString("adrCodePostal"),res.getString("ville"),res.getString("pays"));	
+			client= new CMClient(res.getInt(1), res.getString("nom"), res.getString("prenom"),res.getString("identifiant"),res.getString("mot_de_passe"),res.getString("adr_numero"),res.getString("adr_voie"),res.getString("adr_code_postal"),res.getString("adr_ville"),res.getString("adr_pays"));	
 			
 		}
 		

@@ -18,7 +18,7 @@ public CMProduit getById(int id_produit) throws SQLException {
 		CMProduit produit = null;
 		
 		Connection cnx = Connexion.creeConnexion();
-		PreparedStatement req =cnx.prepareStatement("select * from ProduitController where id_produit = ?");
+		PreparedStatement req =cnx.prepareStatement("select * from Produit where id_produit = ?");
 		req.setInt(1, id_produit);
 		
 		

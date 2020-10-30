@@ -77,10 +77,10 @@ public CMLignedeCommande getById2(int id_commande,int id_produit) throws SQLExce
 		//
 		Connection cnx = Connexion.creeConnexion();
 			PreparedStatement req = cnx.prepareStatement("INSERT INTO Ligne_commande (id_commande,id_produit,quantite,tarif_unitaire) values (?,?,?,?)", java.sql.Statement.RETURN_GENERATED_KEYS);
-			    req.setInt(1, ldc.getCMCommande().getId());
-			    req.setInt(2, ldc.getCMProduit().getIdProduit());
+			    req.setInt(1, ldc.getIdCommande());
+			    req.setInt(2, ldc.getIdProduit());
 				req.setInt(3, ldc.getQuantite());
-				req.setDouble(4, ldc.getCMProduit().getTarif());
+				req.setDouble(4, ldc.getTarifUnitaire());
 				
 				int nbLignes = req.executeUpdate();
 			
@@ -97,11 +97,11 @@ public CMLignedeCommande getById2(int id_commande,int id_produit) throws SQLExce
 		Connection cnx = Connexion.creeConnexion();
 		
 		PreparedStatement req = cnx.prepareStatement("update Ligne_commande set quantite=?, tarif_unitaire = ? where id_commande=? and id_produit=?", java.sql.Statement.RETURN_GENERATED_KEYS);;
-		req.setInt(3, ldc.getCMCommande().getId());
-		req.setInt(4,ldc.getCMProduit().getIdProduit());
+		req.setInt(3, ldc.getIdCommande());
+		req.setInt(4,ldc.getIdProduit());
 	
 		req.setInt(1,ldc.getQuantite());
-		req.setDouble(2, ldc.getCMProduit().getTarif());
+		req.setDouble(2, ldc.getTarifUnitaire());
 		
 	
 		int nbLignes = req.executeUpdate();
