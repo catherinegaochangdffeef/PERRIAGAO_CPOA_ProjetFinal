@@ -4,26 +4,35 @@ package Metier;
 
 public class CMClient {
 private int idClient;
-private String nom, prenom;
+private String nom, prenom,identifiant,motDePasse,adrNumero,adrVoie,adrCodePostal,ville,pays;
 
 
-
+/*
 public CMClient(String nom,String prenom) {
 	this(-1,nom,prenom);
 }
-	
-
+	*/
+public CMClient(String nom,String prenom,String identifiant,String motDePasse, String adrNumero,String adrVoie,String adrCodePostal,String ville, String pays) {
+	this(-1,nom, prenom,identifiant,motDePasse,adrNumero,adrVoie,adrCodePostal,ville,pays);
+}
 	public CMClient(int idClient) {
 		this.setIdClient(idClient);
 		}
 
 
-	public CMClient(int idClient, String nom, String prenom) {
+	public CMClient(int idClient,String nom,String prenom,String identifiant,String motDePasse, String adrNumero,String adrVoie,String adrCodePostal,String ville, String pays) {
 		this.setIdClient(idClient);
 		this.setNom(nom);
 		this.setPrenom(prenom);
+		this.setIdentifiant(identifiant);
+		this.setMotDePasse(motDePasse);
+		this.setAdrNumero(adrNumero);
+		this.setAdrVoie(adrVoie);
+		this.setAdrCodePostal(adrCodePostal);
+		this.setVille(ville);
+		this.setPays(pays);
+	
 	}
-
 
 
 	public int getIdClient() {
@@ -56,6 +65,63 @@ public CMClient(String nom,String prenom) {
 	}
 
 
+	public String getIdentifiant() {
+		return identifiant;
+	}
+
+	public void setIdentifiant(String identifiant) {
+		this.identifiant = identifiant;
+	}
+
+	public String getMotDePasse() {
+		return motDePasse;
+	}
+
+	public void setMotDePasse(String motDePasse) {
+		this.motDePasse = motDePasse;
+	}
+
+	public String getAdrNumero() {
+		return adrNumero;
+	}
+
+	public void setAdrNumero(String adrNumero) {
+		this.adrNumero = adrNumero;
+	}
+
+	public String getAdrVoie() {
+		return adrVoie;
+	}
+
+	public void setAdrVoie(String adrVoie) {
+		this.adrVoie = adrVoie;
+	}
+
+	public String getAdrCodePostal() {
+		return adrCodePostal;
+	}
+
+	public void setAdrCodePostal(String adrCodePostal) {
+		this.adrCodePostal = adrCodePostal;
+	}
+
+	public String getVille() {
+		return ville;
+	}
+
+	public void setVille(String ville) {
+		this.ville = ville;
+	}
+
+	public String getPays() {
+		return pays;
+	}
+
+	public void setPays(String pays) {
+		this.pays = pays;
+	}
+
+	
 	
 
 @Override

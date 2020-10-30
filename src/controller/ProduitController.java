@@ -25,7 +25,7 @@ import dao.DAOFactory;
 import dao.DAOFactory.Persistance;
 import Metier.CMProduit;
 
-import Metier.CMCategorie;
+
 
 
 public class ProduitController implements Initializable{
@@ -68,7 +68,7 @@ public class ProduitController implements Initializable{
 	private TableColumn<CMProduit,Integer> tableColumnIdCategorie;
 	
 	private ObservableList<CMProduit> teamMembers;
-	DAOFactory daos =DAOFactory.getDAOFactory(Persistance.MYSQL);
+	//DAOFactory daos =DAOFactory.getDAOFactory(Persistance.MYSQL);
 	
 	
 	
@@ -84,7 +84,7 @@ public class ProduitController implements Initializable{
 			e.printStackTrace();
 		}
 		try {
-			teamMembers=FXCollections.observableArrayList(daos.getProduitDAO().findAll());
+			teamMembers=FXCollections.observableArrayList(DAOFactory.getDAOFactory(AccueilController.Peri).getProduitDAO().findAll());
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

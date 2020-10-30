@@ -2,7 +2,7 @@ package Metier;
 
 
 public class CMCategorie {
-	private int idCategorie;
+	private int id;
 	private String titre,visuel;
 	
 	public CMCategorie (String titre,String visuel)
@@ -23,11 +23,11 @@ public CMCategorie(int id) {
 //-------------------------------------------------	
 	public int getId() 
 	{
-		return this.idCategorie;
+		return this.id;
 	}
 	public void setId(int idCategorie)
 	{
-		this.idCategorie=idCategorie;
+		this.id=idCategorie;
 	}
 //------------------------------------------------	
 	public String getTitre()
@@ -63,7 +63,7 @@ public CMCategorie(int id) {
 		if (getClass() != obj.getClass())
 			return false;
 		CMCategorie other = (CMCategorie) obj;
-		if (idCategorie != other.idCategorie)
+		if (id != other.id)
 			return false;
 		return true;
 	}

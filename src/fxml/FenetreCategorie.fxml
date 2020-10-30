@@ -13,7 +13,7 @@
 <?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.layout.VBox?>
 
-<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.CategorieController">
+<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onMouseClicked="#cliquerblanc" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.CategorieController">
    <children>
       <GridPane prefHeight="105.0" prefWidth="600.0">
         <columnConstraints>
@@ -29,8 +29,8 @@
          <children>
             <Label alignment="CENTER_RIGHT" contentDisplay="RIGHT" prefHeight="18.0" prefWidth="306.0" text="Titre" textAlignment="CENTER" />
             <Label alignment="CENTER_RIGHT" prefHeight="18.0" prefWidth="146.0" text="Visuel" textAlignment="JUSTIFY" GridPane.rowIndex="1" />
-            <TextField fx:id="textFieldTitre" GridPane.columnIndex="1" />
-            <TextField fx:id="textFieldVisuel" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+            <TextField fx:id="textFieldTitre" onMouseClicked="#cliquertext" GridPane.columnIndex="1" />
+            <TextField fx:id="textFieldVisuel" onMouseClicked="#cliquertext" GridPane.columnIndex="1" GridPane.rowIndex="1" />
          </children>
       </GridPane>
       <FlowPane orientation="VERTICAL" prefHeight="87.0" prefWidth="826.0">
@@ -49,14 +49,16 @@
       </FlowPane>
       <Pane prefHeight="242.0" prefWidth="600.0">
          <children>
-            <TableView layoutX="9.0" layoutY="18.0" prefHeight="200.0" prefWidth="404.0">
+            <TableView fx:id="tableViewCategorie" layoutX="9.0" layoutY="18.0" onMouseClicked="#cliquertable" prefHeight="200.0" prefWidth="404.0">
               <columns>
-                <TableColumn prefWidth="203.20001220703125" text="Titre" />
-                <TableColumn minWidth="0.0" prefWidth="200.0" text="Visuel" />
+                  <TableColumn fx:id="tableColumnIdCategorie" prefWidth="122.4000244140625" text="id_categorie" />
+                <TableColumn fx:id="tableColumnTitre" prefWidth="125.5999755859375" text="Titre" />
+                <TableColumn fx:id="tableColumnVisuel" minWidth="0.0" prefWidth="231.20001220703125" text="Visuel" />
               </columns>
             </TableView>
-            <Button fx:id="buttonModifier" layoutX="472.0" layoutY="32.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="91.0" text="Modifier" />
-            <Button fx:id="buttonSupprimer" layoutX="472.0" layoutY="93.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="91.0" text="Supprimer" />
+            <Button fx:id="buttonModifier" layoutX="472.0" layoutY="32.0" mnemonicParsing="false" onAction="#modifierCategorie" prefHeight="25.0" prefWidth="91.0" text="Modifier" />
+            <Button fx:id="buttonSupprimer" layoutX="472.0" layoutY="93.0" mnemonicParsing="false" onAction="#supprimerCategorie" prefHeight="25.0" prefWidth="91.0" text="Supprimer" />
+            <Button fx:id="buttonRetourMenu" layoutX="472.0" layoutY="146.0" mnemonicParsing="false" onAction="#versAccueil" prefHeight="25.0" prefWidth="91.0" text="Retour" />
          </children>
       </Pane>
    </children>

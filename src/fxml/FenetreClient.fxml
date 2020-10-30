@@ -13,7 +13,7 @@
 <?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.layout.VBox?>
 
-<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="753.0" prefWidth="825.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.ClientController">
+<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onMouseClicked="#cliquerblanc" prefHeight="753.0" prefWidth="914.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.ClientController">
    <children>
       <GridPane alignment="CENTER_LEFT" prefHeight="175.0" prefWidth="906.0">
         <columnConstraints>
@@ -44,15 +44,15 @@
             <Label alignment="CENTER_RIGHT" prefHeight="18.0" prefWidth="126.0" text="Code postal:" GridPane.columnIndex="2" GridPane.rowIndex="1" />
             <Label alignment="CENTER_RIGHT" prefHeight="18.0" prefWidth="125.0" text="Ville:" GridPane.columnIndex="2" GridPane.rowIndex="2" />
             <Label alignment="CENTER_RIGHT" prefHeight="18.0" prefWidth="125.0" text="Pays:" GridPane.columnIndex="2" GridPane.rowIndex="3" />
-            <TextField fx:id="textFieldNom" GridPane.columnIndex="1" />
-            <TextField fx:id="textFieldPrenom" GridPane.columnIndex="1" GridPane.rowIndex="1" />
-            <TextField fx:id="textFieldIdentifiant" GridPane.columnIndex="1" GridPane.rowIndex="2" />
-            <TextField fx:id="textFieldMotDePasse" GridPane.columnIndex="1" GridPane.rowIndex="3" />
-            <TextField fx:id="textFieldNumeroAdresse" GridPane.columnIndex="1" GridPane.rowIndex="4" />
-            <TextField fx:id="textFieldVoieAdresse" GridPane.columnIndex="3" />
-            <TextField fx:id="textFieldCodePostal" GridPane.columnIndex="3" GridPane.rowIndex="1" />
-            <TextField fx:id="textFieldVille" GridPane.columnIndex="3" GridPane.rowIndex="2" />
-            <TextField fx:id="textFieldPays" GridPane.columnIndex="3" GridPane.rowIndex="3" />
+            <TextField fx:id="textFieldNom" onMouseClicked="#cliquertext" GridPane.columnIndex="1" />
+            <TextField fx:id="textFieldPrenom" onMouseClicked="#cliquertext" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+            <TextField fx:id="textFieldIdentifiant" onMouseClicked="#cliquertext" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+            <TextField fx:id="textFieldMotDePasse" onMouseClicked="#cliquertext" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+            <TextField fx:id="textFieldNumeroAdresse" onMouseClicked="#cliquertext" GridPane.columnIndex="1" GridPane.rowIndex="4" />
+            <TextField fx:id="textFieldVoieAdresse" onMouseClicked="#cliquertext" GridPane.columnIndex="3" />
+            <TextField fx:id="textFieldCodePostal" onMouseClicked="#cliquertext" GridPane.columnIndex="3" GridPane.rowIndex="1" />
+            <TextField fx:id="textFieldVille" onMouseClicked="#cliquertext" GridPane.columnIndex="3" GridPane.rowIndex="2" />
+            <TextField fx:id="textFieldPays" onMouseClicked="#cliquertext" GridPane.columnIndex="3" GridPane.rowIndex="3" />
          </children>
          <VBox.margin>
             <Insets top="50.0" />
@@ -62,25 +62,27 @@
          <children>
             <Button fx:id="buttonCreer" layoutX="322.0" layoutY="14.0" mnemonicParsing="false" onAction="#creerClient" text="Creer" />
             <Label fx:id="labelAffichage" alignment="CENTER" contentDisplay="CENTER" layoutX="140.0" layoutY="51.0" prefHeight="17.0" prefWidth="448.0" />
-            <TableView layoutX="-4.0" layoutY="155.0" prefHeight="403.0" prefWidth="722.0">
+            <TableView fx:id="tableViewClient" layoutX="7.0" layoutY="167.0" onMouseClicked="#cliquertable" prefHeight="403.0" prefWidth="809.0">
               <columns>
-                <TableColumn prefWidth="55.19998240470886" text="Nom" />
-                <TableColumn prefWidth="83.20000457763672" text="Prenom" />
-                  <TableColumn prefWidth="79.99996948242188" text="Identifiant" />
-                  <TableColumn prefWidth="88.0" text="Mot de passe" />
-                  <TableColumn prefWidth="120.800048828125" text="Numéro d'adresse" />
-                  <TableColumn prefWidth="94.40005493164062" text="Voie" />
-                  <TableColumn prefWidth="81.5999755859375" text="Code postal" />
-                  <TableColumn prefWidth="52.0" text="Ville" />
-                  <TableColumn prefWidth="73.60009765625" text="Pays" />
+                  <TableColumn fx:id="tableColumnIdClient" prefWidth="57.6000075340271" text="id_client" />
+                <TableColumn fx:id="tableColumnNom" prefWidth="65.5999984741211" text="Nom" />
+                <TableColumn fx:id="tableColumnPrenom" prefWidth="74.39999389648438" text="Prenom" />
+                  <TableColumn fx:id="tableColumnIdentifiant" prefWidth="88.79998779296875" text="Identifiant" />
+                  <TableColumn fx:id="tableColumnMotDePasse" prefWidth="96.0" text="Mot de passe" />
+                  <TableColumn fx:id="tableColumnNumeroAdresse" prefWidth="120.800048828125" text="Numéro d'adresse" />
+                  <TableColumn fx:id="tableColumnVoie" prefWidth="76.0" text="Voie" />
+                  <TableColumn fx:id="tableColumnCodePostal" prefWidth="88.0" text="Code postal" />
+                  <TableColumn fx:id="tableColumnVille" prefWidth="67.99993896484375" text="Ville" />
+                  <TableColumn fx:id="tableColumnPays" prefWidth="70.4000244140625" text="Pays" />
               </columns>
             </TableView>
-            <Button layoutX="730.0" layoutY="220.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="76.0" text="Modifier" />
-            <Button layoutX="730.0" layoutY="286.0" mnemonicParsing="false" text="Supprimer" />
+            <Button fx:id="buttonModifier" layoutX="824.0" layoutY="215.0" mnemonicParsing="false" onAction="#modifierClient" prefHeight="25.0" prefWidth="76.0" text="Modifier" />
+            <Button fx:id="buttonSupprimer" layoutX="824.0" layoutY="288.0" mnemonicParsing="false" onAction="#supprimerClient" text="Supprimer" />
             <Label layoutX="24.0" layoutY="89.0" prefHeight="17.0" prefWidth="109.0" text="Rechercher par:" />
-            <TextField layoutX="236.0" layoutY="85.0" prefHeight="25.0" prefWidth="189.0" />
+            <TextField fx:id="textFieldRecherche" layoutX="236.0" layoutY="85.0" onMouseClicked="#cliquerblanc" prefHeight="25.0" prefWidth="189.0" />
             <ChoiceBox fx:id="choiceBoxTriage" layoutX="121.0" layoutY="85.0" prefHeight="25.0" prefWidth="99.0" />
-            <Button layoutX="434.0" layoutY="85.0" mnemonicParsing="false" text="Valider" />
+            <Button fx:id="buttonValider" layoutX="434.0" layoutY="85.0" mnemonicParsing="false" onAction="#validerRecherche" text="Valider" />
+            <Button fx:id="buttonRetourMenu" layoutX="824.0" layoutY="344.0" mnemonicParsing="false" onAction="#versAccueil" prefHeight="25.0" prefWidth="76.0" text="Retour" />
          </children>
       </Pane>
    </children>

@@ -86,7 +86,7 @@ public class AccueilController implements Initializable  {
 		new VueCategorie().start(new Stage());
 		this.quitter();
 	}
-	
+
 	public void quitter() {
 		Stage stage=(Stage) menuBar.getScene().getWindow();
 		stage.close();

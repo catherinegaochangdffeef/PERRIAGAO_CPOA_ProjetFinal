@@ -19,14 +19,14 @@ public class MySQLClientDAO implements ClientDAO {
 		CMClient client = null;
 		
 		Connection MaConnection = Connexion.creeConnexion();
-		PreparedStatement req = MaConnection.prepareStatement("select id_client, nom, prenom from Client where id_client = ?");
+		PreparedStatement req = MaConnection.prepareStatement("select id_client,nom, prenom,identifiant,motDePasse,adrNumero,adrVoie,adrCodePostal,ville,pays from Client where id_client = ?");
 		req.setInt(1, id_client);
 		
 		
 		ResultSet res = req.executeQuery();
 		
 		while (res.next()) {
-			client= new CMClient(res.getInt(1), res.getString("nom"), res.getString("prenom"));	
+			client= new CMClient(res.getInt(1), res.getString("nom"), res.getString("prenom"),res.getString("identifiant"),res.getString("motDePasse"),res.getString("adrNumero"),res.getString("adrVoie"),res.getString("adrCodePostal"),res.getString("ville"),res.getString("pays"));	
 			
 		}
 		
@@ -43,9 +43,16 @@ public class MySQLClientDAO implements ClientDAO {
 	public boolean create(CMClient c) throws  SQLException{
 		//
 		Connection laConnection = Connexion.creeConnexion();
-			PreparedStatement req = laConnection.prepareStatement("INSERT INTO Client (nom, prenom, identifiant,mot_de_passe,adr_numero,adr_voie,adr_code_postal,adr_ville,adr_pays) values (?,?,'','', '','', '','','')", java.sql.Statement.RETURN_GENERATED_KEYS);
+			PreparedStatement req = laConnection.prepareStatement("INSERT INTO Client (nom, prenom, identifiant,mot_de_passe,adr_numero,adr_voie,adr_code_postal,adr_ville,adr_pays) values (?,?,?,?,?,?,?,?,?)", java.sql.Statement.RETURN_GENERATED_KEYS);
 				req.setString(1, c.getNom());
 				req.setString(2, c.getPrenom());
+				req.setString(3, c.getIdentifiant());
+				req.setString(4, c.getMotDePasse());
+				req.setString(5, c.getAdrNumero());
+				req.setString(6, c.getAdrVoie());
+				req.setString(7, c.getAdrCodePostal());
+				req.setString(8, c.getAdrVoie());
+				req.setString(9, c.getPays());
 				int nbLignes = req.executeUpdate();
 				ResultSet res = req.getGeneratedKeys();
 
@@ -68,11 +75,17 @@ public class MySQLClientDAO implements ClientDAO {
 		
 		Connection laConnection = Connexion.creeConnexion();
 		
-		PreparedStatement req = laConnection.prepareStatement("update Client set nom=? ,prenom=? where id_client=?");
-		req.setInt(3, c.getIdClient());
+		PreparedStatement req = laConnection.prepareStatement("update Client set nom=? ,prenom=?,identifiant=?,mot_de_passe=?,adr_numero=?,adr_voie=?,adr_code_postal=?,adr_ville=?,adr_pays=? where id_client=?");
+		req.setInt(10, c.getIdClient());
 		req.setString(1,c.getNom());
 		req.setString(2,c.getPrenom());
-		
+		req.setString(3, c.getIdentifiant());
+		req.setString(4, c.getMotDePasse());
+		req.setString(5, c.getAdrNumero());
+		req.setString(6, c.getAdrVoie());
+		req.setString(7, c.getAdrCodePostal());
+		req.setString(8, c.getAdrVoie());
+		req.setString(9, c.getPays());
 		int nbLignes = req.executeUpdate();
 	
 		
@@ -134,7 +147,7 @@ public class MySQLClientDAO implements ClientDAO {
 		ResultSet res = req.executeQuery();
 		
 		while (res.next()) {
-			cl.add(new CMClient(res.getInt(1), res.getString(2), res.getString(3)));
+			cl.add(new CMClient(res.getInt(1), res.getString(2), res.getString(3),res.getString(4),res.getString(5),res.getString(6),res.getString(7),res.getString(8),res.getString(9),res.getString(10)));
 			
 		}
 		
