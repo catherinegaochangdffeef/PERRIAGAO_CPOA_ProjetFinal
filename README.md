@@ -1,9 +1,9 @@
-# Projet-CPOA-Final
+# Projet-CPOA-Final:whale:
 
 ## Trello :https://trello.com/b/YIGfWYZk/travail
 
 
-### Ce qui fonctionne:  
+### Ce qui fonctionne::heavy_check_mark:  
 1.Saisir/modifier/supprimer/visualiser les données pour l'ensemble des produits vendus, des catégories, des clients et des commandes.  
 2.Pour chaque élément du logiciel, un formulaire permettra d'ajouter un nouvel élément ou de modifier unélément existant.  
 3.La fenêtre de gestion sera séparée en deux parties : une partie affiche les éléments existants dans une table.   
@@ -15,7 +15,7 @@
 
 
 
-### Ce qui fonctionne pas:
+### Ce qui fonctionne pas: :x:  
 1.L'affichage des produits ne pourra pas être filtré ou trié par catégorie.  
 2.Une recherche par nom de produit ne sera pas également proposée, ainsi qu'une recherche relative au tarif (tous les produits dont le tarif est inférieur à n euros).  
 3.Sur la fenêtre des clients, l'affichage n'est pas trié par ordre alphabétique des noms des clients, ou par ville, nom ; il est impossible de faire une recherche par nom et nom, prénom.  
@@ -23,8 +23,8 @@
 trier/filtrer par produit et client.  
 5.Il y a des erreurs dans listmémoire donc il ne peut pas fonctionne très bien.   
 
-### La répartition des tâches entre les différents membres du groupe:  
-#### GAO Chang  
+### La répartition des tâches entre les différents membres du groupe:  :triangular_flag_on_post:  
+#### GAO Chang  :ribbon:  
 --TD5: Tous les interfaces, relier avec la base de donnée, les fonctions saisir/modifier/supprimer/visualiser   
 --TD4: Constuire l'interface graphique, gérer les erreurs de saisie de l'utilisateur,
 réaliser une insertion dans la base de données au clic sur le bouton de création,la classe controlleur  
@@ -34,13 +34,13 @@ réaliser une insertion dans la base de données au clic sur le bouton de créat
 
 
 
-#### Inès PERRIA  
+#### Inès PERRIA  :crown:  
 --TD5: interfaces graphique du produit  
 --TD4: Constuire l'interface graphique  
 --TD3: Test ListeMémoire, Test SQL  
 --TD2: POJO  
 --TD1: Les 4 méthodes    
 
-### Une  estimation du pourcentage de l'investissement de chacun dans le projet rendu:  
+### Une  estimation du pourcentage de l'investissement de chacun dans le projet rendu: :interrobang:   
 GAO Chang: 60%   
 Inès PERRIA:40%
