@@ -42,5 +42,5 @@ réaliser une insertion dans la base de données au clic sur le bouton de créat
 --TD1: Les 4 méthodes    
 
 ### Une  estimation du pourcentage de l'investissement de chacun dans le projet rendu: :interrobang:   
-GAO Chang: 60%   
-Inès PERRIA:40%
+:dart:GAO Chang: 60%   
+:dart:Inès PERRIA: 40%
