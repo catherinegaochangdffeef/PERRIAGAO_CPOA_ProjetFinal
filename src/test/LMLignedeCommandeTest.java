@@ -92,7 +92,7 @@ public class LMLignedeCommandeTest {
 	@Test
 	public void testfindAll() throws Exception{
 		    	
-		CMLignedeCommande c2=new CMLignedeCommande(2,4, 2.0);
+		CMLignedeCommande c2=new CMLignedeCommande(2,4,2,2.0);
 		
 		ListeMemoireLignedeCommandeDAO lma = (ListeMemoireLignedeCommandeDAO) DAOFactory.getDAOFactory(Persistance.ListMemoire).getLignedeCommandeDAO();			
 		ArrayList<CMLignedeCommande> ar = new ArrayList<CMLignedeCommande>(lma.findAll());

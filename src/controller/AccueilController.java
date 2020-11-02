@@ -1,31 +1,22 @@
 package controller;
-import controller.ProduitController;
 import controller.AccueilController;
 
-import java.awt.Toolkit;
-import java.awt.event.WindowEvent;
 import java.net.URL;
 import java.util.ResourceBundle;
-import java.util.List;
 
 import dao.DAOFactory;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Menu;
 import javafx.scene.control.MenuBar;
 import javafx.scene.control.MenuItem;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
-import vue.VueAccueil;
 import vue.VueProduit;
 import vue.VueCommande;
 import vue.VueCategorie;
 import vue.VueClient;
-import javafx.scene.Node;
-import javafx.scene.Parent;
-import javafx.scene.Scene;
 
 public class AccueilController implements Initializable  {
 

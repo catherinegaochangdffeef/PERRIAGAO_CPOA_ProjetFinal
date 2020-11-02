@@ -16,7 +16,6 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import Metier.CMClient;
-import SQL.MySQLCategorieDAO;
 import SQL.MySQLClientDAO;
 import dao.DAOFactory;
 import dao.DAOFactory.Persistance;

@@ -23,8 +23,6 @@ import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.stage.Stage;
 import vue.VueAccueil;
 import dao.DAOFactory;
-import dao.DAOFactory.Persistance;
-import Metier.CMCommande;
 import Metier.CMProduit;
 
 
