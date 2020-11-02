@@ -1,5 +1,6 @@
 package controller;
 import java.net.URL;
+import java.util.ArrayList;
 import java.util.ResourceBundle;
 
 import javafx.collections.FXCollections;
@@ -23,6 +24,7 @@ import javafx.stage.Stage;
 import vue.VueAccueil;
 import dao.DAOFactory;
 import dao.DAOFactory.Persistance;
+import Metier.CMCommande;
 import Metier.CMProduit;
 
 
@@ -40,6 +42,9 @@ public class ProduitController implements Initializable{
 	private TextArea textAreaDescription;
 	@FXML
 	private TextField textFieldVisuel;
+	@FXML
+	private TextField txtfieldRechercher;
+
 	@FXML
 	private Label labelAffichage;
 	@FXML
@@ -70,6 +75,7 @@ public class ProduitController implements Initializable{
 	private ObservableList<CMProduit> teamMembers;
 	//DAOFactory daos =DAOFactory.getDAOFactory(Persistance.MYSQL);
 	
+	private ArrayList<CMProduit> listeProduit;
 	
 	
 	@Override
@@ -83,13 +89,7 @@ public class ProduitController implements Initializable{
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		try {
-			teamMembers=FXCollections.observableArrayList(DAOFactory.getDAOFactory(AccueilController.Peri).getProduitDAO().findAll());
-		} catch (Exception e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		FilteredList<CMProduit> filteredData= new FilteredList<>(teamMembers,p->true);
+			FilteredList<CMProduit> filteredData= new FilteredList<>(teamMembers,p->true);
 		
 		SortedList<CMProduit> sortedData = new SortedList<>(filteredData);
 		sortedData.comparatorProperty().bind(tableViewProduit.comparatorProperty());
@@ -107,6 +107,26 @@ public class ProduitController implements Initializable{
 		buttonModifier.setDisable(true);
 		buttonSupprimer.setDisable(true);
 		
+		
+		if (txtfieldRechercher.getText().trim().isEmpty()) {	
+			try {
+				teamMembers=FXCollections.observableArrayList(DAOFactory.getDAOFactory(AccueilController.Peri).getProduitDAO().findAll());
+				} catch (Exception e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			this.tableViewProduit.setItems(teamMembers);
+			}
+			else {
+				try {
+					for (CMProduit lc: DAOFactory.getDAOFactory(AccueilController.Peri).getProduitDAO().findAll()) {
+						if (String.valueOf(lc.getIdProduit()).toLowerCase().contains(txtfieldRechercher.getText())) {
+							listeProduit.add(lc);
+							teamMembers=FXCollections.observableList(listeProduit);
+							this.tableViewProduit.setItems(teamMembers);
+						}}
+				} catch (Exception e) {}
+			}
 	}
 	
 	public void versAccueil() {

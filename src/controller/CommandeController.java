@@ -2,8 +2,10 @@ package controller;
 
 import java.net.URL;
 import java.sql.Date;
+import java.util.ArrayList;
 import java.util.ResourceBundle;
 
+import Metier.CMClient;
 import Metier.CMCommande;
 import Metier.CMLignedeCommande;
 import Metier.CMProduit;
@@ -41,7 +43,10 @@ public class CommandeController implements Initializable {
 	@FXML
 	private TextField textFieldQuantite;
 	@FXML
-	private ChoiceBox<String> choiceBoxCommande;
+	private TextField txtfieldRechercher1;
+	@FXML
+	private TextField txtfieldRechercher2;
+
 	@FXML
 	private Button buttonCreer1;
 	@FXML
@@ -56,8 +61,6 @@ public class CommandeController implements Initializable {
 	private Button buttonSupprimer2;
 	@FXML
 	private Button buttonRetour;
-	@FXML
-	private Label labelAffichage;
 	@FXML
 	private TableView<CMCommande> tableViewCommande;
 	@FXML
@@ -80,23 +83,11 @@ public class CommandeController implements Initializable {
 	private ObservableList<CMCommande> teamMembersC;
 	private ObservableList<CMLignedeCommande> teamMembersL;
 
+	private ArrayList<CMCommande> listeCommande;
+	private ArrayList<CMLignedeCommande> listeLignedeCommande;
 
 	public void initialize(URL arg0, ResourceBundle arg1) {
-		choiceBoxCommande.getItems().add("produit");
-		choiceBoxCommande.getItems().add("client");
 		try {
-			teamMembersC=FXCollections.observableArrayList(DAOFactory.getDAOFactory(AccueilController.Peri).getCommandeDAO().findAll());
-			teamMembersL=FXCollections.observableArrayList(DAOFactory.getDAOFactory(AccueilController.Peri).getLignedeCommandeDAO().findAll());
-		
-			FilteredList<CMCommande> filteredDataC= new FilteredList<>(teamMembersC,p->true);
-			SortedList<CMCommande> sortedDataC = new SortedList<>(filteredDataC);
-			sortedDataC.comparatorProperty().bind(tableViewCommande.comparatorProperty());
-			this.tableViewCommande.setItems(sortedDataC);
-			
-			FilteredList<CMLignedeCommande> filteredDataL= new FilteredList<>(teamMembersL,p->true);
-			SortedList<CMLignedeCommande> sortedDataL = new SortedList<>(filteredDataL);
-			sortedDataL.comparatorProperty().bind(tableViewLigneDeCommande.comparatorProperty());
-			this.tableViewLigneDeCommande.setItems(sortedDataL);
 			
 			tableColumnIdCommande.setCellValueFactory(new PropertyValueFactory<CMCommande,Integer>("idCommande"));
 			tableColumnDateCommande.setCellValueFactory(new PropertyValueFactory<CMCommande,Date>("dateCommande"));
@@ -114,6 +105,45 @@ public class CommandeController implements Initializable {
 			buttonModifier2.setDisable(true);
 			buttonSupprimer2.setDisable(true);
 			
+			
+			if (txtfieldRechercher1.getText().trim().isEmpty()) {	
+				try {
+					teamMembersC=FXCollections.observableList(DAOFactory.getDAOFactory(AccueilController.Peri).getCommandeDAO().findAll());
+					} catch (Exception e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+				this.tableViewCommande.setItems(teamMembersC);
+				}
+				else {
+					try {
+						for (CMCommande lc: DAOFactory.getDAOFactory(AccueilController.Peri).getCommandeDAO().findAll()) {
+							if (String.valueOf(lc.getIdCommande()).toLowerCase().contains(txtfieldRechercher1.getText())) {
+								listeCommande.add(lc);
+								teamMembersC=FXCollections.observableList(listeCommande);
+								this.tableViewCommande.setItems(teamMembersC);
+							}}
+					} catch (Exception e) {}
+				}
+			if (txtfieldRechercher2.getText().trim().isEmpty()) {	
+				try {
+					teamMembersL=FXCollections.observableList(DAOFactory.getDAOFactory(AccueilController.Peri).getLignedeCommandeDAO().findAll());
+					} catch (Exception e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+				this.tableViewLigneDeCommande.setItems(teamMembersL);
+				}
+				else {
+					try {
+						for (CMLignedeCommande lc: DAOFactory.getDAOFactory(AccueilController.Peri).getLignedeCommandeDAO().findAll()) {
+							if (String.valueOf(lc.getIdCommande()).toLowerCase().contains(txtfieldRechercher2.getText())) {
+								listeLignedeCommande.add(lc);
+								teamMembersL=FXCollections.observableList(listeLignedeCommande);
+								this.tableViewLigneDeCommande.setItems(teamMembersL);
+							}}
+					} catch (Exception e) {}
+				}
 			
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
