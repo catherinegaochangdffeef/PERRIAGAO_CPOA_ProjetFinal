@@ -71,7 +71,7 @@ public class ListeMemoireLignedeCommandeDAO implements LignedeCommandeDAO{
 	public CMLignedeCommande getById(int id_commande) throws IllegalArgumentException {
 		int idx = this.donnees.indexOf(new CMLignedeCommande(id_commande, 2,3,4));
 		if (idx == -1) {
-			throw new IllegalArgumentException("Aucune categorie ne possède cet identifiant");
+			throw new IllegalArgumentException("Aucune ligne de commande ne possède cet identifiant");
 		} else {
 			return this.donnees.get(idx);
 		}
