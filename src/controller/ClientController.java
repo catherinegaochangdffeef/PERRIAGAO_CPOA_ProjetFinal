@@ -1,8 +1,10 @@
 package controller;
 
 import java.net.URL;
+import java.util.ArrayList;
 import java.util.ResourceBundle;
 
+import Metier.CMCategorie;
 import Metier.CMClient;
 import Metier.CMProduit;
 import dao.DAOFactory;
@@ -46,7 +48,8 @@ public class ClientController implements Initializable {
 	@FXML
 	private TextField textFieldPays;
 	@FXML
-	private TextField textFieldRecherche;
+	private TextField txtfieldRechercher;
+
 	@FXML
 	private Button buttonModifier;
 	@FXML
@@ -55,8 +58,7 @@ public class ClientController implements Initializable {
 	private Button buttonSupprimer;
 	@FXML
 	private Button buttonRetourMenu;
-	@FXML
-	private Button buttonValider;
+
 	@FXML
 	private TableView<CMClient> tableViewClient;
 	@FXML
@@ -81,28 +83,16 @@ public class ClientController implements Initializable {
 	private TableColumn<CMClient,String> tableColumnPays;
 	
 	@FXML
-	private ChoiceBox<String> choiceBoxTriage;
-	@FXML
 	private Label labelAffichage;
+	
 	private ObservableList<CMClient> teamMembers;
+	
+	private ArrayList<CMClient> listeClient;
+	
 	
 	
 	@Override
 	public void initialize(URL arg0, ResourceBundle arg1) {
-		choiceBoxTriage.getItems().add("nom");
-		choiceBoxTriage.getItems().add("ville et nom");
-		
-		try {
-			teamMembers=FXCollections.observableArrayList(DAOFactory.getDAOFactory(AccueilController.Peri).getClientDAO().findAll());
-		} catch (Exception e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		FilteredList<CMClient> filteredData= new FilteredList<>(teamMembers,p->true);
-		
-		SortedList<CMClient> sortedData = new SortedList<>(filteredData);
-		sortedData.comparatorProperty().bind(tableViewClient.comparatorProperty());
-		this.tableViewClient.setItems(sortedData);
 		
 		tableColumnIdClient.setCellValueFactory(new PropertyValueFactory<CMClient,Integer>("idClient"));
 		tableColumnNom.setCellValueFactory(new PropertyValueFactory<CMClient,String>("nom"));
@@ -120,7 +110,28 @@ public class ClientController implements Initializable {
 		buttonModifier.setDisable(true);
 		buttonSupprimer.setDisable(true);
 		
-	}	
+		if (txtfieldRechercher.getText().trim().isEmpty()) {	
+		try {
+			teamMembers=FXCollections.observableList(DAOFactory.getDAOFactory(AccueilController.Peri).getClientDAO().findAll());
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		this.tableViewClient.setItems(teamMembers);
+		}
+		else {
+			try {
+				for (CMClient lc: DAOFactory.getDAOFactory(AccueilController.Peri).getClientDAO().findAll()) {
+					if (String.valueOf(lc.getIdClient()).toLowerCase().contains(txtfieldRechercher.getText())) {
+						listeClient.add(lc);
+						teamMembers=FXCollections.observableList(listeClient);
+						this.tableViewClient.setItems(teamMembers);
+					}}
+			} catch (Exception e) {}
+		}} 
+		
+		
+		
 	
 	public void versAccueil() {
 		new VueAccueil().start(new Stage());
