@@ -1,6 +1,8 @@
 package controller;
 
 import java.net.URL;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.ResourceBundle;
 
 import javafx.collections.FXCollections;
@@ -20,8 +22,10 @@ import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.stage.Stage;
 import vue.VueAccueil;
+import dao.DAO;
 import dao.DAOFactory;
 import Metier.CMCategorie;
+import Metier.CMLignedeCommande;
 public class CategorieController implements Initializable{
 
 	@FXML
@@ -29,6 +33,8 @@ public class CategorieController implements Initializable{
 
 	@FXML
 	private TextField textFieldVisuel;
+	@FXML
+	private TextField txtfieldRechercher;
 
 	@FXML
 	private Button buttonCreer;
@@ -38,6 +44,8 @@ public class CategorieController implements Initializable{
 	private Button buttonSupprimer;
 	@FXML
 	private Button buttonRetourMenu;
+	@FXML
+	private Button btnRechercher;
 	@FXML
 	private Label labelAffichage;
 	@FXML
@@ -50,36 +58,40 @@ public class CategorieController implements Initializable{
 	private TableColumn<CMCategorie,Integer> tableColumnIdCategorie;
 	private ObservableList<CMCategorie> teamMembers;
 	
-	
+	private ArrayList<CMCategorie> listeCategorie;
 	
 
 
 
 	@Override
 	public void initialize(URL arg0, ResourceBundle arg1) {
-		try {
-			teamMembers=FXCollections.observableArrayList(DAOFactory.getDAOFactory(AccueilController.Peri).getCategorieDAO().findAll());
-		} catch (Exception e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-FilteredList<CMCategorie> filteredData= new FilteredList<>(teamMembers,p->true);
 		
-		SortedList<CMCategorie> sortedData = new SortedList<>(filteredData);
-		sortedData.comparatorProperty().bind(tableViewCategorie.comparatorProperty());
-		this.tableViewCategorie.setItems(sortedData);
 		
+		buttonCreer.setDisable(true);
+		buttonModifier.setDisable(true);
+		buttonSupprimer.setDisable(true);
 		
 		tableColumnTitre.setCellValueFactory(new PropertyValueFactory<CMCategorie,String>("titre"));
 		tableColumnVisuel.setCellValueFactory(new PropertyValueFactory<CMCategorie,String>("visuel"));
 		tableColumnIdCategorie.setCellValueFactory(new PropertyValueFactory<CMCategorie,Integer>("id"));
 		this.tableViewCategorie.getSortOrder().add(tableColumnIdCategorie);
 		
-		buttonCreer.setDisable(true);
-		buttonModifier.setDisable(true);
-		buttonSupprimer.setDisable(true);
-		
-	}
+		if (txtfieldRechercher.getText().trim().isEmpty()) {
+			try {
+				teamMembers=FXCollections.observableList(DAOFactory.getDAOFactory(AccueilController.Peri).getCategorieDAO().findAll());
+			} catch (Exception e) {}
+			this.tableViewCategorie.setItems(teamMembers);
+		}
+		else {
+			try {
+				for (CMCategorie lc: DAOFactory.getDAOFactory(AccueilController.Peri).getCategorieDAO().findAll()) {
+					if (String.valueOf(lc.getId()).toLowerCase().contains(txtfieldRechercher.getText())) {
+						listeCategorie.add(lc);
+						teamMembers=FXCollections.observableList(listeCategorie);
+						this.tableViewCategorie.setItems(teamMembers);
+					}}
+			} catch (Exception e) {}
+		}}
 	
 	
 	public void creerCategorie() {
