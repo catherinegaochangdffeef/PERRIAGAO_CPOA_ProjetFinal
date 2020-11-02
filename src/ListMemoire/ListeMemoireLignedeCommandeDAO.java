@@ -82,4 +82,13 @@ public class ListeMemoireLignedeCommandeDAO implements LignedeCommandeDAO{
 		return (ArrayList<CMLignedeCommande>) this.donnees;
 	}
 
-}
+	@Override
+	public CMLignedeCommande getById2(int id, int idproduit) throws Exception {
+		int idx = this.donnees.indexOf(new CMLignedeCommande(id, 2,3,4));
+		if (idx == -1) {
+			throw new IllegalArgumentException("Aucune categorie ne possède cet identifiant");
+		} else {
+			return this.donnees.get(idx);
+	}
+	}}
+

@@ -33,11 +33,11 @@ public class ListeMemoireCommandeDAO implements CommandeDAO {
 
 	@Override
 	public boolean create(CMCommande objet) throws Exception {
-		objet.setId(3);;
+		objet.setIdCommande(3);;
 		
 		while (this.donnees.contains(objet)) {
 
-			objet.setId(objet.getId()+ 1);
+			objet.setIdCommande(objet.getIdCommande()+ 1);
 		}
 		boolean ok = this.donnees.add(objet);
 		
