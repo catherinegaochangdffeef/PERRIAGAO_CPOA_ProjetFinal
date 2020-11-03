@@ -30,16 +30,16 @@ trier/filtrer par produit et client.
 réaliser une insertion dans la base de données au clic sur le bouton de création,la classe controlleur  
 --TD3:Test SQL  
 --TD2: Créer les objets métiers(POJO) pour les tables à gérer, DAO niveau 2(MYSQL, ListeMémoire), DAOFactory, passer de mySQL à ListeMemoire,HashMap  
---TD1: Le menu pour tester les 4 méthodes  
+--TD1: Le menu pour tester les 4 méthodes +arraylist
 
 
 
 #### Inès PERRIA  :crown:  
 --TD5: interfaces graphique du produit  
---TD4: Constuire l'interface graphique  
+--TD4: Constuire l'interface graphique produit 
 --TD3: Test ListeMémoire, Test SQL  
---TD2: POJO  
---TD1: Les 4 méthodes    
+--TD2: Créer les objets métiers(POJO) pour les tables à gérer, DAO niveau 2(MYSQL, ListeMémoire)  
+--TD1: Les méthodes (ajouter, supprimer, modifier ) 
 
 ### Une  estimation du pourcentage de l'investissement de chacun dans le projet rendu: :interrobang:   
 :dart:GAO Chang: 60%   
