@@ -27,7 +27,7 @@ trier/filtrer par produit et client.
 #### GAO Chang  :ribbon:  
 --TD5: Tous les interfaces, relier avec la base de donnée, les fonctions saisir/modifier/supprimer/visualiser   
 --TD4: Constuire l'interface graphique, gérer les erreurs de saisie de l'utilisateur,
-réaliser une insertion dans la base de données au clic sur le bouton de création,la classe controlleur  
+réaliser une insertion dans la base de données au clic sur le bouton de création,la classe controlleur    
 --TD3:Test SQL  
 --TD2: Créer les objets métiers(POJO) pour les tables à gérer, DAO niveau 2(MYSQL, ListeMémoire), DAOFactory, passer de mySQL à ListeMemoire,HashMap  
 --TD1: Le menu pour tester les 4 méthodes +arraylist
