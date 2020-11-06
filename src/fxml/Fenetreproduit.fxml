@@ -70,7 +70,6 @@
             <Button fx:id="buttonModifier" layoutX="657.0" layoutY="38.0" mnemonicParsing="false" onAction="#modifierProduit" text="Modifier" />
             <Button fx:id="buttonSupprimer" layoutX="651.0" layoutY="82.0" mnemonicParsing="false" onAction="#supprimerProduit" text="Supprimer" />
             <Button fx:id="buttonRetourMenu" layoutX="643.0" layoutY="138.0" mnemonicParsing="false" onAction="#versAccueil" text="Retour menu" />
-            <TextField fx:id="txtfieldRechercher" layoutX="583.0" layoutY="-1.0" />
          </children>
       </Pane>
    </children>
