@@ -1,3 +1,4 @@
+
 package ListMemoire;
 
 import java.util.ArrayList;
@@ -93,15 +94,10 @@ public class ListeMemoireCategorieDAO implements CategorieDAO{
 
 	@Override
 	public CMCategorie getByTitre(String titre) throws Exception {
-		int idx = this.donnees.indexOf(new CMCategorie(1,titre, "test.png"));
-		if (idx == -1) {
-			throw new IllegalArgumentException("Aucune categorie ne prossède ce titre");
-		} else {
-			return this.donnees.get(idx);
-		}
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 
 	}
 
-	

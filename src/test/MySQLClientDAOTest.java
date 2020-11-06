@@ -36,10 +36,6 @@ private CMClient c;
     
 	@Test
 	public void testSelectExiste() throws Exception {
-		
-	
-	
-	
 	int id=c.getIdClient();
 	
 	CMClient cBdd=MySQLClientDAO.getInstance().getById(id);
@@ -47,15 +43,12 @@ private CMClient c;
  }
 	@Test
 	public void testGetbyid() throws Exception {
-		
 	    
 	    	try {
 		DAOFactory.getDAOFactory(Persistance.MYSQL).getClientDAO().getById(c.getIdClient());}
 	    	catch(Exception e) {
 	    	    fail("erreur de getbyid");
 	    	}
-	    	
-	    
 	}
 	@Test
 	public void testCreate() throws Exception {
@@ -70,8 +63,6 @@ private CMClient c;
 		//assertEquals(c.getId(),1);
 		assertEquals(c.getNom(),"aa");
 		assertEquals(c.getPrenom(),"aaa");
-
-		
 		MySQLClientDAO.getInstance().delete(c2);
 		
 	}
@@ -89,10 +80,6 @@ private CMClient c;
 		assertNull(cl);
 		
 		assertFalse(MySQLClientDAO.getInstance().delete(cl));
-	
-		
-	
-		
 		
 	}
 	

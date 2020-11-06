@@ -1,3 +1,4 @@
+
 package test;
 
 import static org.junit.Assert.assertEquals;
@@ -22,7 +23,7 @@ private CMCommande c;
 private CMClient client;   
     @BeforeEach
     public void Setup() throws InvalidPropertiesFormatException, SQLException, IOException {
-	client=new CMClient(100,"Jack","Ma");
+    	client=new CMClient("JOURNET","Maxime","ddd","ddd","123","dd","33333","METZ","France");
     c=new CMCommande("2020-01-01" ,client);
 	MySQLCommandeDAO.getInstance().create(c);
 	MySQLClientDAO.getInstance().create(client);
@@ -50,7 +51,7 @@ private CMClient client;
 	}
 	@Test
 	public void testCreate() throws Exception {
-		client=new CMClient(101,"JOURNET","Maxime");
+		client=new CMClient("JOURNET","Maxime","ddd","ddd","123","dd","33333","METZ","France");
 		 c=new CMCommande("2020-01-01",client);
 		try {
 	    MySQLClientDAO.getInstance().create(client);	
@@ -76,7 +77,7 @@ private CMClient client;
 	@Test
 	public void testUpdate() throws Exception {
 		
-		 client=new CMClient(101,"JOURNET","Maxime");
+		client=new CMClient("JOURNET","Maxime","ddd","ddd","123","dd","33333","METZ","France");
 		c=new CMCommande("2020-01-01",client);
 		DAOFactory.getDAOFactory(Persistance.MYSQL).getCommandeDAO().update(c);
 		
@@ -87,3 +88,4 @@ private CMClient client;
 	}
 
 }
+
