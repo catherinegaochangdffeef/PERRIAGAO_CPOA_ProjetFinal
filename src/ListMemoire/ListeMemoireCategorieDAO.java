@@ -91,6 +91,12 @@ public class ListeMemoireCategorieDAO implements CategorieDAO{
 		return (ArrayList<CMCategorie>) this.donnees;
 	}
 
+	@Override
+	public CMCategorie getByTitre(String titre) throws Exception {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
 
 	}
 

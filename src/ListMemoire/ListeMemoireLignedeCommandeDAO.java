@@ -82,4 +82,10 @@ public class ListeMemoireLignedeCommandeDAO implements LignedeCommandeDAO{
 		return (ArrayList<CMLignedeCommande>) this.donnees;
 	}
 
+	@Override
+	public CMLignedeCommande getById2(int id, int idproduit) throws Exception {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
 }
