@@ -3,7 +3,6 @@ package test;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertNotNull;
-import static org.junit.Assert.assertNull;
 import static org.junit.Assert.assertTrue;
 import static org.junit.Assert.fail;
 
@@ -71,7 +70,7 @@ private CMProduit p;
 		assertEquals(p.getDescription(),"222xx");
 		assertEquals(p.getTarif(),1.0,1.0); //utilisation d'un delta car float
 		assertEquals(p.getVisuel(),"xxx.png");
-		assertEquals(p.getCMCategorie().getId(),3);
+		assertEquals(p.getIdCMCategorie().getId(),3);
 
 		
 		MySQLProduitDAO.getInstance().delete(c2);
@@ -111,7 +110,7 @@ private CMProduit p;
 		assertEquals("333zz", p2.getDescription());
 		assertEquals((float)1,0, p2.getTarif());
 		assertEquals("yyy.png", p2.getVisuel());
-		assertEquals(3, p2.getCMCategorie().getId());
+		assertEquals(3, p2.getIdCMCategorie().getId());
 	}
 	
 }

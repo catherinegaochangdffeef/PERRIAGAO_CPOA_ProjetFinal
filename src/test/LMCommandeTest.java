@@ -31,7 +31,7 @@ private CMCommande c;
 	@Test
 	public void testSelectExiste() throws Exception {
 		
-	int id=c.getId();
+	int id=c.getIdCommande();
 	
 	CMCommande cLm=ListeMemoireCommandeDAO.getInstance().getById(id);
 	assertNotNull(cLm);
@@ -41,7 +41,7 @@ private CMCommande c;
 	public void testGetbyId() throws Exception {
 		
 	    try {
-		DAOFactory.getDAOFactory(Persistance.ListMemoire).getCommandeDAO().getById(c.getId());} catch(Exception e) {
+		DAOFactory.getDAOFactory(Persistance.ListMemoire).getCommandeDAO().getById(c.getIdCommande());} catch(Exception e) {
 		    fail("Erreur lors de la récupération");
 		}
 		
@@ -51,7 +51,7 @@ private CMCommande c;
 	public void testCreate() throws Exception {
 			
 		//assertEquals(c.getId(),1);
-		assertEquals(c.getId(),1);
+		assertEquals(c.getIdCommande(),1);
 		assertEquals(c.getIdClient(),1);
 		assertEquals(c.getDateCommande(),"01-01-2020"); //pas sûre que la date doit être appelé comme ca 
 
@@ -61,7 +61,7 @@ private CMCommande c;
 	public void testDelete() throws Exception {
 		
 		assertTrue((ListeMemoireCommandeDAO.getInstance().delete(c)), "");
-		int id = c.getId();
+		int id = c.getIdCommande();
 
 		try {
 		DAOFactory.getDAOFactory(Persistance.ListMemoire).getCommandeDAO().getById(id);
@@ -82,9 +82,9 @@ private CMCommande c;
 	@Test
 	public void testUpdate() throws Exception {
 			
-		CMCommande c2= new CMCommande(c.getId(),"01-01-2020",1);
+		CMCommande c2= new CMCommande(c.getIdCommande(),"01-01-2020",1);
 		DAOFactory.getDAOFactory(Persistance.ListMemoire).getCommandeDAO().update(c2);
-		CMCommande c3 = DAOFactory.getDAOFactory(Persistance.ListMemoire).getCommandeDAO().getById(c2.getId());
+		CMCommande c3 = DAOFactory.getDAOFactory(Persistance.ListMemoire).getCommandeDAO().getById(c2.getIdCommande());
 		assertEquals(1, c3.getIdClient());
 		assertEquals("01-01-2020", c3.getDateCommande() );
 	}

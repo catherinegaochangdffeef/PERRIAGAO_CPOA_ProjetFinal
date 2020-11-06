@@ -22,7 +22,7 @@ private CMCommande c;
 private CMClient client;   
     @BeforeEach
     public void Setup() throws InvalidPropertiesFormatException, SQLException, IOException {
-	client=new CMClient("Jack","Ma");
+    	client=new CMClient("JOURNET","Maxime","ddd","ddd","123","dd","33333","METZ","France");
     c=new CMCommande("2020-01-01" ,client);
 	MySQLCommandeDAO.getInstance().create(c);
 	MySQLClientDAO.getInstance().create(client);
@@ -42,7 +42,7 @@ private CMClient client;
 	@Test
 	public void testGetbyid() throws Exception {
 	    	try {
-		DAOFactory.getDAOFactory(Persistance.MYSQL).getCommandeDAO().getById(c.getId());}
+		DAOFactory.getDAOFactory(Persistance.MYSQL).getCommandeDAO().getById(c.getIdCommande());}
 	    	catch(Exception e) {
 	    	    fail("erreur de getbyid");
 	    	}
@@ -50,7 +50,7 @@ private CMClient client;
 	}
 	@Test
 	public void testCreate() throws Exception {
-		client=new CMClient("JOURNET","Maxime");
+		client=new CMClient("JOURNET","Maxime","ddd","ddd","123","dd","33333","METZ","France");
 		 c=new CMCommande("2020-01-01",client);
 		try {
 	    MySQLClientDAO.getInstance().create(client);	
@@ -76,7 +76,7 @@ private CMClient client;
 	@Test
 	public void testUpdate() throws Exception {
 		
-		 client=new CMClient("JOURNET","Maxime");
+		client=new CMClient("JOURNET","Maxime","ddd","ddd","123","dd","33333","METZ","France");
 		c=new CMCommande("2020-01-01",client);
 		DAOFactory.getDAOFactory(Persistance.MYSQL).getCommandeDAO().update(c);
 		
