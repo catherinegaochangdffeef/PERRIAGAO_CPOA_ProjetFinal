@@ -32,7 +32,9 @@ private CMCommande c;
     public void Setup() throws InvalidPropertiesFormatException, SQLException, IOException {
     cat=new CMCategorie("Watch","watch.png");
     	 p=new CMProduit("aaa", "222xx",(float) 1.0,"xxx.png",cat);
+
     	 cli=new CMClient("JOURNET","Maxime","ddd","ddd","123","dd","33333","METZ","France");
+
     	 c=new CMCommande("2020-01-01" ,cli);
     	l=new CMLignedeCommande(c,p,5);
 	
@@ -70,7 +72,9 @@ private CMCommande c;
 	public void testCreate() throws Exception {
 	 cat=new CMCategorie("Watch","watch.png");
     	 p=new CMProduit("aaa", "222xx",(float) 1.0,"xxx.png",cat);
+
     	 cli=new CMClient("JOURNET","Maxime","ddd","ddd","123","dd","33333","METZ","France");
+
     	c=new CMCommande("2020-01-01" ,cli);
     l=new CMLignedeCommande(c,p,6);
 		try {
@@ -102,7 +106,10 @@ private CMCommande c;
 		
 		 cat=new CMCategorie("Watch","watch.png");
     	 p=new CMProduit("aaa", "222xx",(float) 1.0,"xxx.png",cat);
+
     	 cli=new CMClient("JOURNET","Maxime","ddd","ddd","123","dd","33333","METZ","France");
+
+ 
     	c=new CMCommande("2020-01-01" ,cli);
         l=new CMLignedeCommande(c,p,5);
 	 DAOFactory.getDAOFactory(Persistance.MYSQL).getLignedeCommandeDAO().update(l);

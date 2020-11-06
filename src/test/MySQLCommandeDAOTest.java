@@ -1,3 +1,4 @@
+
 package test;
 
 import static org.junit.Assert.assertEquals;
@@ -87,3 +88,4 @@ private CMClient client;
 	}
 
 }
+
